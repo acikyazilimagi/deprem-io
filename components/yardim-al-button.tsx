@@ -15,7 +15,7 @@ export default function YardimAlButton({
   return (
     <Link
       className={cx(
-        "flex grow items-center gap-2 rounded-xl border border-gray-100 px-6 py-4 font-semibold text-red-600 shadow-lg transition hover:shadow-xl",
+        "flex grow items-center gap-2 rounded-2xl border border-zinc-200 px-5 py-4 font-semibold text-red-600 shadow-md transition hover:shadow-lg",
         className
       )}
       {...props}
