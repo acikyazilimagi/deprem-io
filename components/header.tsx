@@ -7,6 +7,7 @@ export default function Header() {
       <Link href="/" className="text-lg font-bold">
         deprem.io
       </Link>
+
       <ThemeButton />
 
       <div className="ml-auto">

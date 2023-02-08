@@ -8,12 +8,12 @@ export default function Home() {
 
       <main className="mx-auto max-w-screen-lg px-6">
         <section>
-          <h2 className="mb-3">Yardım Al</h2>
+          <h2 className="mb-4">Yardım Al</h2>
 
           <div className="grid gap-4 sm:grid-cols-3">
             <YardimAlButton
               href="/yardim-istek-enkaz"
-              className="text-red-600 hover:bg-red-50"
+              className="text-red-600"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -35,7 +35,7 @@ export default function Home() {
 
             <YardimAlButton
               href="/yardim-istek-gida"
-              className="text-purple-600 hover:bg-purple-50"
+              className="text-purple-600"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -57,7 +57,7 @@ export default function Home() {
 
             <YardimAlButton
               href="/yardim-istek-isinma"
-              className="text-amber-600 hover:bg-amber-50"
+              className="text-amber-600"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
