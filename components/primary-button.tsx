@@ -17,7 +17,7 @@ export default function PrimaryButton({
       className={cx(
         "inline-flex h-14 grow items-center gap-4 rounded-xl px-5",
         "border border-zinc-200 font-semibold transition",
-        "hover:bg-zinc-100",
+        "hover:bg-zinc-100 hover:shadow-lg",
         "dark:border-zinc-700 dark:hover:bg-zinc-800",
         className
       )}
