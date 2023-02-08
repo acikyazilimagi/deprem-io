@@ -1,8 +1,11 @@
+import "@/styles/globals.css";
+
 import { ThemeProvider } from "next-themes";
 import type { AppProps } from "next/app";
 import Head from "next/head";
-
-import "@/styles/globals.css";
+import Header from "@/components/header";
+import Footer from "@/components/footer";
+import Container from "@/components/container";
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
@@ -14,7 +17,13 @@ export default function App({ Component, pageProps }: AppProps) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <Component {...pageProps} />
+      <Header />
+      <main>
+        <Container>
+          <Component {...pageProps} />
+        </Container>
+      </main>
+      <Footer />
     </ThemeProvider>
   );
 }
