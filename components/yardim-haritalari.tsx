@@ -9,7 +9,7 @@ export default function YardimHaritalari({}: YardimHaritalariProps) {
       <h3 className="mb-5">Yardım Haritaları</h3>
 
       <div className="grid gap-6 sm:grid-cols-3">
-        <YardimHaritalariButton href="/">
+        <YardimHaritalariButton href="/yardim-map-enkaz">
           <Image
             src="/map-deprem-io.jpg"
             alt=""
