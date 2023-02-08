@@ -24,9 +24,12 @@ export default function YardimListeleri({}: YardimListeleriProps) {
           <span>Isınma İhtiyacı Olanlar</span>
         </PrimaryButton>
 
-        <PrimaryButton href="/yardim-list-konaklama">
-          <Icon icon={Icons.Home} />
-          <span>Konaklama Sağlayanlar</span>
+        <PrimaryButton
+          href="https://gisibb.maps.arcgis.com/apps/MapSeries/index.html?appid=b49d96adc42e439cbab407b4a27c30d8"
+          target="_blank"
+        >
+          <Icon icon={Icons.Hotel} />
+          <span>Ücretsiz Oteller</span>
         </PrimaryButton>
 
         <PrimaryButton href="/yardim-list-ismak">

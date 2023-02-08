@@ -5,6 +5,7 @@ import { cx } from "@/lib/utils";
 type YardimAlButtonProps = LinkProps & {
   children: ReactNode;
   className?: string;
+  target?: string;
 };
 
 export default function PrimaryButton({
@@ -25,5 +26,14 @@ export default function PrimaryButton({
     >
       {children}
     </Link>
+  );
+}
+
+export function PrimaryButtonEmpty() {
+  return (
+    <span
+      className="inline-flex h-14 grow rounded-xl bg-zinc-50
+        dark:bg-zinc-800"
+    />
   );
 }
