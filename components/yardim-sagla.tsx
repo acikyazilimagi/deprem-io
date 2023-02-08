@@ -1,14 +1,14 @@
 import PrimaryButton from "@/components/primary-button";
 import Icon, { Icons } from "@/components/icon";
 
-type YardimAlProps = {};
+type YardimSaglaProps = {};
 
-export default function YardimSagla({}: YardimAlProps) {
+export default function YardimSagla({}: YardimSaglaProps) {
   return (
     <section className="mt-20">
-      <h3 className="mb-4">Yardım Sağla</h3>
+      <h3 className="mb-5">Yardım Sağla</h3>
 
-      <div className="grid gap-4 sm:grid-cols-3">
+      <div className="grid gap-6 sm:grid-cols-3">
         <PrimaryButton href="/yardim-et-konaklama">
           <Icon icon={Icons.Home} />
           <span>Konaklama Sağlayabilirim</span>

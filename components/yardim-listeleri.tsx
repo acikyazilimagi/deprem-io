@@ -1,14 +1,14 @@
 import PrimaryButton from "@/components/primary-button";
 import Icon, { Icons } from "@/components/icon";
 
-type YardimAlProps = {};
+type YardimListeleriProps = {};
 
-export default function YardimListeleri({}: YardimAlProps) {
+export default function YardimListeleri({}: YardimListeleriProps) {
   return (
     <section className="mt-20">
-      <h3 className="mb-4">Yardım Listeleri</h3>
+      <h3 className="mb-5">Yardım Listeleri</h3>
 
-      <div className="grid gap-4 sm:grid-cols-3">
+      <div className="grid gap-6 sm:grid-cols-3">
         <PrimaryButton href="/yardim-list-enkaz">
           <Icon icon={Icons.Alert} />
           <span>Enkaz Altında Olanlar</span>
