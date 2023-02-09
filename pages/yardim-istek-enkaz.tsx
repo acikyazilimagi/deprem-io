@@ -1,8 +1,11 @@
 import { Controller, useForm } from "react-hook-form";
 import { cx } from "@/lib/utils";
-import Link from "next/link";
+import Alert from "@/components/alert";
+import CustomLink from "@/components/custom-link";
+import InputWrapper from "@/components/input-wrapper";
+import { Icons } from "@/components/icon";
 
-enum State {
+enum PhysicalState {
   Kritik = "kritik",
   Orta = "orta",
   Normal = "normal",
@@ -16,8 +19,8 @@ export default function YardimIstekEnkaz() {
     address: "",
     addressDetail: "",
     humanCount: "",
-    state: State.Kritik,
-    stateDetail: "",
+    physicalCondition: PhysicalState.Kritik,
+    physicalConditionDetail: "",
     tweetUrl: "",
     term: false,
   };
@@ -32,6 +35,22 @@ export default function YardimIstekEnkaz() {
 
   return (
     <div className="mx-auto max-w-screen-sm">
+      <h1>Ben / Tandığım Enkaz Altında</h1>
+
+      <div className="my-6">
+        <Alert>
+          <p>
+            Eğer bu yardım talebini daha önce gönderdiysen lütfen tekrar
+            gönderme. Kayıtlarda kopya bilgi olması kurtarma operasyonlarını
+            olumsuz etkiler.
+          </p>
+          <p>
+            <CustomLink href="/yardim-list-enkaz">Mevcut Kayıtlar</CustomLink>{" "}
+            sayfasına göz atın.
+          </p>
+        </Alert>
+      </div>
+
       <form onSubmit={handleSubmit(onFormSubmit)}>
         <div className="grid gap-4 sm:grid-cols-2">
           <div className="sm:col-span-2">
@@ -40,7 +59,9 @@ export default function YardimIstekEnkaz() {
               control={control}
               rules={{ required: true }}
               render={({ field }) => (
-                <input type="text" placeholder="Ad Soyad" {...field} />
+                <InputWrapper icon={Icons.User}>
+                  <input type="text" placeholder="Ad Soyad" {...field} />
+                </InputWrapper>
               )}
             />
           </div>
@@ -49,7 +70,9 @@ export default function YardimIstekEnkaz() {
             name="email"
             control={control}
             render={({ field }) => (
-              <input type="email" placeholder="Email" {...field} />
+              <InputWrapper icon={Icons.Email}>
+                <input type="email" placeholder="Email" {...field} />
+              </InputWrapper>
             )}
           />
 
@@ -57,7 +80,9 @@ export default function YardimIstekEnkaz() {
             name="phone"
             control={control}
             render={({ field }) => (
-              <input type="tel" placeholder="Telefon" {...field} />
+              <InputWrapper icon={Icons.Phone}>
+                <input type="tel" placeholder="Telefon" {...field} />
+              </InputWrapper>
             )}
           />
 
@@ -66,7 +91,9 @@ export default function YardimIstekEnkaz() {
               name="humanCount"
               control={control}
               render={({ field }) => (
-                <input type="number" placeholder="Kişi Sayısı" {...field} />
+                <InputWrapper icon={Icons.UserPlus}>
+                  <input type="number" placeholder="Kişi Sayısı" {...field} />
+                </InputWrapper>
               )}
             />
           </div>
@@ -76,12 +103,14 @@ export default function YardimIstekEnkaz() {
               name="address"
               control={control}
               render={({ field }) => (
-                <textarea
-                  className="max-h-32 w-full"
-                  rows={2}
-                  placeholder="Adres"
-                  {...field}
-                />
+                <InputWrapper icon={Icons.Pin}>
+                  <textarea
+                    className="max-h-32 w-full"
+                    rows={2}
+                    placeholder="Adres"
+                    {...field}
+                  />
+                </InputWrapper>
               )}
             />
           </div>
@@ -91,27 +120,60 @@ export default function YardimIstekEnkaz() {
               name="addressDetail"
               control={control}
               render={({ field }) => (
-                <textarea
-                  className="max-h-32 w-full"
-                  rows={1}
-                  placeholder="Adres Tarifi"
-                  {...field}
-                />
+                <InputWrapper icon={Icons.AddressExtra}>
+                  <textarea
+                    className="max-h-32 w-full"
+                    rows={1}
+                    placeholder="Adres Tarifi"
+                    {...field}
+                  />
+                </InputWrapper>
               )}
             />
           </div>
 
           <div className="sm:col-span-2">
             <Controller
-              name="stateDetail"
+              name="physicalCondition"
+              control={control}
+              render={({ field: { value, ...props } }) => (
+                <div>
+                  <input
+                    type="radio"
+                    value={PhysicalState.Kritik}
+                    checked={PhysicalState.Kritik === value}
+                    {...props}
+                  />
+                  <input
+                    type="radio"
+                    value={PhysicalState.Orta}
+                    checked={PhysicalState.Orta === value}
+                    {...props}
+                  />
+                  <input
+                    type="radio"
+                    value={PhysicalState.Normal}
+                    checked={PhysicalState.Normal === value}
+                    {...props}
+                  />
+                </div>
+              )}
+            />
+          </div>
+
+          <div className="sm:col-span-2">
+            <Controller
+              name="physicalConditionDetail"
               control={control}
               render={({ field }) => (
-                <textarea
-                  className="max-h-32 w-full"
-                  rows={2}
-                  placeholder="Fiziki Durum Hakkında Bilgi"
-                  {...field}
-                />
+                <InputWrapper icon={Icons.Info}>
+                  <textarea
+                    className="max-h-32 w-full"
+                    rows={2}
+                    placeholder="Fiziki Durum Hakkında Bilgi"
+                    {...field}
+                  />
+                </InputWrapper>
               )}
             />
           </div>
@@ -121,7 +183,9 @@ export default function YardimIstekEnkaz() {
               name="tweetUrl"
               control={control}
               render={({ field }) => (
-                <input type="url" placeholder="Tweet Linki" {...field} />
+                <InputWrapper icon={Icons.Link}>
+                  <input type="url" placeholder="Tweet Linki" {...field} />
+                </InputWrapper>
               )}
             />
           </div>
@@ -134,9 +198,7 @@ export default function YardimIstekEnkaz() {
               kendileri tarafından alenileştirilmiş konum verilerini
               topluyoruz.” Veri işleme hukuki sebeplerimizi, amaçlarımızı görmek
               ve haklarınızı öğrenmek için{" "}
-              <Link className="text-blue-500 underline" href="/hukuki-kvkk">
-                Aydınlatma Metnini
-              </Link>{" "}
+              <CustomLink href="/hukuki-kvkk">Aydınlatma Metnini</CustomLink>{" "}
               ziyaret etmek ister misiniz?
             </p>
 
