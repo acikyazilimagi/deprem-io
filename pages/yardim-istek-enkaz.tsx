@@ -18,11 +18,11 @@ export default function YardimIstekEnkaz() {
     state: State.Kritik,
     stateDetail: "",
     tweetUrl: "",
-    term: false
+    term: false,
   };
 
   const { handleSubmit, control, formState } = useForm({
-    defaultValues
+    defaultValues,
   });
 
   const onFormSubmit = async (values: object) => {
@@ -30,9 +30,9 @@ export default function YardimIstekEnkaz() {
   };
 
   return (
-    <div className="max-w-screen-sm mx-auto">
+    <div className="mx-auto max-w-screen-sm">
       <form onSubmit={handleSubmit(onFormSubmit)}>
-        <div className="grid sm:grid-cols-2 gap-4">
+        <div className="grid gap-4 sm:grid-cols-2">
           <div className="sm:col-span-2">
             <Controller
               name="fullName"
