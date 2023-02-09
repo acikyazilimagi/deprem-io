@@ -4,7 +4,7 @@ import Logo from "@/components/logo";
 
 export default function Header() {
   return (
-    <header className="mb-20 flex items-center gap-4 bg-zinc-50 px-6 py-4 dark:bg-zinc-800">
+    <header className="mb-10 flex items-center gap-4 bg-zinc-50 px-6 py-4 dark:bg-zinc-800 sm:mb-20">
       <Logo />
 
       <ThemeButton />

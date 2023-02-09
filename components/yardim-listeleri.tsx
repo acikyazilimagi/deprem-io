@@ -8,7 +8,7 @@ export default function YardimListeleri({}: YardimListeleriProps) {
     <section className="mt-20">
       <h3 className="mb-5">Yardım Listeleri</h3>
 
-      <div className="grid gap-6 sm:grid-cols-3">
+      <div className="grid gap-3 sm:grid-cols-3 sm:gap-6">
         <PrimaryButton href="/yardim-list-enkaz">
           <Icon icon={Icons.Alert} />
           <span>Enkaz Altında Olanlar</span>

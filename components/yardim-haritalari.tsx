@@ -8,7 +8,7 @@ export default function YardimHaritalari({}: YardimHaritalariProps) {
     <section className="mt-20">
       <h3 className="mb-5">Yardım Haritaları</h3>
 
-      <div className="grid gap-6 sm:grid-cols-3">
+      <div className="grid gap-3 sm:grid-cols-3 sm:gap-6">
         <YardimHaritalariButton href="/yardim-map-enkaz">
           <Image
             src="/map-deprem-io.jpg"
@@ -21,10 +21,7 @@ export default function YardimHaritalari({}: YardimHaritalariProps) {
           <b>deprem.io</b>
         </YardimHaritalariButton>
 
-        <YardimHaritalariButton
-          href="https://afetharita.com/"
-          target="_blank"
-        >
+        <YardimHaritalariButton href="https://afetharita.com/" target="_blank">
           <Image
             src="/map-afet-harita.jpg"
             alt=""
@@ -36,10 +33,7 @@ export default function YardimHaritalari({}: YardimHaritalariProps) {
           <b>Afet Harita</b>
         </YardimHaritalariButton>
 
-        <YardimHaritalariButton
-          href="https://depremenkaz.xyz/"
-          target="_blank"
-        >
+        <YardimHaritalariButton href="https://depremenkaz.xyz/" target="_blank">
           <Image
             src="/map-deprem-enkaz.jpg"
             alt=""

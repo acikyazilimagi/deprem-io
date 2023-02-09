@@ -8,7 +8,7 @@ export default function YardimAl({}: YardimAlProps) {
     <section>
       <h2 className="mb-5">Yardım Al</h2>
 
-      <div className="grid gap-6 sm:grid-cols-3">
+      <div className="grid gap-3 sm:grid-cols-3 sm:gap-6">
         <PrimaryButton
           href="/yardim-istek-enkaz"
           className="h-16 text-red-600 shadow-md"

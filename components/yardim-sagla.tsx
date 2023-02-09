@@ -8,7 +8,7 @@ export default function YardimSagla({}: YardimSaglaProps) {
     <section className="mt-20">
       <h3 className="mb-5">Yardım Sağla</h3>
 
-      <div className="grid gap-6 sm:grid-cols-3">
+      <div className="grid gap-3 sm:grid-cols-3 sm:gap-6">
         <PrimaryButton href="/yardim-et-ismak">
           <Icon icon={Icons.Key} />
           <span>İş Makinesi Kullanabilirim</span>

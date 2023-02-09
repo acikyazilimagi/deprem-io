@@ -32,7 +32,7 @@ export default function PrimaryButton({
 export function PrimaryButtonEmpty() {
   return (
     <span
-      className="inline-flex h-14 grow rounded-xl bg-zinc-50
+      className="hidden sm:inline-flex h-14 grow rounded-xl bg-zinc-50
         dark:bg-zinc-800"
     />
   );
