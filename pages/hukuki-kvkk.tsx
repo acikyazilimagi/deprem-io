@@ -76,7 +76,7 @@ export default function HukukiKvkk() {
           etmişlerdir.
         </li>
         <li>
-          6698 sayılı Kişisel Verileri Koruma Kanunu'nun 5. ve 6.maddeleri
+          6698 sayılı Kişisel Verileri Koruma Kanunu&apos;nun 5. ve 6.maddeleri
           kapsamında yer alan ve özel nitelikli kişisel veri olarak kabul edilen
           tüm veriler platformumuz tarafından ancak veri sahiplerinin açık
           rızası ile ve iş bu metnin 5. maddesinde belirtilen amaçlarla sınırlı
@@ -131,7 +131,7 @@ export default function HukukiKvkk() {
           usullerle deprem.io adresine ulaştırarak kullanabilirler. Başvurular,
           ilgili veri sahibinin kimliğini tespit edecek belgelerle birlikte,
           formun/başvurunun ıslak imzalı bir kopyasının elden veya noter
-          aracılığıyla ya da 6698 sayılı Kişisel Verileri Koruma Kanunu'nda
+          aracılığıyla ya da 6698 sayılı Kişisel Verileri Koruma Kanunu&apos;nda
           belirtilen diğer yöntemler ile yukarıda anılan platform adresine
           iletilmesi veya 5070 sayılı Elektronik İmza Kanunu kapsamında
           düzenlenen güvenli elektronik imza ile imzalanarak yukarıda anılan
