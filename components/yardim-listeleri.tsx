@@ -1,4 +1,4 @@
-import PrimaryButton from "@/components/primary-button";
+import PrimaryButton, { PrimaryButtonEmpty } from "@/components/primary-button";
 import Icon, { Icons } from "@/components/icon";
 
 type YardimListeleriProps = {};
@@ -24,6 +24,11 @@ export default function YardimListeleri({}: YardimListeleriProps) {
           <span>Isınma İhtiyacı Olanlar</span>
         </PrimaryButton>
 
+        <PrimaryButton href="https://evimmusait.com/" target="_blank">
+          <Icon icon={Icons.Home} />
+          <span>Evim Müsait</span>
+        </PrimaryButton>
+
         <PrimaryButton
           href="https://gisibb.maps.arcgis.com/apps/MapSeries/index.html?appid=b49d96adc42e439cbab407b4a27c30d8"
           target="_blank"
@@ -41,6 +46,13 @@ export default function YardimListeleri({}: YardimListeleriProps) {
           <Icon icon={Icons.Truck} />
           <span>Yolcu Taşıyabilenler</span>
         </PrimaryButton>
+
+        <PrimaryButton href="/yardim-list-konaklama">
+          <Icon icon={Icons.Box} />
+          <span>Köylerin Yardım Durumu</span>
+        </PrimaryButton>
+
+        <PrimaryButtonEmpty />
       </div>
     </section>
   );

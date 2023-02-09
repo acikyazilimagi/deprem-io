@@ -101,6 +101,7 @@ export default function YardimIstekEnkaz() {
           <div className="sm:col-span-2">
             <Controller
               name="address"
+              rules={{ required: true }}
               control={control}
               render={({ field }) => (
                 <InputWrapper icon={Icons.Pin}>
@@ -176,6 +177,7 @@ export default function YardimIstekEnkaz() {
             <Controller
               name="physicalConditionDetail"
               control={control}
+              rules={{ required: true }}
               render={({ field }) => (
                 <InputWrapper icon={Icons.Info}>
                   <textarea

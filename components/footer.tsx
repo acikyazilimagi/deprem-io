@@ -43,7 +43,7 @@ export default function Footer() {
             Gerektiğinde yetkili merci ve kurumlara bilgi sağlanabilir ve
             işbirliği yapılabilir.
           </p>
-          <p>© 2023</p>
+          <p>&copy; 2023</p>
         </div>
       </Container>
     </footer>

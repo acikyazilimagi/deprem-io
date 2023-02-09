@@ -19,7 +19,10 @@ export default function YardimSagla({}: YardimSaglaProps) {
           <span>Yolcu Taşıyabilirim</span>
         </PrimaryButton>
 
-        <PrimaryButtonEmpty />
+        <PrimaryButton href="/yardim-et-bagis">
+          <Icon icon={Icons.Dollar} />
+          <span>Yolcu Taşıyabilirim</span>
+        </PrimaryButton>
       </div>
     </section>
   );
