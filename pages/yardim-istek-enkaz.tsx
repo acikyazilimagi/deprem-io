@@ -6,9 +6,9 @@ import InputWrapper from "@/components/input-wrapper";
 import { Icons } from "@/components/icon";
 
 enum PhysicalState {
-  Kritik = "kritik",
-  Orta = "orta",
-  Normal = "normal",
+  Kritik = "Kritik",
+  Orta = "Orta",
+  Normal = "Normal",
 }
 
 export default function YardimIstekEnkaz() {
@@ -19,7 +19,7 @@ export default function YardimIstekEnkaz() {
     address: "",
     addressDetail: "",
     humanCount: "",
-    physicalCondition: PhysicalState.Kritik,
+    physicalCondition: PhysicalState.Orta,
     physicalConditionDetail: "",
     tweetUrl: "",
     term: false,
@@ -137,25 +137,36 @@ export default function YardimIstekEnkaz() {
               name="physicalCondition"
               control={control}
               render={({ field: { value, ...props } }) => (
-                <div>
-                  <input
-                    type="radio"
-                    value={PhysicalState.Kritik}
-                    checked={PhysicalState.Kritik === value}
-                    {...props}
-                  />
-                  <input
-                    type="radio"
-                    value={PhysicalState.Orta}
-                    checked={PhysicalState.Orta === value}
-                    {...props}
-                  />
-                  <input
-                    type="radio"
-                    value={PhysicalState.Normal}
-                    checked={PhysicalState.Normal === value}
-                    {...props}
-                  />
+                <div className="flex items-center gap-4">
+                  <label className="flex items-center gap-1">
+                    <input
+                      type="radio"
+                      value={PhysicalState.Normal}
+                      checked={PhysicalState.Normal === value}
+                      {...props}
+                    />
+                    <span>{PhysicalState.Normal}</span>
+                  </label>
+
+                  <label className="flex items-center gap-1">
+                    <input
+                      type="radio"
+                      value={PhysicalState.Orta}
+                      checked={PhysicalState.Orta === value}
+                      {...props}
+                    />
+                    <span>{PhysicalState.Orta}</span>
+                  </label>
+
+                  <label className="flex items-center gap-1">
+                    <input
+                      type="radio"
+                      value={PhysicalState.Kritik}
+                      checked={PhysicalState.Kritik === value}
+                      {...props}
+                    />
+                    <span>{PhysicalState.Kritik}</span>
+                  </label>
                 </div>
               )}
             />
