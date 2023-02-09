@@ -53,12 +53,12 @@
   input[type="color"],
   textarea,
   select {
-    @apply block w-full rounded-md border-transparent bg-gray-100
+    @apply block w-full rounded-lg border-transparent bg-gray-100
         focus:border-gray-500 focus:bg-white focus:ring-0;
   }
 
   button[type="submit"] {
-    @apply h-10 rounded-md border-transparent bg-blue-500 text-white
+    @apply h-10 rounded-lg border-transparent bg-blue-500 text-white
         focus:bg-blue-600 focus:ring-0;
   }
 }

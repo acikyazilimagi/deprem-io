@@ -1,13 +1,11 @@
-import Link from "next/link";
 import Container from "@/components/container";
+import Logo from "@/components/logo";
 
 export default function Footer() {
   return (
     <footer className="mt-20 bg-zinc-50 py-20 dark:bg-zinc-800">
       <Container>
-        <Link href="/" className="text-lg font-bold">
-          deprem.io
-        </Link>
+        <Logo />
 
         <div className="mt-10 space-y-4 text-xs opacity-50">
           <h6>Kişisel Verilerin İşlenmesine İlişkin Aydınlatma:</h6>
