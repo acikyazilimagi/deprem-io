@@ -38,27 +38,38 @@
     @apply text-sm;
   }
 
+  input::placeholder,
+  textarea::placeholder {
+    @apply text-zinc-400 dark:text-zinc-600;
+  }
+
   input[type="text"],
-  input[type="email"],
   input[type="password"],
-  input[type="tel"],
+  input[type="email"],
   input[type="number"],
+  input[type="url"],
   input[type="date"],
   input[type="datetime-local"],
   input[type="month"],
   input[type="week"],
   input[type="time"],
-  input[type="url"],
   input[type="search"],
-  input[type="color"],
-  textarea,
-  select {
-    @apply block w-full rounded-lg border-transparent bg-gray-100
-        focus:border-gray-500 focus:bg-white focus:ring-0;
+  input[type="tel"],
+  select,
+  select[multiple],
+  textarea {
+    @apply block w-full rounded-lg border-transparent bg-zinc-100
+        focus:border-zinc-500 focus:bg-white focus:ring-0
+        dark:bg-zinc-800 dark:focus:bg-zinc-900;
   }
 
   button[type="submit"] {
     @apply h-10 rounded-lg border-transparent bg-blue-500 px-4 text-white
         focus:bg-blue-600 focus:ring-0;
   }
+
+  /*input[type="checkbox"],
+    input[type="radio"] {
+        @apply text-blue-500 focus:ring-0;
+    }*/
 }
