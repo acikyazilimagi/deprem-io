@@ -58,7 +58,7 @@
   }
 
   button[type="submit"] {
-    @apply h-10 rounded-lg border-transparent bg-blue-500 text-white
+    @apply h-10 rounded-lg border-transparent bg-blue-500 px-4 text-white
         focus:bg-blue-600 focus:ring-0;
   }
 }
