@@ -1,8 +1,4 @@
-import { ReactNode } from "react";
-
-type ContainerProps = {
-  children: ReactNode;
-};
+import { ContainerProps } from '@/lib/types/component-props/Container.props';
 
 export default function Container({ children }: ContainerProps) {
   return <div className="mx-auto max-w-screen-lg px-6">{children}</div>;

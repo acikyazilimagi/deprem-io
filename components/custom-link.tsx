@@ -1,12 +1,6 @@
-import Link, { LinkProps } from "next/link";
-import { ReactNode } from "react";
-import { cx } from "@/lib/utils";
-
-type CustomLinkProps = LinkProps & {
-  children: ReactNode;
-  className?: string;
-  target?: string;
-};
+import Link from 'next/link';
+import { cx } from '@/lib/utils';
+import { CustomLinkProps } from '@/lib/types/component-props/CustomLink.props';
 
 export default function CustomLink({
   children,
@@ -14,7 +8,7 @@ export default function CustomLink({
   ...props
 }: CustomLinkProps) {
   return (
-    <Link className={cx("text-blue-500 underline")} {...props}>
+    <Link className={cx('text-blue-500 underline')} {...props}>
       {children}
     </Link>
   );

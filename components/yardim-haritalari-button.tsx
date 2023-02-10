@@ -1,11 +1,5 @@
-import Link, { LinkProps } from "next/link";
-import { ReactNode } from "react";
-
-type YardimHaritalariButtonProps = LinkProps & {
-  children: ReactNode;
-  className?: string;
-  target?: string;
-};
+import { YardimHaritalariButtonProps } from '@/lib/types/component-props/YardimHaritalariButton.props';
+import Link from 'next/link';
 
 export default function YardimHaritalariButton({
   children,

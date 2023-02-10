@@ -1,8 +1,9 @@
-import React from "react";
-import Icon, { Icons } from "@/components/icon";
+import React from 'react';
+import Icon from '@/components/icon';
+import { IconProps } from '@/lib/types/component-props/Icon.props';
 
 type InputProps = React.HTMLProps<HTMLInputElement> & {
-  icon?: Icons;
+  icon?: IconProps['icon'];
   children: React.ReactNode;
 };
 

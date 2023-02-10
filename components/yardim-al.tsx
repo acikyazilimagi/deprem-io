@@ -1,5 +1,5 @@
-import Icon, { Icons } from "@/components/icon";
-import PrimaryButton from "@/components/primary-button";
+import Icon from '@/components/icon';
+import PrimaryButton from '@/components/primary-button';
 
 type YardimAlProps = {};
 
@@ -13,7 +13,7 @@ export default function YardimAl({}: YardimAlProps) {
           href="/yardim-istek-enkaz"
           className="h-16 text-red-600 shadow-md"
         >
-          <Icon icon={Icons.Alert} size={32} />
+          <Icon icon="alert" size={32} />
           <span>Ben / Tanıdığım Enkazda</span>
         </PrimaryButton>
 
@@ -21,7 +21,7 @@ export default function YardimAl({}: YardimAlProps) {
           href="/yardim-istek-gida"
           className="h-16 text-purple-600 shadow-md"
         >
-          <Icon icon={Icons.Info} size={32} />
+          <Icon icon="info" size={32} />
           <span>Gıdaya İhtiyacım Var</span>
         </PrimaryButton>
 
@@ -29,7 +29,7 @@ export default function YardimAl({}: YardimAlProps) {
           href="/yardim-istek-isinma"
           className="h-16 text-amber-600 shadow-md"
         >
-          <Icon icon={Icons.Fire} size={32} />
+          <Icon icon="fire" size={32} />
           <span>Isınmaya İhtiyacım Var</span>
         </PrimaryButton>
       </div>

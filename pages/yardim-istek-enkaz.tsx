@@ -1,9 +1,12 @@
 import { Controller, useForm } from "react-hook-form";
+import * as yup from "yup";
 import { cx } from "@/lib/utils";
 import Alert from "@/components/alert";
 import CustomLink from "@/components/custom-link";
-import InputWrapper from "@/components/input-wrapper";
+import InputWrapper from "@/components/form/input-wrapper";
 import { Icons } from "@/components/icon";
+import FormManager from "@/components/form/form-manager";
+import FormControl from "@/components/form/form-control";
 
 enum PhysicalState {
   Kritik = "Kritik",
@@ -12,6 +15,10 @@ enum PhysicalState {
 }
 
 export default function YardimIstekEnkaz() {
+  const validationSchema = yup.object().shape({
+    fullName: yup.string().required(),
+  });
+
   const defaultValues = {
     fullName: "",
     email: "",
@@ -50,6 +57,20 @@ export default function YardimIstekEnkaz() {
           </p>
         </Alert>
       </div>
+
+      <FormManager
+        validationSchema={validationSchema}
+        onSubmit={onFormSubmit}
+        onError={(err) => {
+          console.error("onError - err", err);
+        }}
+      >
+        <FormControl
+          field="TextInput"
+          name="fullName"
+          fieldProps={{ placeholder: "Ad Soyad", type: "text" }}
+        />
+      </FormManager>
 
       <form onSubmit={handleSubmit(onFormSubmit)}>
         <div className="grid gap-4 sm:grid-cols-2">
