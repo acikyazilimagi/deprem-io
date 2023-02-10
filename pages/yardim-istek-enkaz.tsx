@@ -1,4 +1,3 @@
-import { Controller, useForm } from "react-hook-form";
 import * as yup from "yup";
 import useTranslation from "next-translate/useTranslation";
 import Trans from "next-translate/Trans";
@@ -46,10 +45,6 @@ export default function YardimIstekEnkaz() {
   };
 
   const { t } = useTranslation("common");
-
-  const { handleSubmit, control, formState } = useForm({
-    defaultValues,
-  });
 
   const onFormSubmit = async (values: object) => {
     console.log(values);
@@ -167,7 +162,6 @@ export default function YardimIstekEnkaz() {
               fieldProps={{ placeholder: "Tweet Linki", type: "url" }}
             />
           </div>
-
           <div className="sm:col-span-2">
             <p className="text-xs">
               <Trans
@@ -175,7 +169,6 @@ export default function YardimIstekEnkaz() {
                 components={[<CustomLink key="kvkk" href="/hukuki-kvkk" />]}
               />
             </p>
-
             <div className="mt-4">
               <FormControl
                 fieldName="CheckBox"
@@ -184,7 +177,6 @@ export default function YardimIstekEnkaz() {
               />
             </div>
           </div>
-
           <div>
             <FormControl
               fieldName="Button"
