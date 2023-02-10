@@ -1,5 +1,9 @@
-import React, { useMemo } from "react";
-import { Controller, useFormContext } from "react-hook-form";
+import React, { TextareaHTMLAttributes, useMemo, WheelEvent } from "react";
+import {
+  Controller,
+  useFormContext,
+  ControllerRenderProps,
+} from "react-hook-form";
 import InputWrapper from "@/components/form/input-wrapper";
 import { IconProps } from "@/lib/types/component-props/Icon.props";
 import { cx } from "@/lib/utils";
@@ -8,49 +12,68 @@ type TProps =
   | {
       id?: string;
       name: string;
+      label?: string;
+      className?: string;
       icon?: IconProps["icon"];
     } & {
       fieldName: "TextInput" | "TextArea" | "Radio" | "CheckBox" | "Button";
-      fieldProps?: Omit<React.InputHTMLAttributes<HTMLInputElement>, "name">;
+      fieldProps?: Omit<
+        | React.InputHTMLAttributes<HTMLInputElement>
+        | TextareaHTMLAttributes<HTMLTextAreaElement>,
+        "name"
+      > & { type?: string; min?: number; rows?: number };
+      radioLabels?: Array<string>;
     };
 
-const FormControl = (
-  { fieldName, fieldProps, id, name, icon }: TProps,
-  ref
-) => {
+type InputProps = {
+  field: ControllerRenderProps;
+  fieldProps?: Omit<
+    React.InputHTMLAttributes<HTMLInputElement | HTMLTextAreaElement>,
+    "name"
+  >;
+  radioLabels?: Array<string>;
+};
+
+const FormControl = ({
+  fieldName,
+  fieldProps,
+  id,
+  name,
+  icon,
+  label,
+  className,
+  radioLabels,
+}: TProps) => {
   const formContext = useFormContext();
   if (!formContext) {
     throw new Error("FormProvider not found");
   }
 
-  const Input = ({ fieldProps, field }) =>
+  const onWheel = (event: WheelEvent) => {
+    const target = event.target as HTMLElement;
+    if (fieldProps?.type === "number") target.blur();
+  };
+
+  const Input = ({ fieldProps, field }: InputProps) =>
     useMemo(() => {
       switch (fieldName) {
         case "TextInput":
-          return (
-            <input
-              {...fieldProps}
-              {...field}
-              onWheel={(event) => {
-                if (fieldProps.type === "number") event.target.blur();
-              }}
-            />
-          );
+          return <input {...fieldProps} {...field} onWheel={onWheel} />;
         case "TextArea":
           return <textarea {...fieldProps} {...field} />;
         case "Radio":
           return (
             <div className="flex items-center gap-4">
-              {fieldProps.fields.map((item) => (
-                <label className="flex items-center gap-1" key={item.value}>
+              {radioLabels?.map((item) => (
+                <label className="flex items-center gap-1" key={item}>
                   <input
                     type="radio"
                     {...fieldProps}
                     {...field}
                     onChange={(e) => field.onChange(e.target.checked)}
-                    checked={field.value === item.value}
+                    checked={field.value === item}
                   />
-                  <span>{item.value}</span>
+                  <span>{item}</span>
                 </label>
               ))}
             </div>
@@ -59,20 +82,18 @@ const FormControl = (
           return (
             <label className="flex items-center gap-2">
               <input type="checkbox" {...fieldProps} {...field} />
-              <span>{fieldProps.label}</span>
+              <span>{label}</span>
             </label>
           );
         case "Button":
-          const className = fieldProps?.className ?? "";
           return (
             <button
-              {...fieldProps}
               className={`${
                 !formContext.formState.isValid ? "opacity-50" : ""
               } ${className}`}
               disabled={!formContext.formState.isValid}
             >
-              {fieldProps.label}
+              {label}
             </button>
           );
         default:
@@ -93,9 +114,7 @@ const FormControl = (
                 field={field}
                 fieldProps={{
                   ...fieldProps,
-                  className: icon
-                    ? `${fieldProps.className} pl-10`
-                    : fieldProps.className,
+                  className: icon ? `${className} pl-10` : className,
                 }}
               />
             </InputWrapper>

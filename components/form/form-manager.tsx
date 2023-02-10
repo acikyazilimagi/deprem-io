@@ -9,7 +9,7 @@ import type {
   UseFormProps,
   UseFormReturn,
 } from "react-hook-form";
-import type { Validator } from "@libs/utils/Validator";
+import * as yup from "yup";
 
 export type TProps = (
   | {
@@ -37,7 +37,7 @@ export type TProps = (
         event?: React.BaseSyntheticEvent | undefined
       ) => any | Promise<any>;
       defaultValues?: Record<string, any> | undefined;
-      validationSchema?: Validator.AnyObjectSchema;
+      validationSchema?: any;
       formInitOptions?: Omit<UseFormProps, "defaultValues">;
     }
 ) & {

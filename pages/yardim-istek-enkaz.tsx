@@ -4,7 +4,6 @@ import Trans from "next-translate/Trans";
 import Alert from "@/components/alert";
 import CustomLink from "@/components/custom-link";
 import InputWrapper from "@/components/form/input-wrapper";
-import { Icons } from "@/components/icon";
 import FormManager from "@/components/form/form-manager";
 import FormControl from "@/components/form/form-control";
 
@@ -110,9 +109,9 @@ export default function YardimIstekEnkaz() {
               fieldName="TextArea"
               name="address"
               icon="pin"
+              className="max-h-32 w-full"
               fieldProps={{
                 placeholder: "Adres",
-                className: "max-h-32 w-full",
                 rows: 2,
               }}
             />
@@ -122,9 +121,9 @@ export default function YardimIstekEnkaz() {
               fieldName="TextArea"
               name="addressDetail"
               icon="addressExtra"
+              className="max-h-32 w-full"
               fieldProps={{
                 placeholder: "Adres Tarifi",
-                className: "max-h-32 w-full",
                 rows: 1,
               }}
             />
@@ -133,13 +132,11 @@ export default function YardimIstekEnkaz() {
             <FormControl
               fieldName="Radio"
               name="physicalCondition"
-              fieldProps={{
-                fields: [
-                  { value: PhysicalState.Normal },
-                  { value: PhysicalState.Orta },
-                  { value: PhysicalState.Kritik },
-                ],
-              }}
+              radioLabels={[
+                PhysicalState.Normal,
+                PhysicalState.Orta,
+                PhysicalState.Kritik,
+              ]}
             />
           </div>
           <div className="sm:col-span-2">
@@ -147,9 +144,9 @@ export default function YardimIstekEnkaz() {
               fieldName="TextArea"
               name="physicalConditionDetail"
               icon="info"
+              className="max-h-32 w-full"
               fieldProps={{
                 placeholder: "Fiziki Durum Hakkında Bilgi",
-                className: "max-h-32 w-full",
                 rows: 2,
               }}
             />
@@ -173,7 +170,7 @@ export default function YardimIstekEnkaz() {
               <FormControl
                 fieldName="CheckBox"
                 name="term"
-                fieldProps={{ label: "Okudum ve aydınlandım." }}
+                label="Okudum ve aydınlandım."
               />
             </div>
           </div>
@@ -181,7 +178,8 @@ export default function YardimIstekEnkaz() {
             <FormControl
               fieldName="Button"
               name="enkaz-form-submit"
-              fieldProps={{ label: t("submit"), type: "submit" }}
+              label={t("submit")}
+              fieldProps={{ type: "submit" }}
             />
           </div>
         </div>
