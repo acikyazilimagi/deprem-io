@@ -1,4 +1,4 @@
-import type ValidationError from 'yup/lib/ValidationError';
+import type { ValidationError } from "yup";
 
 export const NAMESPACE: string = "common";
 export const DOMAIN_VALIDATIONS: string = "validations";
@@ -8,7 +8,7 @@ export const DOMAIN_VALIDATIONS: string = "validations";
 // args => https://github.com/jquense/yup/blob/master/src/ValidationError.ts
 // locales => https://github.com/jquense/yup/blob/master/src/locale.ts
 
-export const LOCALE_VALIDATIONS: any  = {
+export const LOCALE_VALIDATIONS: any = {
   mixed: {
     default: (args: ValidationError) => ({
       key: `${NAMESPACE}:${DOMAIN_VALIDATIONS}.mixed.default`,
