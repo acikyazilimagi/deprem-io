@@ -1,4 +1,5 @@
 import { Controller, useForm } from "react-hook-form";
+import useTranslation from "next-translate/useTranslation";
 import { cx } from "@/lib/utils";
 import Alert from "@/components/alert";
 import CustomLink from "@/components/custom-link";
@@ -25,6 +26,8 @@ export default function YardimIstekEnkaz() {
     term: false,
   };
 
+  const { t } = useTranslation("common");
+
   const { handleSubmit, control, formState } = useForm({
     defaultValues,
   });
@@ -39,11 +42,7 @@ export default function YardimIstekEnkaz() {
 
       <div className="my-6">
         <Alert>
-          <p>
-            Eğer bu yardım talebini daha önce gönderdiysen lütfen tekrar
-            gönderme. Kayıtlarda kopya bilgi olması kurtarma operasyonlarını
-            olumsuz etkiler.
-          </p>
+          <p>{t("common:warningMessages.requestForHelpAgain")}</p>
           <p>
             <CustomLink href="/yardim-list-enkaz">Mevcut Kayıtlar</CustomLink>{" "}
             sayfasına göz atın.
