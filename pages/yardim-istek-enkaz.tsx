@@ -1,7 +1,7 @@
 import { Controller, useForm } from "react-hook-form";
 import * as yup from "yup";
 import useTranslation from "next-translate/useTranslation";
-import { cx } from "@/lib/utils";
+import Trans from "next-translate/Trans";
 import Alert from "@/components/alert";
 import CustomLink from "@/components/custom-link";
 import InputWrapper from "@/components/form/input-wrapper";
@@ -18,6 +18,18 @@ enum PhysicalState {
 export default function YardimIstekEnkaz() {
   const validationSchema = yup.object().shape({
     fullName: yup.string().required(),
+    email: yup.string().nullable().email(),
+    humanCount: yup
+      .number()
+      .transform((value) => (Number.isNaN(value) ? undefined : value))
+      .nullable()
+      .moreThan(0),
+    address: yup.string().required(),
+    addressDetail: yup.string().nullable(),
+    physicalCondition: yup.string().required(),
+    physicalConditionDetail: yup.string().required(),
+    tweetUrl: yup.string().nullable(),
+    term: yup.bool().required(),
   });
 
   const defaultValues = {
@@ -63,203 +75,125 @@ export default function YardimIstekEnkaz() {
         onError={(err) => {
           console.error("onError - err", err);
         }}
+        defaultValues={defaultValues}
       >
-        <FormControl
-          field="TextInput"
-          name="fullName"
-          fieldProps={{ placeholder: "Ad Soyad", type: "text" }}
-        />
-      </FormManager>
-
-      <form onSubmit={handleSubmit(onFormSubmit)}>
         <div className="grid gap-4 sm:grid-cols-2">
           <div className="sm:col-span-2">
-            <Controller
+            <FormControl
+              fieldName="TextInput"
               name="fullName"
-              control={control}
-              rules={{ required: true }}
-              render={({ field }) => (
-                <InputWrapper icon={Icons.User}>
-                  <input type="text" placeholder="Ad Soyad" {...field} />
-                </InputWrapper>
-              )}
+              icon="user"
+              fieldProps={{ placeholder: "Ad Soyad", type: "text" }}
             />
           </div>
-
-          <Controller
+          <FormControl
+            fieldName="TextInput"
             name="email"
-            control={control}
-            render={({ field }) => (
-              <InputWrapper icon={Icons.Email}>
-                <input type="email" placeholder="Email" {...field} />
-              </InputWrapper>
-            )}
+            icon="email"
+            fieldProps={{ placeholder: "Email", type: "email" }}
           />
-
-          <Controller
+          <FormControl
+            fieldName="TextInput"
             name="phone"
-            control={control}
-            render={({ field }) => (
-              <InputWrapper icon={Icons.Phone}>
-                <input type="tel" placeholder="Telefon" {...field} />
-              </InputWrapper>
-            )}
+            icon="phone"
+            fieldProps={{ placeholder: "Telefon", type: "tel" }}
           />
-
           <div className="sm:col-span-2">
-            <Controller
+            <FormControl
+              fieldName="TextInput"
               name="humanCount"
-              control={control}
-              render={({ field }) => (
-                <InputWrapper icon={Icons.UserPlus}>
-                  <input type="number" placeholder="Kişi Sayısı" {...field} />
-                </InputWrapper>
-              )}
+              icon="userPlus"
+              fieldProps={{
+                placeholder: "Kişi Sayısı",
+                type: "number",
+                min: 1,
+              }}
             />
           </div>
-
           <div className="sm:col-span-2">
-            <Controller
+            <FormControl
+              fieldName="TextArea"
               name="address"
-              rules={{ required: true }}
-              control={control}
-              render={({ field }) => (
-                <InputWrapper icon={Icons.Pin}>
-                  <textarea
-                    className="max-h-32 w-full"
-                    rows={2}
-                    placeholder="Adres"
-                    {...field}
-                  />
-                </InputWrapper>
-              )}
+              icon="pin"
+              fieldProps={{
+                placeholder: "Adres",
+                className: "max-h-32 w-full",
+                rows: 2,
+              }}
             />
           </div>
-
           <div className="sm:col-span-2">
-            <Controller
+            <FormControl
+              fieldName="TextArea"
               name="addressDetail"
-              control={control}
-              render={({ field }) => (
-                <InputWrapper icon={Icons.AddressExtra}>
-                  <textarea
-                    className="max-h-32 w-full"
-                    rows={1}
-                    placeholder="Adres Tarifi"
-                    {...field}
-                  />
-                </InputWrapper>
-              )}
+              icon="addressExtra"
+              fieldProps={{
+                placeholder: "Adres Tarifi",
+                className: "max-h-32 w-full",
+                rows: 1,
+              }}
             />
           </div>
-
           <div className="sm:col-span-2">
-            <Controller
+            <FormControl
+              fieldName="Radio"
               name="physicalCondition"
-              control={control}
-              render={({ field: { value, ...props } }) => (
-                <div className="flex items-center gap-4">
-                  <label className="flex items-center gap-1">
-                    <input
-                      type="radio"
-                      value={PhysicalState.Normal}
-                      checked={PhysicalState.Normal === value}
-                      {...props}
-                    />
-                    <span>{PhysicalState.Normal}</span>
-                  </label>
-
-                  <label className="flex items-center gap-1">
-                    <input
-                      type="radio"
-                      value={PhysicalState.Orta}
-                      checked={PhysicalState.Orta === value}
-                      {...props}
-                    />
-                    <span>{PhysicalState.Orta}</span>
-                  </label>
-
-                  <label className="flex items-center gap-1">
-                    <input
-                      type="radio"
-                      value={PhysicalState.Kritik}
-                      checked={PhysicalState.Kritik === value}
-                      {...props}
-                    />
-                    <span>{PhysicalState.Kritik}</span>
-                  </label>
-                </div>
-              )}
+              fieldProps={{
+                fields: [
+                  { value: PhysicalState.Normal },
+                  { value: PhysicalState.Orta },
+                  { value: PhysicalState.Kritik },
+                ],
+              }}
             />
           </div>
-
           <div className="sm:col-span-2">
-            <Controller
+            <FormControl
+              fieldName="TextArea"
               name="physicalConditionDetail"
-              control={control}
-              rules={{ required: true }}
-              render={({ field }) => (
-                <InputWrapper icon={Icons.Info}>
-                  <textarea
-                    className="max-h-32 w-full"
-                    rows={2}
-                    placeholder="Fiziki Durum Hakkında Bilgi"
-                    {...field}
-                  />
-                </InputWrapper>
-              )}
+              icon="info"
+              fieldProps={{
+                placeholder: "Fiziki Durum Hakkında Bilgi",
+                className: "max-h-32 w-full",
+                rows: 2,
+              }}
             />
           </div>
-
           <div className="sm:col-span-2">
-            <Controller
+            <FormControl
+              fieldName="TextInput"
               name="tweetUrl"
-              control={control}
-              render={({ field }) => (
-                <InputWrapper icon={Icons.Link}>
-                  <input type="url" placeholder="Tweet Linki" {...field} />
-                </InputWrapper>
-              )}
+              icon="link"
+              fieldProps={{ placeholder: "Tweet Linki", type: "url" }}
             />
           </div>
 
           <div className="sm:col-span-2">
             <p className="text-xs">
-              6698 sayılı KVKK kapsamında “Uygulamamıza depremzede ya da
-              depremzede yakını olarak kaydolan kullanıcılardan ad, soyadı,
-              iletişim bilgisi, log kaydı ve depremzedenin sisteme girilen ve
-              kendileri tarafından alenileştirilmiş konum verilerini
-              topluyoruz.” Veri işleme hukuki sebeplerimizi, amaçlarımızı görmek
-              ve haklarınızı öğrenmek için{" "}
-              <CustomLink href="/hukuki-kvkk">Aydınlatma Metnini</CustomLink>{" "}
-              ziyaret etmek ister misiniz?
+              <Trans
+                i18nKey="common:kvkk"
+                components={[<CustomLink key="kvkk" href="/hukuki-kvkk" />]}
+              />
             </p>
 
             <div className="mt-4">
-              <Controller
+              <FormControl
+                fieldName="CheckBox"
                 name="term"
-                control={control}
-                rules={{ required: true }}
-                render={({ field: { value, ...props } }) => (
-                  <label className="flex items-center gap-2">
-                    <input type="checkbox" checked={value} {...props} />
-                    <span>Okudum ve aydınlandım.</span>
-                  </label>
-                )}
+                fieldProps={{ label: "Okudum ve aydınlandım." }}
               />
             </div>
           </div>
 
           <div>
-            <button
-              type="submit"
-              className={cx(!formState.isValid && "opacity-50")}
-            >
-              Gönder
-            </button>
+            <FormControl
+              fieldName="Button"
+              name="enkaz-form-submit"
+              fieldProps={{ label: t("submit"), type: "submit" }}
+            />
           </div>
         </div>
-      </form>
+      </FormManager>
     </div>
   );
 }

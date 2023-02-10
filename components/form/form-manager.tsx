@@ -1,6 +1,6 @@
-import { yupResolver } from '@hookform/resolvers/yup';
-import React from 'react';
-import { FormProvider, useForm } from 'react-hook-form';
+import { yupResolver } from "@hookform/resolvers/yup";
+import React from "react";
+import { FormProvider, useForm } from "react-hook-form";
 import type {
   FieldErrors,
   FieldValues,
@@ -8,19 +8,19 @@ import type {
   SubmitHandler,
   UseFormProps,
   UseFormReturn,
-} from 'react-hook-form';
-import type { Validator } from '@libs/utils/Validator';
+} from "react-hook-form";
+import type { Validator } from "@libs/utils/Validator";
 
 export type TProps = (
   | {
       formInitializer: UseFormReturn<FieldValues, object>;
       onSubmit: (
         data: FieldValues,
-        event?: React.BaseSyntheticEvent | undefined,
+        event?: React.BaseSyntheticEvent | undefined
       ) => any | Promise<any>;
       onError?: (
         errors: FieldErrors,
-        event?: React.BaseSyntheticEvent | undefined,
+        event?: React.BaseSyntheticEvent | undefined
       ) => any | Promise<any>;
       defaultValues?: undefined;
       validationSchema?: undefined;
@@ -30,15 +30,15 @@ export type TProps = (
       formInitializer?: undefined;
       onSubmit: (
         data: FieldValues,
-        event?: React.BaseSyntheticEvent | undefined,
+        event?: React.BaseSyntheticEvent | undefined
       ) => any | Promise<any>;
       onError?: (
         errors: FieldErrors,
-        event?: React.BaseSyntheticEvent | undefined,
+        event?: React.BaseSyntheticEvent | undefined
       ) => any | Promise<any>;
       defaultValues?: Record<string, any> | undefined;
       validationSchema?: Validator.AnyObjectSchema;
-      formInitOptions?: Omit<UseFormProps, 'defaultValues'>;
+      formInitOptions?: Omit<UseFormProps, "defaultValues">;
     }
 ) & {
   children: React.ReactNode;
@@ -52,7 +52,7 @@ const FormManager = ({
   formInitOptions,
   children,
 }: TProps) => {
-  const defaultFormInitializerProps: Omit<UseFormProps, 'defaultValues'> = {
+  const defaultFormInitializerProps: Omit<UseFormProps, "defaultValues"> = {
     shouldFocusError: true,
   };
 
@@ -81,7 +81,7 @@ const FormManager = ({
       onError(errors, event);
     }
   };
-
+  
   return (
     <FormProvider {...formInitializer}>
       <form

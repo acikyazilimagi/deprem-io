@@ -2,6 +2,7 @@ import React, { useMemo } from "react";
 import { Controller, useFormContext } from "react-hook-form";
 import InputWrapper from "@/components/form/input-wrapper";
 import { IconProps } from "@/lib/types/component-props/Icon.props";
+import { cx } from "@/lib/utils";
 
 type TProps =
   | {
@@ -9,7 +10,7 @@ type TProps =
       name: string;
       icon?: IconProps["icon"];
     } & {
-      fieldName: "TextInput";
+      fieldName: "TextInput" | "TextArea" | "Radio" | "CheckBox" | "Button";
       fieldProps?: Omit<React.InputHTMLAttributes<HTMLInputElement>, "name">;
     };
 
@@ -22,19 +23,62 @@ const FormControl = (
     throw new Error("FormProvider not found");
   }
 
-  const Input = useMemo(
-    ({ fieldProps, field }) => {
+  const Input = ({ fieldProps, field }) =>
+    useMemo(() => {
       switch (fieldName) {
         case "TextInput":
-          return <input {...fieldProps} {...field} />;
-          break;
+          return (
+            <input
+              {...fieldProps}
+              {...field}
+              onWheel={(event) => {
+                if (fieldProps.type === "number") event.target.blur();
+              }}
+            />
+          );
+        case "TextArea":
+          return <textarea {...fieldProps} {...field} />;
+        case "Radio":
+          return (
+            <div className="flex items-center gap-4">
+              {fieldProps.fields.map((item) => (
+                <label className="flex items-center gap-1" key={item.value}>
+                  <input
+                    type="radio"
+                    {...fieldProps}
+                    {...field}
+                    onChange={(e) => field.onChange(e.target.checked)}
+                    checked={field.value === item.value}
+                  />
+                  <span>{item.value}</span>
+                </label>
+              ))}
+            </div>
+          );
+        case "CheckBox":
+          return (
+            <label className="flex items-center gap-2">
+              <input type="checkbox" {...fieldProps} {...field} />
+              <span>{fieldProps.label}</span>
+            </label>
+          );
+        case "Button":
+          const className = fieldProps?.className ?? "";
+          return (
+            <button
+              {...fieldProps}
+              className={`${
+                !formContext.formState.isValid ? "opacity-50" : ""
+              } ${className}`}
+              disabled={!formContext.formState.isValid}
+            >
+              {fieldProps.label}
+            </button>
+          );
         default:
           return <span>{fieldName} not supported as an input name</span>;
-          break;
       }
-    },
-    [fieldName]
-  );
+    }, [field, fieldProps]);
 
   return (
     <Controller
@@ -45,7 +89,15 @@ const FormControl = (
         return (
           <div className="flex flex-col">
             <InputWrapper icon={icon}>
-              <Input {...fieldProps} {...field} />
+              <Input
+                field={field}
+                fieldProps={{
+                  ...fieldProps,
+                  className: icon
+                    ? `${fieldProps.className} pl-10`
+                    : fieldProps.className,
+                }}
+              />
             </InputWrapper>
             {hasError && (
               <label className="label">

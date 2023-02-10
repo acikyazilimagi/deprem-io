@@ -1,23 +1,13 @@
-import React from 'react';
-import Icon from '@/components/icon';
-import { IconProps } from '@/lib/types/component-props/Icon.props';
+import React from "react";
+import Icon from "@/components/icon";
+import { IconProps } from "@/lib/types/component-props/Icon.props";
 
 type InputProps = React.HTMLProps<HTMLInputElement> & {
-  icon?: IconProps['icon'];
+  icon?: IconProps["icon"];
   children: React.ReactNode;
 };
 
 export default function InputWrapper({ children, icon }: InputProps) {
-  const childs: React.ReactNode[] = React.Children.map(
-    // @ts-ignore
-    children,
-    (child: React.ReactElement) => {
-      return React.cloneElement(child, {
-        className: `${child.props.className} pl-10`,
-      });
-    }
-  );
-
   return (
     <div className="relative">
       {icon && (
@@ -25,7 +15,7 @@ export default function InputWrapper({ children, icon }: InputProps) {
           <Icon icon={icon} size={20} />
         </span>
       )}
-      {childs}
+      {children}
     </div>
   );
 }
