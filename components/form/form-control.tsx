@@ -15,21 +15,16 @@ import { phoneNumberAutoFormat } from '@/lib/utils'
 
 type TProps =
   | {
-      id?: string
-      name: string
-      label?: string
-      className?: string
-      icon?: IconProps['icon']
-      addon?: ReactNode
-      showError?: boolean
+      id?: string;
+      name: string;
+      label?: string;
+      className?: string;
+      icon?: IconProps["icon"];
+      addon?: ReactNode,
+      showError?: boolean,
+      selectOptions?: { value: any; label: string; }[]
     } & {
-      fieldName:
-        | 'TextInput'
-        | 'TextArea'
-        | 'Radio'
-        | 'CheckBox'
-        | 'Button'
-        | 'PhoneInput'
+      fieldName: "TextInput" | "TextArea" | "Radio" | "CheckBox" | "Button" | "PhoneInput" | "Select";
       fieldProps?: Omit<
         | React.InputHTMLAttributes<HTMLInputElement>
         | TextareaHTMLAttributes<HTMLTextAreaElement>,
@@ -57,6 +52,7 @@ const FormControl = ({
   radioGroupData,
   addon,
   showError,
+  selectOptions,
 }: TProps) => {
   const formContext = useFormContext()
   if (!formContext) {
@@ -115,20 +111,26 @@ const FormControl = ({
             >
               {label}
             </button>
-          )
-        case 'PhoneInput':
+          );
+        case "PhoneInput":
+          return <input
+            {...fieldProps}
+            {...field}
+            type="tel"
+            pattern="\([0-9]{3}\) [0-9]{3}-[0-9]{4}"
+            onChange={(e) => field.onChange(phoneNumberAutoFormat(e.target.value))}
+            onWheel={onWheel}
+            maxLength={14}
+          />;
+        case "Select":
           return (
-            <input
-              {...fieldProps}
-              {...field}
-              type="tel"
-              pattern="\([0-9]{3}\) [0-9]{3}-[0-9]{4}"
-              onChange={(e) =>
-                field.onChange(phoneNumberAutoFormat(e.target.value))
-              }
-              onWheel={onWheel}
-              maxLength={14}
-            />
+            <select {...field} onChange={(e) => field.onChange(e.target.value)} className={fieldProps?.className}>
+              {selectOptions?.map(({ value, label }, index) => (
+                <option key={index} value={value}>
+                  {label}
+                </option>
+              ))}
+            </select>
           )
         default:
           return <span>{fieldName} not supported as an input name</span>
@@ -140,7 +142,7 @@ const FormControl = ({
       name={name}
       control={formContext?.control}
       render={({ field, fieldState }) => {
-        const hasError = !!fieldState?.error?.message
+        const hasError = !!fieldState?.error?.message;
         return (
           <div className="flex flex-col">
             <InputWrapper icon={icon} addon={addon}>
@@ -148,9 +150,7 @@ const FormControl = ({
                 field={field}
                 fieldProps={{
                   ...fieldProps,
-                  className:
-                    (icon ? `${className} pl-10` : className) +
-                    ' invalid:text-rose-600',
+                  className: (icon ? `${className} pl-10` : className) + " invalid:text-rose-600" + (hasError ? " text-rose-600" : ""),
                 }}
               />
             </InputWrapper>

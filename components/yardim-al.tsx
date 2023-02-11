@@ -9,7 +9,7 @@ type YardimAlProps = {
 export default function YardimAl({ t }: YardimAlProps) {
   return (
     <section>
-      <h2 className="mb-5">Yardım Al</h2>
+      <h2 className="mb-5">{t('pageHeaders.getHelpPage')}</h2>
 
       <div className="grid gap-3 sm:grid-cols-3 sm:gap-6">
         <PrimaryButton

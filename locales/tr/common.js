@@ -66,6 +66,8 @@ module.exports = {
       'sadece açık adres bilgisi giriniz.',
     noPersonalHealthInformationAddonPhysicalCondition:
       'sadece durumunuzu giriniz.',
+    noPersonalHealthInformationAddonHelpInfo:
+    'sadece yardım hakkında bilgi giriniz.',
   },
   requiredFieldsNotice: '* ile başlayan alanlar zorunludur.',
   submit: 'Gönder',
@@ -87,12 +89,17 @@ module.exports = {
       exists: 'Aracım var, yardımı kendim teslim alabilirim.',
       noneExists: 'Aracım yok, yardımın teslim edilmesi gerek.',
     },
-    termsAcceptedLabel: 'Okudum ve aydınlandım.',
+    termsAcceptedLabel: "Okudum ve aydınlandım.",
+    helpCity: "Yardım verebileceğin şehir",
+    helpInfo: "Yardımın hakkında bilgi"
   },
   pageHeaders: {
     underDebrisPage: 'Ben / Tandığım Enkaz Altında',
     needFoodPage: 'Gıdaya İhtiyacım Var',
     needToWarmPage: 'Isınmaya İhtiyacım Var',
+    canUseConstructionMachinePage: 'İş Makinesi Yardımı Sağla',
+    giveHelpPage: 'Yardım Sağla',
+    getHelpPage: 'Yardım Al'
   },
   lookAtTheRecordsPage: '<0>Mevcut Kayıtlar</0> sayfasına göz atın.',
 }

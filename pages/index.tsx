@@ -10,7 +10,7 @@ export default function Home() {
   return (
     <>
       <YardimAl t={t} />
-      <YardimSagla />
+      <YardimSagla t={t} />
       <YardimListeleri />
       <YardimHaritalari />
     </>
