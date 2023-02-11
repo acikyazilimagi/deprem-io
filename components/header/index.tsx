@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import ThemeButton from '@/components/theme-button'
 import Logo from '@/components/logo'
-import Dropdown from './dropdown'
+import ShareDropdown from './share-dropdown'
 
 export default function Header() {
   return (
@@ -10,7 +10,7 @@ export default function Header() {
 
       <ThemeButton />
 
-      <Dropdown />
+      <ShareDropdown />
 
       <div className="rounded-lg py-2 px-2 hover:bg-zinc-700">
         <Link href="/test" className="text-sm font-bold text-zinc-400">
