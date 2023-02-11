@@ -5,9 +5,10 @@ import { IconProps } from "@/lib/types/component-props/Icon.props";
 type InputProps = React.HTMLProps<HTMLInputElement> & {
   icon?: IconProps["icon"];
   children: React.ReactNode;
+  addon?: React.ReactNode;
 };
 
-export default function InputWrapper({ children, icon }: InputProps) {
+export default function InputWrapper({ children, icon, addon }: InputProps) {
   return (
     <div className="relative">
       {icon && (
@@ -15,6 +16,7 @@ export default function InputWrapper({ children, icon }: InputProps) {
           <Icon icon={icon} size={20} />
         </span>
       )}
+      {addon || ""}
       {children}
     </div>
   );

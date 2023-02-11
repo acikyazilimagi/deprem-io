@@ -2,11 +2,14 @@ import YardimAl from "@/components/yardim-al";
 import YardimSagla from "@/components/yardim-sagla";
 import YardimListeleri from "@/components/yardim-listeleri";
 import YardimHaritalari from "@/components/yardim-haritalari";
+import useTranslation from "next-translate/useTranslation";
 
 export default function Home() {
+  const { t } = useTranslation("common");
+  console.log();
   return (
     <>
-      <YardimAl />
+      <YardimAl t={t}/>
       <YardimSagla />
       <YardimListeleri />
       <YardimHaritalari />
