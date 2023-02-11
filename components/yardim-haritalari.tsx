@@ -32,6 +32,30 @@ export default function YardimHaritalari({}: YardimHaritalariProps) {
           />
           <b>Afet Harita</b>
         </YardimHaritalariButton>
+
+        <YardimHaritalariButton href="https://www.google.com/maps/@37.7671501,36.8329901,7.97z/data=!5m1!1e1" target="_blank">
+          <Image
+            src="/map-google-trafik.png"
+            alt=""
+            width={600}
+            height={300}
+            quality={100}
+            className="rounded-lg object-cover h-32"
+          />
+          <b>Google Trafik Haritası</b>
+        </YardimHaritalariButton>
+
+        <YardimHaritalariButton href="https://yandex.com.tr/harita/trafik/?ll=36.624451%2C37.469498&z=8.48" target="_blank">
+          <Image
+            src="/map-yandex-trafik.png"
+            alt=""
+            width={600}
+            height={300}
+            quality={100}
+            className="rounded-lg object-cover h-32"
+          />
+          <b>Yandex Trafik Haritası</b>
+        </YardimHaritalariButton>
       </div>
     </section>
   );
