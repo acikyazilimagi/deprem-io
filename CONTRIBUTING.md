@@ -5,7 +5,46 @@ Deprem.io icin katkida bulunmanizi ve onu bugun oldugundan daha iyi hale getirme
 - [Sorunlar Ve Hatalar](#issue)
 - [Ozellik Talepleri](#featurerequests)
 
-# <a name="issue"> Bir sorun veya hata ile mi karsilastin? </a>
+## Katkı yapmadan önce dikkat edilmesi gerekenler
+
+- Ilgilendiğiniz konunun daha önce herhangi bir issue tarafından işlenilmediğine ve başkası tarafından yapılmadığından emin olun.
+
+- Eğer bir problemle karşılaşırsanız, issue açın.
+
+- Beklediğiniz, istediğiniz bir değişiklik için issue açın.
+
+- Yeni bir özellik eklemek için issue açın.
+
+- Bir hatayı düzeltmek için PR açın.
+
+- Dökümantasyondaki bir hatayı düzeltmek için PR açın.
+
+# Başlamadan önce
+
+## Projeyi kurmak
+
+### Gereksinimler
+
+- Node 17.0^
+- Yarn 1.22^
+
+Projeyi forklayarak bir repo olusturun.
+
+```bash
+# Forkladiginiz projeyi klonlayın
+git clone
+
+# Proje dizinine girin
+cd deprem-io
+
+# Gereksinimleri yükleyin
+yarn
+
+# Geliştirme ortamını başlatın
+yarn dev
+```
+
+# [<a name="issue"> Bir sorun veya hata ile mi karsilastin? </a>]()
 
 Repomuzda bir hata bulursaniz, github repomuza bir [issue acarak](#create-issue) bize yardimci olabilirsiniz. Daha da iyisi duzeltme icerin bir pull request gonderebilirsiniz.
 

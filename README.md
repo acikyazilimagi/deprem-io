@@ -1,4 +1,4 @@
-# deprem-io
+# DEPREM.IO (wip)
 
 Deprem.io web appinin front end reposudur.
 
@@ -22,11 +22,9 @@ Deprem.io web appinin front end reposudur.
 - Eslint
 - Prettier
 - Husky
-- Commitlint
+- Commit lint
 
 ## Projenin Ayaga Kaldirilmasi
-
-! waterfall, next generation
 
 ### Bagimliliklarin yuklenmesi
 
