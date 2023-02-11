@@ -1,5 +1,5 @@
-import PrimaryButton, { PrimaryButtonEmpty } from "@/components/primary-button";
-import Icon, { Icons } from "@/components/icon";
+import PrimaryButton, { PrimaryButtonEmpty } from '@/components/primary-button';
+import Icon from '@/components/icon';
 
 type YardimListeleriProps = {};
 
@@ -10,22 +10,22 @@ export default function YardimListeleri({}: YardimListeleriProps) {
 
       <div className="grid gap-3 sm:grid-cols-3 sm:gap-6">
         <PrimaryButton href="/yardim-list-enkaz">
-          <Icon icon={Icons.Alert} />
+          <Icon icon="alert" />
           <span>Enkaz Altında Olanlar</span>
         </PrimaryButton>
 
         <PrimaryButton href="/yardim-list-gida">
-          <Icon icon={Icons.Info} />
+          <Icon icon="info" />
           <span>Gıda İhtiyacı Olanlar</span>
         </PrimaryButton>
 
         <PrimaryButton href="/yardim-list-isinma">
-          <Icon icon={Icons.Fire} />
+          <Icon icon="fire" />
           <span>Isınma İhtiyacı Olanlar</span>
         </PrimaryButton>
 
         <PrimaryButton href="https://evimmusait.com/" target="_blank">
-          <Icon icon={Icons.Home} />
+          <Icon icon="home" />
           <span>Evim Müsait</span>
         </PrimaryButton>
 
@@ -33,22 +33,22 @@ export default function YardimListeleri({}: YardimListeleriProps) {
           href="https://gisibb.maps.arcgis.com/apps/MapSeries/index.html?appid=b49d96adc42e439cbab407b4a27c30d8"
           target="_blank"
         >
-          <Icon icon={Icons.Hotel} />
+          <Icon icon="hotel" />
           <span>Ücretsiz Oteller</span>
         </PrimaryButton>
 
         <PrimaryButton href="/yardim-list-ismak">
-          <Icon icon={Icons.Key} />
+          <Icon icon="key" />
           <span>İş Makinesi Kullanabilenler</span>
         </PrimaryButton>
 
         <PrimaryButton href="/yardim-list-yolcu-tasi">
-          <Icon icon={Icons.Truck} />
+          <Icon icon="truck" />
           <span>Yolcu Taşıyabilenler</span>
         </PrimaryButton>
 
         <PrimaryButton href="/yardim-list-konaklama">
-          <Icon icon={Icons.Box} />
+          <Icon icon="box" />
           <span>Köylerin Yardım Durumu</span>
         </PrimaryButton>
 
