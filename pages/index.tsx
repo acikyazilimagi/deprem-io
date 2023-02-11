@@ -1,6 +1,7 @@
 import YardimAl from "@/components/yardim-al";
 import YardimSagla from "@/components/yardim-sagla";
 import YardimListeleri from "@/components/yardim-listeleri";
+import YardimAraclari from "@/components/yardim-araclari";
 import YardimHaritalari from "@/components/yardim-haritalari";
 import useTranslation from "next-translate/useTranslation";
 
@@ -12,6 +13,7 @@ export default function Home() {
       <YardimAl t={t}/>
       <YardimSagla />
       <YardimListeleri />
+      <YardimAraclari />
       <YardimHaritalari />
     </>
   );
