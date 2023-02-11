@@ -1,0 +1,17 @@
+{
+  "theme_color": "#ef4444",
+  "background_color": "#ffffff",
+  "display": "standalone",
+  "scope": "/",
+  "start_url": "/",
+  "name": "Deprem Imece Platformu - deprem.io",
+  "short_name": "deprem.io",
+  "description": "Depremzedelerin yard\u0131m alabilece\u011fi ve depremzedelere yard\u0131m etmek isteyenlerin kullanabilece\u011fi ortak platform.",
+  "icons": [
+    {
+      "src": "/icon.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    }
+  ]
+}
