@@ -21,6 +21,7 @@
     "yup": "^1.0.0"
   },
   "devDependencies": {
+    "@next/eslint-plugin-next": "^13.1.6",
     "@tailwindcss/forms": "^0.5.3",
     "@types/node": "18.13.0",
     "@types/react": "18.0.27",
@@ -29,6 +30,8 @@
     "autoprefixer": "^10.4.13",
     "eslint": "8.33.0",
     "eslint-config-next": "13.1.6",
+    "eslint-config-prettier": "^8.6.0",
+    "husky": "^8.0.3",
     "postcss": "^8.4.21",
     "prettier": "^2.8.4",
     "prettier-plugin-tailwindcss": "^0.2.2",
