@@ -1,10 +1,13 @@
+import React from "react";
 import { Controller, useForm } from "react-hook-form";
 import useTranslation from "next-translate/useTranslation";
 import { cx } from "@/lib/utils";
 import Alert from "@/components/alert";
 import CustomLink from "@/components/custom-link";
 import InputWrapper from "@/components/input-wrapper";
-import { Icons } from "@/components/icon";
+import Icon, { Icons } from "@/components/icon";
+import BackButton from './../components/back-button';
+
 
 enum PhysicalState {
   Kritik = "Kritik",
@@ -38,6 +41,8 @@ export default function YardimIstekEnkaz() {
 
   return (
     <div className="mx-auto max-w-screen-sm">
+      <BackButton/>
+
       <h1>Ben / Tandığım Enkaz Altında</h1>
 
       <div className="my-6">

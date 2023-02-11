@@ -1,3 +1,4 @@
+import BackButton from "@/components/back-button";
 import Head from "next/head";
 
 export default function HukukiKvkk() {
@@ -6,7 +7,7 @@ export default function HukukiKvkk() {
       <Head>
         <title>Hukuki ve KVKK - deprem.io</title>
       </Head>
-
+      <BackButton />
       <h1>
         KİŞİSEL VERİLERİN KORUNMASI VE İŞLENMESİ HAKKINDA AYDINLATMA VE RIZA
         METNİ

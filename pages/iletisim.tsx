@@ -1,3 +1,11 @@
+import BackButton from "@/components/back-button";
+
 export default function Iletisim() {
-  return <div>Iletisim</div>;
+  return (
+    <div>
+      {" "}
+      <BackButton />
+      Iletisim
+    </div>
+  );
 }

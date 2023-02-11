@@ -1,3 +1,11 @@
+import BackButton from "@/components/back-button";
+
 export default function YardimListEnkaz() {
-  return <div>YardimListEnkaz</div>;
+  return (
+    <div>
+      {" "}
+      <BackButton />
+      YardimListEnkaz
+    </div>
+  );
 }

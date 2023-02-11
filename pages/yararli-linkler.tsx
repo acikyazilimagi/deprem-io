@@ -1,3 +1,10 @@
+import BackButton from "@/components/back-button";
+
 export default function YararliLinkler() {
-  return <div>YararliLinkler</div>;
+  return (
+    <div>
+      <BackButton />
+      YararliLinkler
+    </div>
+  );
 }

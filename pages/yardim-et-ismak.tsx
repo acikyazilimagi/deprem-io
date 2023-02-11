@@ -1,3 +1,11 @@
+import BackButton from "@/components/back-button";
+
 export default function YardimEtIsmak() {
-  return <div>YardimEtIsmak</div>;
+  return (
+    <div>
+      {" "}
+      <BackButton />
+      YardimEtIsmak
+    </div>
+  );
 }
