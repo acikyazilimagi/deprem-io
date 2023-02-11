@@ -1,6 +1,7 @@
 import { ClassValue, clsx } from 'clsx'
 import { twMerge } from 'tailwind-merge'
 import { ObjectSchema, SchemaDescription } from 'yup'
+import * as yup from 'yup'
 
 export function cx(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs))
@@ -24,3 +25,8 @@ export const getConstraintsFromValidation = (
   ).tests.find((rule) => rule.name === constraintName)
   return fieldRule?.params[constraintName]
 }
+
+export const stripEmptyString = (value: any) =>
+  value === '' ? undefined : value
+
+export const noop = () => {}

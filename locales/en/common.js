@@ -69,6 +69,7 @@ module.exports = {
   },
   requiredFieldsNotice: 'Fields marked with * are required.',
   submit: 'Submit',
+  filter: 'Filter',
   kvkk: 'Within the scope of KVKK No. 6698, “We collect the name, surname, contact information, log record and location data of the earthquake victim entered into the system and made public by them from the users who registered in our application as earthquake victims or relatives of earthquake victims.” Would you like to visit the <0>Clarification Text</0> to see our data processing legal grounds, purposes and learn about your rights?',
   inputFields: {
     fullName: 'Name Surname',
@@ -87,20 +88,23 @@ module.exports = {
       exists: 'Aracım var, yardımı kendim teslim alabilirim.',
       noneExists: 'Aracım yok, yardımın teslim edilmesi gerek.',
     },
-    termsAcceptedLabel: "I read and accepted the conditions.",
-    helpCity: "Yardım verebileceğin şehir",
-    helpInfo: "Yardımın hakkında bilgi",
-    helpFromCity: "Yolcu Alacağın Şehir",
-    helpToCity: "Yolcuyu Bırakacağın Şehir"
+    termsAcceptedLabel: 'I read and accepted the conditions.',
+    helpCity: 'Yardım verebileceğin şehir',
+    helpInfo: 'Yardımın hakkında bilgi',
+    helpFromCity: 'Yolcu Alacağın Şehir',
+    helpToCity: 'Yolcuyu Bırakacağın Şehir',
   },
   pageHeaders: {
     underDebrisPage: 'Ben / Tandığım Enkaz Altında',
     needFoodPage: 'Gıdaya İhtiyacım Var',
     needToWarmPage: 'Isınmaya İhtiyacım Var',
+    helpListUnderDebris: 'Those Under Debris',
+    helpListNeedFood: 'Those Need Food',
+    helpListNeedToGetWarm: 'Those Need to Get Warm',
     canUseConstructionMachinePage: 'İş Makinesi Yardımı Sağla',
     giveHelpPage: 'Yardım Sağla',
     getHelpPage: 'Yardım Al',
-    canTransportPassengerPage: 'Yolcu Taşıma Yardımı Sağla'
+    canTransportPassengerPage: 'Yolcu Taşıma Yardımı Sağla',
   },
   lookAtTheRecordsPage: 'Go to the <0>Current Records</0>',
 }
