@@ -1,16 +1,14 @@
 import * as yup from "yup";
-import Alert from "@/components/alert";
 import CustomLink from "@/components/custom-link";
 import FormManager from "@/components/form/form-manager";
 import FormControl from "@/components/form/form-control";
 import useTranslation from "next-translate/useTranslation";
 import Trans from "next-translate/Trans";
+import RequestHelpMessage from "@/components/request-help-message";
+import {PhysicalState} from "@/lib/enums";
+import Alert from "@/components/alert";
+import React from "react";
 
-enum PhysicalState {
-  Kritik = "Kritik",
-  Orta = "Orta",
-  Normal = "Normal",
-}
 
 export default function YardimIstekEnkaz() {
   const validationSchema = yup.object().shape({
@@ -50,17 +48,9 @@ export default function YardimIstekEnkaz() {
 
   return (
     <div className="mx-auto max-w-screen-sm">
-      <h1>Ben / Tandığım Enkaz Altında</h1>
+      <h1>{t("pageHeaders.underDebrisPage")}</h1>
 
-      <div className="my-6">
-        <Alert>
-          <p>{t("warningMessages.requestForHelpAgain")}</p>
-          <p>
-            <CustomLink href="/yardim-list-enkaz">Mevcut Kayıtlar</CustomLink>{" "}
-            sayfasına göz atın.
-          </p>
-        </Alert>
-      </div>
+      <RequestHelpMessage t={t} />
 
       <FormManager
         validationSchema={validationSchema}
@@ -128,6 +118,11 @@ export default function YardimIstekEnkaz() {
             />
           </div>
           <div className="sm:col-span-2">
+            <Alert>
+              <p>{t("warningMessages.noPersonalHealthInformation") + t("warningMessages.noPersonalHealthInformationAddonAddress")}</p>
+            </Alert>
+          </div>
+          <div className="sm:col-span-2">
             <FormControl
               fieldName="Radio"
               name="physicalCondition"
@@ -149,6 +144,11 @@ export default function YardimIstekEnkaz() {
                 rows: 2,
               }}
             />
+          </div>
+          <div className="sm:col-span-2">
+            <Alert>
+              <p>{t("warningMessages.noPersonalHealthInformation") + t("warningMessages.noPersonalHealthInformationAddonPhysicalCondition")}</p>
+            </Alert>
           </div>
           <div className="sm:col-span-2">
             <FormControl

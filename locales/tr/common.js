@@ -85,5 +85,11 @@ module.exports = {
       noneExists: "Aracım yok, yardımın teslim edilmesi gerek."
     },
     termsAcceptedLabel: "Okudum ve aydınlandım."
-  }
+  },
+  pageHeaders: {
+    underDebrisPage: "Ben / Tandığım Enkaz Altında",
+    needFoodPage: "Gıdaya İhtiyacım Var",
+    needToWarmPage: "Isınmaya İhtiyacım Var",
+  },
+  lookAtTheRecordsPage: "<0>Mevcut Kayıtlar</0> sayfasına göz atın."
 };

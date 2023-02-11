@@ -8,17 +8,9 @@ import FormControl from "@/components/form/form-control";
 import React from "react";
 import {ObjectSchema} from "yup";
 import {getConstraintsFromValidation} from "@/lib/utils";
+import RequestHelpMessage from "@/components/request-help-message";
+import {PhysicalState, TransportationState} from "@/lib/enums";
 
-enum PhysicalState {
-  Kritik = "Kritik",
-  Orta = "Orta",
-  Normal = "Normal",
-}
-
-enum TransportationState {
-  exists = "true",
-  noneExists = "false",
-}
 
 interface IYardimIstekGida {
   fullName: string;
@@ -76,18 +68,9 @@ export default function YardimIstekGida() {
 
   return (
     <div className="mx-auto max-w-screen-sm">
-      <h1>Ben / Tandığım Enkaz Altında</h1>
+      <h1>{t("pageHeaders.needFoodPage")}</h1>
 
-      <div className="my-6">
-        <Alert>
-          <p>{t("warningMessages.requestForHelpAgain")}</p>
-          <p>
-            <CustomLink href="/yardim-list-enkaz">Mevcut Kayıtlar</CustomLink>{" "}
-            sayfasına göz atın.
-          </p>
-        </Alert>
-      </div>
-
+      <RequestHelpMessage t={t} />
 
       <p className="mb-5">{t("warningMessages.requiredFieldsAreMandatory")}</p>
       <FormManager

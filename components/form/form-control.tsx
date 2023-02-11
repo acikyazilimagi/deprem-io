@@ -85,7 +85,7 @@ const FormControl = ({
         case "CheckBox":
           return (
             <label className="flex items-center gap-2">
-              <input type="checkbox" {...fieldProps} {...field} />
+              <input type="checkbox" {...fieldProps} {...field} checked={!!field.value}/>
               <span>{label}</span>
             </label>
           );
