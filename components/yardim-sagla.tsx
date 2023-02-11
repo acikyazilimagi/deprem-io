@@ -19,7 +19,7 @@ export default function YardimSagla({t}: YardimSaglaProps) {
 
         <PrimaryButton href="/yardim-et-yolcu-tasi">
           <Icon icon="truck" />
-          <span>Yolcu Taşıyabilirim</span>
+          <span>{t("pageHeaders.canTransportPassengerPage")}</span>
         </PrimaryButton>
 
         <PrimaryButton href="/yardim-et-bagis">
