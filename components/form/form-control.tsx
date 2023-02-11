@@ -143,7 +143,6 @@ const FormControl = ({
       control={formContext?.control}
       render={({ field, fieldState }) => {
         const hasError = !!fieldState?.error?.message;
-        console.log(fieldState?.error?.message);
         return (
           <div className="flex flex-col">
             <InputWrapper icon={icon} addon={addon}>

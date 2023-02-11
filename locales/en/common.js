@@ -64,6 +64,8 @@ module.exports = {
     noPersonalHealthInformationAddonAddress: 'only enter your address details.',
     noPersonalHealthInformationAddonPhysicalCondition:
       'only enter your condition.',
+    noPersonalHealthInformationAddonHelpInfo:
+      'sadece yardım hakkında bilgi giriniz.',
   },
   requiredFieldsNotice: 'Fields marked with * are required.',
   submit: 'Submit',
@@ -93,6 +95,9 @@ module.exports = {
     underDebrisPage: 'Ben / Tandığım Enkaz Altında',
     needFoodPage: 'Gıdaya İhtiyacım Var',
     needToWarmPage: 'Isınmaya İhtiyacım Var',
+    canUseConstructionMachinePage: 'İş Makinesi Yardımı Sağla',
+    giveHelpPage: 'Yardım Sağla',
+    getHelpPage: 'Yardım Al'
   },
   lookAtTheRecordsPage: 'Go to the <0>Current Records</0>',
 }

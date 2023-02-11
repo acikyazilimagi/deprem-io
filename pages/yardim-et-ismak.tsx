@@ -50,7 +50,7 @@ export default function YardimEtIsmak() {
   const citiesList = [{ value: "", label: `* ${t("inputFields.helpCity")}`}, ...cities];
   return (
     <div className="mx-auto max-w-screen-sm">
-      <h1>{t("pageHeaders.needToWarmPage")}</h1>
+      <h1>{t("pageHeaders.canUseConstructionMachinePage")}</h1>
 
       <RequestHelpMessage t={t} />
 

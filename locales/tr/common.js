@@ -66,6 +66,8 @@ module.exports = {
       'sadece açık adres bilgisi giriniz.',
     noPersonalHealthInformationAddonPhysicalCondition:
       'sadece durumunuzu giriniz.',
+    noPersonalHealthInformationAddonHelpInfo:
+    'sadece yardım hakkında bilgi giriniz.',
   },
   requiredFieldsNotice: '* ile başlayan alanlar zorunludur.',
   submit: 'Gönder',
@@ -95,6 +97,9 @@ module.exports = {
     underDebrisPage: 'Ben / Tandığım Enkaz Altında',
     needFoodPage: 'Gıdaya İhtiyacım Var',
     needToWarmPage: 'Isınmaya İhtiyacım Var',
+    canUseConstructionMachinePage: 'İş Makinesi Yardımı Sağla',
+    giveHelpPage: 'Yardım Sağla',
+    getHelpPage: 'Yardım Al'
   },
   lookAtTheRecordsPage: '<0>Mevcut Kayıtlar</0> sayfasına göz atın.',
 }
