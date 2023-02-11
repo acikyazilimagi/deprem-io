@@ -89,7 +89,9 @@ module.exports = {
     },
     termsAcceptedLabel: "I read and accepted the conditions.",
     helpCity: "Yardım verebileceğin şehir",
-    helpInfo: "Yardımın hakkında bilgi"
+    helpInfo: "Yardımın hakkında bilgi",
+    helpFromCity: "Yolcu Alacağın Şehir",
+    helpToCity: "Yolcuyu Bırakacağın Şehir"
   },
   pageHeaders: {
     underDebrisPage: 'Ben / Tandığım Enkaz Altında',
@@ -97,7 +99,8 @@ module.exports = {
     needToWarmPage: 'Isınmaya İhtiyacım Var',
     canUseConstructionMachinePage: 'İş Makinesi Yardımı Sağla',
     giveHelpPage: 'Yardım Sağla',
-    getHelpPage: 'Yardım Al'
+    getHelpPage: 'Yardım Al',
+    canTransportPassengerPage: 'Yolcu Taşıma Yardımı Sağla'
   },
   lookAtTheRecordsPage: 'Go to the <0>Current Records</0>',
 }
