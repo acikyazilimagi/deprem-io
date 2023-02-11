@@ -1,11 +1,10 @@
 import * as yup from "yup";
-import useTranslation from "next-translate/useTranslation";
-import Trans from "next-translate/Trans";
 import Alert from "@/components/alert";
 import CustomLink from "@/components/custom-link";
-import InputWrapper from "@/components/form/input-wrapper";
 import FormManager from "@/components/form/form-manager";
 import FormControl from "@/components/form/form-control";
+import useTranslation from "next-translate/useTranslation";
+import Trans from "next-translate/Trans";
 
 enum PhysicalState {
   Kritik = "Kritik",
@@ -132,10 +131,10 @@ export default function YardimIstekEnkaz() {
             <FormControl
               fieldName="Radio"
               name="physicalCondition"
-              radioLabels={[
-                PhysicalState.Normal,
-                PhysicalState.Orta,
-                PhysicalState.Kritik,
+              radioGroupData={[
+                {label: t("inputFields.physicalConditions.normal"), value: PhysicalState.Normal},
+                {label: t("inputFields.physicalConditions.mid"), value: PhysicalState.Orta},
+                {label: t("inputFields.physicalConditions.critical"), value: PhysicalState.Kritik},
               ]}
             />
           </div>

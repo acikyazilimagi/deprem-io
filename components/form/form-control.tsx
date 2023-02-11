@@ -1,4 +1,4 @@
-import React, { TextareaHTMLAttributes, useMemo, WheelEvent } from "react";
+import React, {ReactNode, TextareaHTMLAttributes, useMemo, WheelEvent} from "react";
 import {
   Controller,
   useFormContext,
@@ -6,7 +6,7 @@ import {
 } from "react-hook-form";
 import InputWrapper from "@/components/form/input-wrapper";
 import { IconProps } from "@/lib/types/component-props/Icon.props";
-import { cx } from "@/lib/utils";
+import {phoneNumberAutoFormat} from "@/lib/utils";
 
 type TProps =
   | {
@@ -15,14 +15,16 @@ type TProps =
       label?: string;
       className?: string;
       icon?: IconProps["icon"];
+      addon?: ReactNode,
+      showError?: boolean,
     } & {
-      fieldName: "TextInput" | "TextArea" | "Radio" | "CheckBox" | "Button";
+      fieldName: "TextInput" | "TextArea" | "Radio" | "CheckBox" | "Button" | "PhoneInput";
       fieldProps?: Omit<
         | React.InputHTMLAttributes<HTMLInputElement>
         | TextareaHTMLAttributes<HTMLTextAreaElement>,
         "name"
       > & { type?: string; min?: number; rows?: number };
-      radioLabels?: Array<string>;
+      radioGroupData?: Array<{ label: string, value: string }>;
     };
 
 type InputProps = {
@@ -31,18 +33,19 @@ type InputProps = {
     React.InputHTMLAttributes<HTMLInputElement | HTMLTextAreaElement>,
     "name"
   >;
-  radioLabels?: Array<string>;
+  radioGroupData?: Array<{ label: string, value: string }>;
 };
 
 const FormControl = ({
   fieldName,
   fieldProps,
-  id,
   name,
   icon,
   label,
   className,
-  radioLabels,
+  radioGroupData,
+  addon,
+  showError,
 }: TProps) => {
   const formContext = useFormContext();
   if (!formContext) {
@@ -64,16 +67,17 @@ const FormControl = ({
         case "Radio":
           return (
             <div className="flex items-center gap-4">
-              {radioLabels?.map((item) => (
-                <label className="flex items-center gap-1" key={item}>
+              {radioGroupData?.map((item) => (
+                <label className="flex items-center gap-1" key={item.value}>
                   <input
                     type="radio"
                     {...fieldProps}
                     {...field}
-                    onChange={(e) => field.onChange(e.target.checked)}
-                    checked={field.value === item}
+                    onChange={(e) => field.onChange(e.target.value)}
+                    checked={field.value === item.value}
+                    value={item.value}
                   />
-                  <span>{item}</span>
+                  <span>{item.label}</span>
                 </label>
               ))}
             </div>
@@ -90,12 +94,22 @@ const FormControl = ({
             <button
               className={`${
                 !formContext.formState.isValid ? "opacity-50" : ""
-              } ${className}`}
+              } text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800 ${className} `}
               disabled={!formContext.formState.isValid}
             >
               {label}
             </button>
           );
+        case "PhoneInput":
+          return <input
+            {...fieldProps}
+            {...field}
+            type="tel"
+            pattern="\([0-9]{3}\) [0-9]{3}-[0-9]{4}"
+            onChange={(e) => field.onChange(phoneNumberAutoFormat(e.target.value))}
+            onWheel={onWheel}
+            maxLength={14}
+          />;
         default:
           return <span>{fieldName} not supported as an input name</span>;
       }
@@ -109,21 +123,23 @@ const FormControl = ({
         const hasError = !!fieldState?.error?.message;
         return (
           <div className="flex flex-col">
-            <InputWrapper icon={icon}>
+            <InputWrapper icon={icon} addon={addon}>
               <Input
                 field={field}
                 fieldProps={{
                   ...fieldProps,
-                  className: icon ? `${className} pl-10` : className,
+                  className: (icon ? `${className} pl-10` : className) + " invalid:text-rose-600",
                 }}
               />
             </InputWrapper>
-            {hasError && (
-              <label className="label">
+            {hasError && showError && (
+              <p>
+                <label className="label">
                 <span className="label-text-alt text-error">
                   {fieldState?.error?.message}
                 </span>
-              </label>
+                </label>
+              </p>
             )}
           </div>
         );

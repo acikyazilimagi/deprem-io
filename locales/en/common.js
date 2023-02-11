@@ -59,8 +59,31 @@ module.exports = {
   warningMessages: {
     requestForHelpAgain:
       "If you've already submitted this help request, please don't resubmit it. Duplicate information in records adversely affects rescue operations.",
+    requiredFieldsAreMandatory: "* fields are mandatory.",
+    noPersonalHealthInformation: "Please do no enter personal or health information, ",
+    noPersonalHealthInformationAddonAddress: "only enter your address details.",
+    noPersonalHealthInformationAddonPhysicalCondition: "only enter your condition."
   },
   requiredFieldsNotice: "Fields marked with * are required.",
   submit: "Submit",
   kvkk: "Within the scope of KVKK No. 6698, “We collect the name, surname, contact information, log record and location data of the earthquake victim entered into the system and made public by them from the users who registered in our application as earthquake victims or relatives of earthquake victims.” Would you like to visit the <0>Clarification Text</0> to see our data processing legal grounds, purposes and learn about your rights?",
+  inputFields: {
+    fullName: "Name Surname",
+    phone: "Phone Number",
+    peopleCount: "People Count",
+    address: "Address",
+    addressDetail: "Adres Detail",
+    physicalConditions: {
+      normal: "Normal",
+      mid: "Orta",
+      critical: "Critical"
+    },
+    physicalConditionDetail: "Information about physical condition",
+    tweetUrl: "Tweet Link",
+    transportationStatus: {
+      exists: "Aracım var, yardımı kendim teslim alabilirim.",
+      noneExists: "Aracım yok, yardımın teslim edilmesi gerek."
+    },
+    termsAcceptedLabel: "I read and accepted the conditions."
+  }
 };

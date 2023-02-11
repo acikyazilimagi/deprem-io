@@ -59,8 +59,31 @@ module.exports = {
   warningMessages: {
     requestForHelpAgain:
       "Eğer bu yardım talebini daha önce gönderdiysen lütfen tekrar gönderme. Kayıtlarda kopya bilgi olması kurtarma operasyonlarını olumsuz etkiler.",
+    requiredFieldsAreMandatory: "* ile başlayan alanlar zorunludur.",
+    noPersonalHealthInformation: "Lütfen kişisel ve sağlıkla ilgili bilgi girmeyiniz, ",
+    noPersonalHealthInformationAddonAddress: "sadece açık adres bilgisi giriniz.",
+    noPersonalHealthInformationAddonPhysicalCondition: "sadece durumunuzu giriniz."
   },
   requiredFieldsNotice: "* ile başlayan alanlar zorunludur.",
   submit: "Gönder",
   kvkk: "6698 sayılı KVKK kapsamında “Uygulamamıza depremzede ya da depremzede yakını olarak kaydolan kullanıcılardan ad, soyadı, iletişim bilgisi, log kaydı ve depremzedenin sisteme girilen ve kendileri tarafından alenileştirilmiş konum verilerini topluyoruz.” Veri işleme hukuki sebeplerimizi, amaçlarımızı görmek ve haklarınızı öğrenmek için <0>Aydınlatma Metnini</0> ziyaret etmek ister misiniz? ",
+  inputFields: {
+    fullName: "Ad Soyad",
+    phone: "Telefon",
+    peopleCount: "Kişi Sayısı",
+    address: "Adres",
+    addressDetail: "Adres Tarifi",
+    physicalConditions: {
+      normal: "Normal",
+      mid: "Orta",
+      critical: "Kritik"
+    },
+    physicalConditionDetail: "Fiziki Durum Hakkında Bilgi",
+    tweetUrl: "Tweet Linki",
+    transportationStatus: {
+      exists: "Aracım var, yardımı kendim teslim alabilirim.",
+      noneExists: "Aracım yok, yardımın teslim edilmesi gerek."
+    },
+    termsAcceptedLabel: "Okudum ve aydınlandım."
+  }
 };
