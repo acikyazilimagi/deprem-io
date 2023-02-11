@@ -1,53 +1,15 @@
-import * as yup from 'yup'
 import useTranslation from 'next-translate/useTranslation'
 import Trans from 'next-translate/Trans'
 import Alert from '@/components/alert'
 import CustomLink from '@/components/custom-link'
 import FormManager from '@/components/form/form-manager'
 import FormControl from '@/components/form/form-control'
-import React from 'react'
-import { ObjectSchema } from 'yup'
 import { getConstraintsFromValidation } from '@/lib/utils'
 import RequestHelpMessage from '@/components/request-help-message'
 import { PhysicalState, TransportationState } from '@/lib/enums'
+import validationSchema from './validation.schema'
 
-interface IYardimIstekGida {
-  fullName: string
-  email?: string | null
-  phone?: string
-  address: string
-  addressDetail?: string | null
-  humanCount?: number | null
-  physicalCondition: PhysicalState
-  physicalConditionDetail: string
-  transportationStatus: TransportationState
-  tweetUrl?: string | null
-  term: boolean
-}
-
-export default function YardimIstekGida() {
-  const validationSchema: ObjectSchema<IYardimIstekGida> = yup.object().shape({
-    fullName: yup.string().required(),
-    email: yup.string().nullable().email().optional(),
-    humanCount: yup
-      .number()
-      .transform((value) => (Number.isNaN(value) ? undefined : value))
-      .nullable()
-      .moreThan(0)
-      .optional(),
-    address: yup.string().required(),
-    addressDetail: yup.string().nullable().max(2000).optional(),
-    physicalCondition: yup.string<PhysicalState>().required(),
-    physicalConditionDetail: yup.string().required(),
-    tweetUrl: yup.string().nullable().optional(),
-    transportationStatus: yup.string<TransportationState>().required(),
-    term: yup.bool().oneOf([true]).required(),
-    phone: yup
-      .string()
-      .matches(/\([0-9]{3}\) [0-9]{3}-[0-9]{4}/g)
-      .optional(),
-  })
-
+export default function HelpRequestFood() {
   const defaultValues = {
     fullName: '',
     email: '',
