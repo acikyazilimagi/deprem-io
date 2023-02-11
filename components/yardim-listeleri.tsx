@@ -30,7 +30,7 @@ export default function YardimListeleri({}: YardimListeleriProps) {
         </PrimaryButton>
 
         <PrimaryButton
-          href="https://gisibb.maps.arcgis.com/apps/MapSeries/index.html?appid=b49d96adc42e439cbab407b4a27c30d8"
+          href="https://www.otelz.com/tr/gecmisolsunturkiyem"
           target="_blank"
         >
           <Icon icon={Icons.Hotel} />
