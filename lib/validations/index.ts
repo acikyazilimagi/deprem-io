@@ -1,5 +1,5 @@
-import * as yup from "yup";
+import * as yup from 'yup'
 
-import { LOCALE_VALIDATIONS } from "./localeValidations";
+import { LOCALE_VALIDATIONS } from './localeValidations'
 
-export const setLocaleValidation = () => yup.setLocale(LOCALE_VALIDATIONS);
+export const setLocaleValidation = () => yup.setLocale(LOCALE_VALIDATIONS)

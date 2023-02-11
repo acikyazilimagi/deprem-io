@@ -1,13 +1,13 @@
 /** @type {import("tailwindcss").Config} */
 module.exports = {
-  darkMode: "class", // or 'media' or 'class'
+  darkMode: 'class', // or 'media' or 'class'
   content: [
-    "./app/**/*.{js,ts,jsx,tsx}",
-    "./pages/**/*.{js,ts,jsx,tsx}",
-    "./components/**/*.{js,ts,jsx,tsx}",
+    './app/**/*.{js,ts,jsx,tsx}',
+    './pages/**/*.{js,ts,jsx,tsx}',
+    './components/**/*.{js,ts,jsx,tsx}',
   ],
   theme: {
     extend: {},
   },
-  plugins: [require("@tailwindcss/forms")],
-};
+  plugins: [require('@tailwindcss/forms')],
+}

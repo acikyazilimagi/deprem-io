@@ -1,12 +1,12 @@
-import Icon from '@/components/icon';
-import PrimaryButton from '@/components/primary-button';
-import {Translate} from "next-translate";
+import Icon from '@/components/icon'
+import PrimaryButton from '@/components/primary-button'
+import { Translate } from 'next-translate'
 
 type YardimAlProps = {
-  t: Translate;
-};
+  t: Translate
+}
 
-export default function YardimAl({t}: YardimAlProps) {
+export default function YardimAl({ t }: YardimAlProps) {
   return (
     <section>
       <h2 className="mb-5">Yardım Al</h2>
@@ -17,7 +17,7 @@ export default function YardimAl({t}: YardimAlProps) {
           className="h-16 text-red-600 shadow-md"
         >
           <Icon icon="alert" size={32} />
-          <span>{t("pageHeaders.underDebrisPage")}</span>
+          <span>{t('pageHeaders.underDebrisPage')}</span>
         </PrimaryButton>
 
         <PrimaryButton
@@ -25,7 +25,7 @@ export default function YardimAl({t}: YardimAlProps) {
           className="h-16 text-purple-600 shadow-md"
         >
           <Icon icon="info" size={32} />
-          <span>{t("pageHeaders.needFoodPage")}</span>
+          <span>{t('pageHeaders.needFoodPage')}</span>
         </PrimaryButton>
 
         <PrimaryButton
@@ -33,9 +33,9 @@ export default function YardimAl({t}: YardimAlProps) {
           className="h-16 text-amber-600 shadow-md"
         >
           <Icon icon="fire" size={32} />
-          <span>{t("pageHeaders.needToWarmPage")}</span>
+          <span>{t('pageHeaders.needToWarmPage')}</span>
         </PrimaryButton>
       </div>
     </section>
-  );
+  )
 }

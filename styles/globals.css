@@ -43,18 +43,18 @@
     @apply text-zinc-400 dark:text-zinc-600;
   }
 
-  input[type="text"],
-  input[type="password"],
-  input[type="email"],
-  input[type="number"],
-  input[type="url"],
-  input[type="date"],
-  input[type="datetime-local"],
-  input[type="month"],
-  input[type="week"],
-  input[type="time"],
-  input[type="search"],
-  input[type="tel"],
+  input[type='text'],
+  input[type='password'],
+  input[type='email'],
+  input[type='number'],
+  input[type='url'],
+  input[type='date'],
+  input[type='datetime-local'],
+  input[type='month'],
+  input[type='week'],
+  input[type='time'],
+  input[type='search'],
+  input[type='tel'],
   select,
   select[multiple],
   textarea {
@@ -63,7 +63,7 @@
         dark:bg-zinc-800 dark:focus:bg-zinc-900;
   }
 
-  button[type="submit"] {
+  button[type='submit'] {
     @apply h-10 rounded-lg border-transparent bg-blue-500 px-4 text-white
         focus:bg-blue-600 focus:ring-0;
   }

@@ -1,14 +1,13 @@
-import * as yup from "yup";
-import CustomLink from "@/components/custom-link";
-import FormManager from "@/components/form/form-manager";
-import FormControl from "@/components/form/form-control";
-import useTranslation from "next-translate/useTranslation";
-import Trans from "next-translate/Trans";
-import RequestHelpMessage from "@/components/request-help-message";
-import {PhysicalState} from "@/lib/enums";
-import Alert from "@/components/alert";
-import React from "react";
-
+import * as yup from 'yup'
+import CustomLink from '@/components/custom-link'
+import FormManager from '@/components/form/form-manager'
+import FormControl from '@/components/form/form-control'
+import useTranslation from 'next-translate/useTranslation'
+import Trans from 'next-translate/Trans'
+import RequestHelpMessage from '@/components/request-help-message'
+import { PhysicalState } from '@/lib/enums'
+import Alert from '@/components/alert'
+import React from 'react'
 
 export default function YardimIstekEnkaz() {
   const validationSchema = yup.object().shape({
@@ -25,30 +24,30 @@ export default function YardimIstekEnkaz() {
     physicalConditionDetail: yup.string().required(),
     tweetUrl: yup.string().nullable(),
     term: yup.bool().required(),
-  });
+  })
 
   const defaultValues = {
-    fullName: "",
-    email: "",
-    phone: "",
-    address: "",
-    addressDetail: "",
-    humanCount: "",
+    fullName: '',
+    email: '',
+    phone: '',
+    address: '',
+    addressDetail: '',
+    humanCount: '',
     physicalCondition: PhysicalState.Orta,
-    physicalConditionDetail: "",
-    tweetUrl: "",
+    physicalConditionDetail: '',
+    tweetUrl: '',
     term: false,
-  };
+  }
 
-  const { t } = useTranslation("common");
+  const { t } = useTranslation('common')
 
   const onFormSubmit = async (values: object) => {
-    console.log(values);
-  };
+    console.log(values)
+  }
 
   return (
     <div className="mx-auto max-w-screen-sm">
-      <h1>{t("pageHeaders.underDebrisPage")}</h1>
+      <h1>{t('pageHeaders.underDebrisPage')}</h1>
 
       <RequestHelpMessage t={t} />
 
@@ -56,7 +55,7 @@ export default function YardimIstekEnkaz() {
         validationSchema={validationSchema}
         onSubmit={onFormSubmit}
         onError={(err) => {
-          console.error("onError - err", err);
+          console.error('onError - err', err)
         }}
         defaultValues={defaultValues}
       >
@@ -66,20 +65,20 @@ export default function YardimIstekEnkaz() {
               fieldName="TextInput"
               name="fullName"
               icon="user"
-              fieldProps={{ placeholder: "Ad Soyad", type: "text" }}
+              fieldProps={{ placeholder: 'Ad Soyad', type: 'text' }}
             />
           </div>
           <FormControl
             fieldName="TextInput"
             name="email"
             icon="email"
-            fieldProps={{ placeholder: "Email", type: "email" }}
+            fieldProps={{ placeholder: 'Email', type: 'email' }}
           />
           <FormControl
             fieldName="TextInput"
             name="phone"
             icon="phone"
-            fieldProps={{ placeholder: "Telefon", type: "tel" }}
+            fieldProps={{ placeholder: 'Telefon', type: 'tel' }}
           />
           <div className="sm:col-span-2">
             <FormControl
@@ -87,8 +86,8 @@ export default function YardimIstekEnkaz() {
               name="humanCount"
               icon="userPlus"
               fieldProps={{
-                placeholder: "Kişi Sayısı",
-                type: "number",
+                placeholder: 'Kişi Sayısı',
+                type: 'number',
                 min: 1,
               }}
             />
@@ -100,7 +99,7 @@ export default function YardimIstekEnkaz() {
               icon="pin"
               className="max-h-32 w-full"
               fieldProps={{
-                placeholder: "Adres",
+                placeholder: 'Adres',
                 rows: 2,
               }}
             />
@@ -112,14 +111,17 @@ export default function YardimIstekEnkaz() {
               icon="addressExtra"
               className="max-h-32 w-full"
               fieldProps={{
-                placeholder: "Adres Tarifi",
+                placeholder: 'Adres Tarifi',
                 rows: 1,
               }}
             />
           </div>
           <div className="sm:col-span-2">
             <Alert>
-              <p>{t("warningMessages.noPersonalHealthInformation") + t("warningMessages.noPersonalHealthInformationAddonAddress")}</p>
+              <p>
+                {t('warningMessages.noPersonalHealthInformation') +
+                  t('warningMessages.noPersonalHealthInformationAddonAddress')}
+              </p>
             </Alert>
           </div>
           <div className="sm:col-span-2">
@@ -127,9 +129,18 @@ export default function YardimIstekEnkaz() {
               fieldName="Radio"
               name="physicalCondition"
               radioGroupData={[
-                {label: t("inputFields.physicalConditions.normal"), value: PhysicalState.Normal},
-                {label: t("inputFields.physicalConditions.mid"), value: PhysicalState.Orta},
-                {label: t("inputFields.physicalConditions.critical"), value: PhysicalState.Kritik},
+                {
+                  label: t('inputFields.physicalConditions.normal'),
+                  value: PhysicalState.Normal,
+                },
+                {
+                  label: t('inputFields.physicalConditions.mid'),
+                  value: PhysicalState.Orta,
+                },
+                {
+                  label: t('inputFields.physicalConditions.critical'),
+                  value: PhysicalState.Kritik,
+                },
               ]}
             />
           </div>
@@ -140,14 +151,19 @@ export default function YardimIstekEnkaz() {
               icon="info"
               className="max-h-32 w-full"
               fieldProps={{
-                placeholder: "Fiziki Durum Hakkında Bilgi",
+                placeholder: 'Fiziki Durum Hakkında Bilgi',
                 rows: 2,
               }}
             />
           </div>
           <div className="sm:col-span-2">
             <Alert>
-              <p>{t("warningMessages.noPersonalHealthInformation") + t("warningMessages.noPersonalHealthInformationAddonPhysicalCondition")}</p>
+              <p>
+                {t('warningMessages.noPersonalHealthInformation') +
+                  t(
+                    'warningMessages.noPersonalHealthInformationAddonPhysicalCondition'
+                  )}
+              </p>
             </Alert>
           </div>
           <div className="sm:col-span-2">
@@ -155,7 +171,7 @@ export default function YardimIstekEnkaz() {
               fieldName="TextInput"
               name="tweetUrl"
               icon="link"
-              fieldProps={{ placeholder: "Tweet Linki", type: "url" }}
+              fieldProps={{ placeholder: 'Tweet Linki', type: 'url' }}
             />
           </div>
           <div className="sm:col-span-2">
@@ -177,12 +193,12 @@ export default function YardimIstekEnkaz() {
             <FormControl
               fieldName="Button"
               name="enkaz-form-submit"
-              label={t("submit")}
-              fieldProps={{ type: "submit" }}
+              label={t('submit')}
+              fieldProps={{ type: 'submit' }}
             />
           </div>
         </div>
       </FormManager>
     </div>
-  );
+  )
 }

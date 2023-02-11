@@ -1,6 +1,6 @@
-import Link from 'next/link';
-import { cx } from '@/lib/utils';
-import { CustomLinkProps } from '@/lib/types/component-props/CustomLink.props';
+import Link from 'next/link'
+import { cx } from '@/lib/utils'
+import { CustomLinkProps } from '@/lib/types/component-props/CustomLink.props'
 
 export default function CustomLink({
   children,
@@ -11,5 +11,5 @@ export default function CustomLink({
     <Link className={cx('text-blue-500 underline')} {...props}>
       {children}
     </Link>
-  );
+  )
 }

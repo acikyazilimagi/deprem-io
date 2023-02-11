@@ -1,5 +1,5 @@
-import { YardimHaritalariButtonProps } from '@/lib/types/component-props/YardimHaritalariButton.props';
-import Link from 'next/link';
+import { YardimHaritalariButtonProps } from '@/lib/types/component-props/YardimHaritalariButton.props'
+import Link from 'next/link'
 
 export default function YardimHaritalariButton({
   children,
@@ -13,5 +13,5 @@ export default function YardimHaritalariButton({
     >
       {children}
     </Link>
-  );
+  )
 }

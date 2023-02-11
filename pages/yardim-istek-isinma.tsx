@@ -1,30 +1,28 @@
-import * as yup from "yup";
-import useTranslation from "next-translate/useTranslation";
-import Trans from "next-translate/Trans";
-import Alert from "@/components/alert";
-import CustomLink from "@/components/custom-link";
-import FormManager from "@/components/form/form-manager";
-import FormControl from "@/components/form/form-control";
-import React from "react";
-import {ObjectSchema} from "yup";
-import {getConstraintsFromValidation} from "@/lib/utils";
-import RequestHelpMessage from "@/components/request-help-message";
-import {PhysicalState, TransportationState} from "@/lib/enums";
-
-
+import * as yup from 'yup'
+import useTranslation from 'next-translate/useTranslation'
+import Trans from 'next-translate/Trans'
+import Alert from '@/components/alert'
+import CustomLink from '@/components/custom-link'
+import FormManager from '@/components/form/form-manager'
+import FormControl from '@/components/form/form-control'
+import React from 'react'
+import { ObjectSchema } from 'yup'
+import { getConstraintsFromValidation } from '@/lib/utils'
+import RequestHelpMessage from '@/components/request-help-message'
+import { PhysicalState, TransportationState } from '@/lib/enums'
 
 interface IYardimIstekGida {
-  fullName: string;
-  email?: string | null;
-  phone?: string;
-  address: string;
-  addressDetail?: string | null;
-  humanCount?: number | null;
-  physicalCondition: PhysicalState;
-  physicalConditionDetail: string;
-  transportationStatus: TransportationState;
-  tweetUrl?: string | null;
-  term: boolean;
+  fullName: string
+  email?: string | null
+  phone?: string
+  address: string
+  addressDetail?: string | null
+  humanCount?: number | null
+  physicalCondition: PhysicalState
+  physicalConditionDetail: string
+  transportationStatus: TransportationState
+  tweetUrl?: string | null
+  term: boolean
 }
 
 export default function YardimIstekIsinma() {
@@ -44,41 +42,44 @@ export default function YardimIstekIsinma() {
     tweetUrl: yup.string().nullable().optional(),
     transportationStatus: yup.string<TransportationState>().required(),
     term: yup.bool().oneOf([true]).required(),
-    phone: yup.string().matches(/\([0-9]{3}\) [0-9]{3}-[0-9]{4}/g).optional()
-  });
+    phone: yup
+      .string()
+      .matches(/\([0-9]{3}\) [0-9]{3}-[0-9]{4}/g)
+      .optional(),
+  })
 
   const defaultValues = {
-    fullName: "",
-    email: "",
-    phone: "",
-    address: "",
-    addressDetail: "",
-    humanCount: "",
+    fullName: '',
+    email: '',
+    phone: '',
+    address: '',
+    addressDetail: '',
+    humanCount: '',
     physicalCondition: PhysicalState.Orta,
-    physicalConditionDetail: "",
+    physicalConditionDetail: '',
     transportationStatus: TransportationState.exists,
-    tweetUrl: "",
+    tweetUrl: '',
     term: false,
-  };
+  }
 
-  const { t } = useTranslation("common");
+  const { t } = useTranslation('common')
 
   const onFormSubmit = async (values: object) => {
-    console.log(values);
-  };
+    console.log(values)
+  }
 
   return (
     <div className="mx-auto max-w-screen-sm">
-      <h1>{t("pageHeaders.needToWarmPage")}</h1>
+      <h1>{t('pageHeaders.needToWarmPage')}</h1>
 
       <RequestHelpMessage t={t} />
 
-      <p className="mb-5">{t("warningMessages.requiredFieldsAreMandatory")}</p>
+      <p className="mb-5">{t('warningMessages.requiredFieldsAreMandatory')}</p>
       <FormManager
         validationSchema={validationSchema}
         onSubmit={onFormSubmit}
         onError={(err) => {
-          console.error("onError - err", err);
+          console.error('onError - err', err)
         }}
         defaultValues={defaultValues}
       >
@@ -88,26 +89,29 @@ export default function YardimIstekIsinma() {
               fieldName="TextInput"
               name="fullName"
               icon="user"
-              fieldProps={{ placeholder: `* ${t("inputFields.fullName")}`, type: "text" }}
+              fieldProps={{
+                placeholder: `* ${t('inputFields.fullName')}`,
+                type: 'text',
+              }}
             />
           </div>
           <FormControl
             fieldName="TextInput"
             name="email"
             icon="email"
-            fieldProps={{ placeholder: "Email", type: "email" }}
+            fieldProps={{ placeholder: 'Email', type: 'email' }}
           />
           <FormControl
             fieldName="PhoneInput"
             name="phone"
             icon="phone"
-            addon={(
+            addon={
               <span className="pointer-events-none absolute top-0 left-8 flex h-11 w-11 items-center justify-center opacity-60 dark:opacity-40">
-                  +90
-                </span>
-            )}
+                +90
+              </span>
+            }
             className="pl-[73px]"
-            fieldProps={{ placeholder: t("inputFields.phone"), type: "tel" }}
+            fieldProps={{ placeholder: t('inputFields.phone'), type: 'tel' }}
           />
           <div className="sm:col-span-2">
             <FormControl
@@ -115,8 +119,8 @@ export default function YardimIstekIsinma() {
               name="humanCount"
               icon="userPlus"
               fieldProps={{
-                placeholder: t("inputFields.peopleCount"),
-                type: "number",
+                placeholder: t('inputFields.peopleCount'),
+                type: 'number',
                 min: 1,
               }}
             />
@@ -128,7 +132,7 @@ export default function YardimIstekIsinma() {
               icon="pin"
               className="max-h-32 w-full"
               fieldProps={{
-                placeholder: `* ${t("inputFields.address")}`,
+                placeholder: `* ${t('inputFields.address')}`,
                 rows: 2,
               }}
             />
@@ -140,15 +144,22 @@ export default function YardimIstekIsinma() {
               icon="addressExtra"
               className="max-h-32 w-full"
               fieldProps={{
-                placeholder: t("inputFields.addressDetail"),
+                placeholder: t('inputFields.addressDetail'),
                 rows: 1,
-                maxLength: getConstraintsFromValidation(validationSchema, "addressDetail", "max")
+                maxLength: getConstraintsFromValidation(
+                  validationSchema,
+                  'addressDetail',
+                  'max'
+                ),
               }}
             />
           </div>
           <div className="sm:col-span-2">
             <Alert>
-              <p>{t("warningMessages.noPersonalHealthInformation") + t("warningMessages.noPersonalHealthInformationAddonAddress")}</p>
+              <p>
+                {t('warningMessages.noPersonalHealthInformation') +
+                  t('warningMessages.noPersonalHealthInformationAddonAddress')}
+              </p>
             </Alert>
           </div>
           <div className="sm:col-span-2">
@@ -156,9 +167,18 @@ export default function YardimIstekIsinma() {
               fieldName="Radio"
               name="physicalCondition"
               radioGroupData={[
-                {label: t("inputFields.physicalConditions.normal"), value: PhysicalState.Normal},
-                {label: t("inputFields.physicalConditions.mid"), value: PhysicalState.Orta},
-                {label: t("inputFields.physicalConditions.critical"), value: PhysicalState.Kritik},
+                {
+                  label: t('inputFields.physicalConditions.normal'),
+                  value: PhysicalState.Normal,
+                },
+                {
+                  label: t('inputFields.physicalConditions.mid'),
+                  value: PhysicalState.Orta,
+                },
+                {
+                  label: t('inputFields.physicalConditions.critical'),
+                  value: PhysicalState.Kritik,
+                },
               ]}
             />
           </div>
@@ -169,14 +189,19 @@ export default function YardimIstekIsinma() {
               icon="info"
               className="max-h-32 w-full"
               fieldProps={{
-                placeholder: `* ${t("inputFields.physicalConditionDetail")}`,
-                rows: 2
+                placeholder: `* ${t('inputFields.physicalConditionDetail')}`,
+                rows: 2,
               }}
             />
           </div>
           <div className="sm:col-span-2">
             <Alert>
-              <p>{t("warningMessages.noPersonalHealthInformation") + t("warningMessages.noPersonalHealthInformationAddonPhysicalCondition")}</p>
+              <p>
+                {t('warningMessages.noPersonalHealthInformation') +
+                  t(
+                    'warningMessages.noPersonalHealthInformationAddonPhysicalCondition'
+                  )}
+              </p>
             </Alert>
           </div>
           <div className="sm:col-span-2">
@@ -184,7 +209,10 @@ export default function YardimIstekIsinma() {
               fieldName="TextInput"
               name="tweetUrl"
               icon="link"
-              fieldProps={{ placeholder: t("inputFields.tweetUrl"), type: "url" }}
+              fieldProps={{
+                placeholder: t('inputFields.tweetUrl'),
+                type: 'url',
+              }}
             />
           </div>
           <div className="sm:col-span-2">
@@ -192,8 +220,14 @@ export default function YardimIstekIsinma() {
               fieldName="Radio"
               name="transportationStatus"
               radioGroupData={[
-                {label: t("inputFields.transportationStatus.exists"), value: TransportationState.exists},
-                {label: t("inputFields.transportationStatus.noneExists"), value: TransportationState.noneExists},
+                {
+                  label: t('inputFields.transportationStatus.exists'),
+                  value: TransportationState.exists,
+                },
+                {
+                  label: t('inputFields.transportationStatus.noneExists'),
+                  value: TransportationState.noneExists,
+                },
               ]}
             />
           </div>
@@ -208,7 +242,7 @@ export default function YardimIstekIsinma() {
               <FormControl
                 fieldName="CheckBox"
                 name="term"
-                label={t("inputFields.termsAcceptedLabel")}
+                label={t('inputFields.termsAcceptedLabel')}
               />
             </div>
           </div>
@@ -216,12 +250,12 @@ export default function YardimIstekIsinma() {
             <FormControl
               fieldName="Button"
               name="enkaz-form-submit"
-              label={t("submit")}
-              fieldProps={{ type: "submit" }}
+              label={t('submit')}
+              fieldProps={{ type: 'submit' }}
             />
           </div>
         </div>
       </FormManager>
     </div>
-  );
+  )
 }
