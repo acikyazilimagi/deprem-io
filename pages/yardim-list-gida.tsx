@@ -1,3 +1,3 @@
 export default function YardimListGida() {
-  return <div>YardimListGida</div>;
+  return <div>YardimListGida</div>
 }

@@ -1,3 +1,3 @@
 export default function YardimEtIsmak() {
-  return <div>YardimEtIsmak</div>;
+  return <div>YardimEtIsmak</div>
 }

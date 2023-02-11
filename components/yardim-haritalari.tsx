@@ -1,7 +1,7 @@
-import Image from "next/image";
-import YardimHaritalariButton from "@/components/yardim-haritalari-button";
+import Image from 'next/image'
+import YardimHaritalariButton from '@/components/yardim-haritalari-button'
 
-type YardimHaritalariProps = {};
+type YardimHaritalariProps = {}
 
 export default function YardimHaritalari({}: YardimHaritalariProps) {
   return (
@@ -16,7 +16,7 @@ export default function YardimHaritalari({}: YardimHaritalariProps) {
             width={600}
             height={300}
             quality={100}
-            className="rounded object-cover h-32"
+            className="h-32 rounded object-cover"
           />
           <b>deprem.io</b>
         </YardimHaritalariButton>
@@ -28,11 +28,11 @@ export default function YardimHaritalari({}: YardimHaritalariProps) {
             width={600}
             height={300}
             quality={100}
-            className="rounded-lg object-cover h-32"
+            className="h-32 rounded-lg object-cover"
           />
           <b>Afet Harita</b>
         </YardimHaritalariButton>
       </div>
     </section>
-  );
+  )
 }

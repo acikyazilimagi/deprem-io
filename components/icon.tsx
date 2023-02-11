@@ -1,9 +1,9 @@
-import { IconProps } from '@/lib/types/component-props/Icon.props';
-import { ReactNode } from 'react';
-import { ICON_PATHS_MAP } from '@/lib/constants/ICONS';
+import { IconProps } from '@/lib/types/component-props/Icon.props'
+import { ReactNode } from 'react'
+import { ICON_PATHS_MAP } from '@/lib/constants/ICONS'
 
 export default function Icon({ size = 24, icon, ...props }: IconProps) {
-  const children: ReactNode = ICON_PATHS_MAP.get(icon);
+  const children: ReactNode = ICON_PATHS_MAP.get(icon)
 
   return (
     <svg
@@ -19,5 +19,5 @@ export default function Icon({ size = 24, icon, ...props }: IconProps) {
     >
       {children}
     </svg>
-  );
+  )
 }

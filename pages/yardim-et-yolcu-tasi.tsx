@@ -1,3 +1,3 @@
 export default function YardimEtYolcuTasi() {
-  return <div>YardimEtYolcuTasi</div>;
+  return <div>YardimEtYolcuTasi</div>
 }

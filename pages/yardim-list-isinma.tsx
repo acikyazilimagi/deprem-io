@@ -1,3 +1,3 @@
 export default function YardimListIsinma() {
-  return <div>YardimListIsinma</div>;
+  return <div>YardimListIsinma</div>
 }

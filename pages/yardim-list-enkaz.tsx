@@ -1,3 +1,3 @@
 export default function YardimListEnkaz() {
-  return <div>YardimListEnkaz</div>;
+  return <div>YardimListEnkaz</div>
 }

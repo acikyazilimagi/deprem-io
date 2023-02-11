@@ -1,7 +1,7 @@
-import Link from "next/link";
-import ThemeButton from "@/components/theme-button";
-import Logo from "@/components/logo";
-import Dropdown from "./dropdown";
+import Link from 'next/link'
+import ThemeButton from '@/components/theme-button'
+import Logo from '@/components/logo'
+import Dropdown from './dropdown'
 
 export default function Header() {
   return (
@@ -27,5 +27,5 @@ export default function Header() {
         </Link>
       </div>
     </header>
-  );
+  )
 }

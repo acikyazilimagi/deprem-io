@@ -1,3 +1,3 @@
 export default function YararliLinkler() {
-  return <div>YararliLinkler</div>;
+  return <div>YararliLinkler</div>
 }

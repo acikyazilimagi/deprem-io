@@ -1,5 +1,5 @@
-import Container from "@/components/container";
-import Logo from "@/components/logo";
+import Container from '@/components/container'
+import Logo from '@/components/logo'
 
 export default function Footer() {
   return (
@@ -47,5 +47,5 @@ export default function Footer() {
         </div>
       </Container>
     </footer>
-  );
+  )
 }

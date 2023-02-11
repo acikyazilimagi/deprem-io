@@ -1,7 +1,7 @@
-import PrimaryButton from '@/components/primary-button';
-import Icon from '@/components/icon';
+import PrimaryButton from '@/components/primary-button'
+import Icon from '@/components/icon'
 
-type YardimSaglaProps = {};
+type YardimSaglaProps = {}
 
 export default function YardimSagla({}: YardimSaglaProps) {
   return (
@@ -25,5 +25,5 @@ export default function YardimSagla({}: YardimSaglaProps) {
         </PrimaryButton>
       </div>
     </section>
-  );
+  )
 }
