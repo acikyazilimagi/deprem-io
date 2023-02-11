@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@hookform/resolvers": "^2.9.11",
     "clsx": "^1.2.1",
     "next": "13.1.6",
     "next-themes": "^0.2.1",

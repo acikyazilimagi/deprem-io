@@ -1,9 +1,5 @@
-import { ReactNode } from "react";
-import Icon, { Icons } from "@/components/icon";
-
-type AlertProps = {
-  children: ReactNode;
-};
+import Icon from '@/components/icon';
+import { AlertProps } from '@/lib/types/component-props/Alert.props';
 
 export default function Alert({ children }: AlertProps) {
   return (
@@ -13,7 +9,7 @@ export default function Alert({ children }: AlertProps) {
         dark:border-zinc-800 dark:border-l-amber-500 "
     >
       <span className="text-amber-500">
-        <Icon icon={Icons.Info} size={32} />
+        <Icon icon="info" size={32} />
       </span>
 
       <div>{children}</div>

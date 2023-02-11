@@ -1,5 +1,5 @@
-import PrimaryButton, { PrimaryButtonEmpty } from "@/components/primary-button";
-import Icon, { Icons } from "@/components/icon";
+import PrimaryButton from '@/components/primary-button';
+import Icon from '@/components/icon';
 
 type YardimSaglaProps = {};
 
@@ -10,17 +10,17 @@ export default function YardimSagla({}: YardimSaglaProps) {
 
       <div className="grid gap-3 sm:grid-cols-3 sm:gap-6">
         <PrimaryButton href="/yardim-et-ismak">
-          <Icon icon={Icons.Key} />
+          <Icon icon="key" />
           <span>İş Makinesi Kullanabilirim</span>
         </PrimaryButton>
 
         <PrimaryButton href="/yardim-et-yolcu-tasi">
-          <Icon icon={Icons.Truck} />
+          <Icon icon="truck" />
           <span>Yolcu Taşıyabilirim</span>
         </PrimaryButton>
 
         <PrimaryButton href="/yardim-et-bagis">
-          <Icon icon={Icons.Dollar} />
+          <Icon icon="dollar" />
           <span>Yolcu Taşıyabilirim</span>
         </PrimaryButton>
       </div>
