@@ -6,6 +6,7 @@ import Head from 'next/head';
 import Header from '@/components/header';
 import Footer from '@/components/footer';
 import Container from '@/components/container';
+import KVKKStickyBar from '@/components/kvkk-sticky-bar';
 
 const Meta = {
   name: 'deprem.io',
@@ -41,6 +42,7 @@ export default function App({ Component, pageProps }: AppProps) {
       <Header />
       <main>
         <Container>
+          <KVKKStickyBar />
           <Component {...pageProps} />
         </Container>
       </main>

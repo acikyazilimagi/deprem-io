@@ -1,0 +1,48 @@
+import { useState, useEffect, useCallback } from 'react'
+
+export function useLocalStorage<T>(key: string, initialValue: T) {
+  const initialize = (key: string): T => {
+    try {
+      const item = localStorage.getItem(key)
+      if (item && item !== 'undefined') {
+        return JSON.parse(item)
+      }
+
+      localStorage.setItem(key, JSON.stringify(initialValue))
+      return initialValue
+    } catch {
+      return initialValue
+    }
+  }
+
+  const [value, setValueState] = useState<T>(null)
+
+  useEffect(() => {
+    setValueState(initialize(key))
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
+
+  const setValue = useCallback(
+    (value: T) => {
+      try {
+        const valueToStore =
+          value instanceof Function ? value(storedValue) : value
+        setValueState(valueToStore)
+        localStorage.setItem(key, JSON.stringify(valueToStore))
+      } catch (error) {
+        throw new Error(error)
+      }
+    },
+    [key]
+  )
+
+  const remove = useCallback(() => {
+    try {
+      localStorage.removeItem(key)
+    } catch (error) {
+      throw new Error(error)
+    }
+  }, [key])
+
+  return [value, setValue, remove] as const
+}

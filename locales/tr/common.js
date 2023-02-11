@@ -109,6 +109,9 @@ module.exports = {
     canUseConstructionMachinePage: 'İş Makinesi Yardımı Sağla',
     giveHelpPage: 'Yardım Sağla',
     getHelpPage: 'Yardım Al',
+    helpListUnderDebris: 'Enkaz Altında Olanlar',
+    helpListNeedFood: 'Gıda İhtiyacı Olanlar',
+    helpListNeedToGetWarm: 'Isınma İhtiyacı Olanlar',
     canTransportPassengerPage: 'Yolcu Taşıma Yardımı Sağla',
   },
   helpStatuses: {
