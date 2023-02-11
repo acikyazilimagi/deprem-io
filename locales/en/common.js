@@ -73,7 +73,9 @@ module.exports = {
   submit: 'Submit',
   filter: 'Filter',
   goDetail: 'Go Detail',
+  accept: 'Accept',
   kvkk: 'Within the scope of KVKK No. 6698, “We collect the name, surname, contact information, log record and location data of the earthquake victim entered into the system and made public by them from the users who registered in our application as earthquake victims or relatives of earthquake victims.” Would you like to visit the <0>Clarification Text</0> to see our data processing legal grounds, purposes and learn about your rights?',
+  kvkkStickyBar: 'I have read and accept the <0><1>KVKK</1></0> text.',
   inputFields: {
     fullName: 'Name Surname',
     phone: 'Phone Number',
@@ -82,7 +84,7 @@ module.exports = {
     addressDetail: 'Adres Detail',
     physicalConditions: {
       normal: 'Normal',
-      mid: 'Orta',
+      mid: 'Middle',
       critical: 'Critical',
     },
     physicalConditionDetail: 'Information about physical condition',

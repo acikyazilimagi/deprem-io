@@ -75,7 +75,10 @@ module.exports = {
   submit: 'Gönder',
   filter: 'Filtrele',
   goDetail: 'Detaya Git',
+  accept: 'Kabul Et',
   kvkk: '6698 sayılı KVKK kapsamında “Uygulamamıza depremzede ya da depremzede yakını olarak kaydolan kullanıcılardan ad, soyadı, iletişim bilgisi, log kaydı ve depremzedenin sisteme girilen ve kendileri tarafından alenileştirilmiş konum verilerini topluyoruz.” Veri işleme hukuki sebeplerimizi, amaçlarımızı görmek ve haklarınızı öğrenmek için <0>Aydınlatma Metnini</0> ziyaret etmek ister misiniz? ',
+  kvkkStickyBar:
+    '<0><1>KVKK</1></0> Aydınlatma metnini okudum ve kabul ediyorum.',
   inputFields: {
     fullName: 'Ad Soyad',
     phone: 'Telefon',
@@ -106,9 +109,6 @@ module.exports = {
     canUseConstructionMachinePage: 'İş Makinesi Yardımı Sağla',
     giveHelpPage: 'Yardım Sağla',
     getHelpPage: 'Yardım Al',
-    helpListUnderDebris: 'Enkaz Altında Olanlar',
-    helpListNeedFood: 'Gıda İhtiyacı Olanlar',
-    helpListNeedToGetWarm: 'Isınma İhtiyacı Olanlar',
     canTransportPassengerPage: 'Yolcu Taşıma Yardımı Sağla',
   },
   helpStatuses: {
