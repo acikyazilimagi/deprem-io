@@ -87,7 +87,9 @@ module.exports = {
       exists: 'Aracım var, yardımı kendim teslim alabilirim.',
       noneExists: 'Aracım yok, yardımın teslim edilmesi gerek.',
     },
-    termsAcceptedLabel: 'Okudum ve aydınlandım.',
+    termsAcceptedLabel: "Okudum ve aydınlandım.",
+    helpCity: "Yardım verebileceğin şehir",
+    helpInfo: "Yardımın hakkında bilgi"
   },
   pageHeaders: {
     underDebrisPage: 'Ben / Tandığım Enkaz Altında',

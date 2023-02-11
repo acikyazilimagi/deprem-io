@@ -64,7 +64,7 @@ const FormManager = ({
 
   const formInitializer = useForm({
     ...(validationSchema
-      ? { resolver: yupResolver(validationSchema) }
+      ? { mode: "all", resolver: yupResolver(validationSchema) }
       : undefined),
 
     ...initOpts,
