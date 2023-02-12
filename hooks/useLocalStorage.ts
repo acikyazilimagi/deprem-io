@@ -15,7 +15,7 @@ export function useLocalStorage<T>(key: string, initialValue: T) {
     }
   }
 
-  const [value, setValueState] = useState<T>(null)
+  const [value, setValueState] = useState<T>(initialValue)
 
   useEffect(() => {
     setValueState(initialize(key))
@@ -25,12 +25,12 @@ export function useLocalStorage<T>(key: string, initialValue: T) {
   const setValue = useCallback(
     (value: T) => {
       try {
-        const valueToStore =
-          value instanceof Function ? value(storedValue) : value
-        setValueState(valueToStore)
-        localStorage.setItem(key, JSON.stringify(valueToStore))
-      } catch (error) {
-        throw new Error(error)
+        setValueState(value)
+        localStorage.setItem(key, JSON.stringify(value))
+      } catch (err) {
+        if (err instanceof Error) {
+          console.error(err.message)
+        }
       }
     },
     [key]
@@ -39,8 +39,10 @@ export function useLocalStorage<T>(key: string, initialValue: T) {
   const remove = useCallback(() => {
     try {
       localStorage.removeItem(key)
-    } catch (error) {
-      throw new Error(error)
+    } catch (err) {
+      if (err instanceof Error) {
+        console.error(err.message)
+      }
     }
   }, [key])
 
