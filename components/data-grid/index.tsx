@@ -38,7 +38,7 @@ export default function DataGrid({
                 {column?.renderCell ? (
                   column.renderCell(item)
                 ) : (
-                  <div>{item[column.field]}</div>
+                  <div className="text-xs">{item[column.field]}</div>
                 )}
               </Fragment>
             ))}

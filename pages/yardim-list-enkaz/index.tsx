@@ -2,6 +2,8 @@ import { useMemo } from 'react';
 import YardimListFilter from '@/components/yardim-list-filter';
 import DataGrid, { IColumns } from '@/components/data-grid';
 import HelpStatus from '@/components/data-grid/grid-items/help-status';
+import Adress from '@/components/data-grid/grid-items/adress';
+import LastUpdate from '@/components/data-grid/grid-items/last-update';
 import Icon from '@/components/icon';
 import { mockYardimListItems } from '@/lib/mock/yardim-list-items';
 import useTranslation from 'next-translate/useTranslation';
@@ -19,26 +21,24 @@ export default function HelpListWreck() {
       },
       {
         field: 'maskedNameSurname',
+        renderCell: (row) => (
+          <div className="text-xs font-bold">{row.maskedNameSurname}</div>
+        ),
       },
       {
         field: 'phone',
+        renderCell: (row) => (
+          <div className="text-right text-xs">{row.phone}</div>
+        ),
       },
       {
         field: 'locationText',
-        renderCell: (row) => (
-          <div className="col-span-2 flex gap-1">
-            <Icon icon="pin" />
-            {row.locationText}
-          </div>
-        ),
+        renderCell: (row) => <Adress locationText={row.locationText} />,
       },
       {
         field: 'lastUpdateText',
         renderCell: (row) => (
-          <div>
-            <span className="text-neutral-400">{row.lastUpdateText}</span>
-            <span className="ml-3">#{row.id}</span>
-          </div>
+          <LastUpdate id={row.id} lastUpdateText={row.lastUpdateText} />
         ),
       },
     ],
