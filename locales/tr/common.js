@@ -110,5 +110,18 @@ module.exports = {
     helpListNeedToGetWarm: 'Isınma İhtiyacı Olanlar',
     canTransportPassengerPage: 'Yolcu Taşıma Yardımı Sağla',
   },
+  helpStatuses: {
+    waiting: 'Yardım Bekleniyor',
+    completed: 'Yardım Edildi',
+    insufficient: 'Yetersiz Bilgi',
+    failed: 'Yardım Edilemedi',
+    readyToHelp: 'Yardıma Hazır',
+    helped: 'Yardım Etti',
+  },
+  helpUrgency: {
+    critical: 'Kritik',
+    moderate: 'Orta',
+    normal: 'Normal',
+  },
   lookAtTheRecordsPage: '<0>Mevcut Kayıtlar</0> sayfasına göz atın.',
 };

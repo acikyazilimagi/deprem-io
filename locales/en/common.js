@@ -108,5 +108,18 @@ module.exports = {
     getHelpPage: 'Yardım Al',
     canTransportPassengerPage: 'Yolcu Taşıma Yardımı Sağla',
   },
+  helpStatuses: {
+    waiting: 'Help Waiting',
+    completed: 'Helped',
+    insufficient: 'Insufficient Information',
+    failed: "Couldn't Help",
+    readyToHelp: 'Ready To Help',
+    helped: 'Helped',
+  },
+  helpUrgency: {
+    critical: 'Critical',
+    moderate: 'Medium',
+    normal: 'Normal',
+  },
   lookAtTheRecordsPage: 'Go to the <0>Current Records</0>',
 };
