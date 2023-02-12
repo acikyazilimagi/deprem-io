@@ -1,6 +1,8 @@
-import { noop } from "@/lib/utils";
+import { addressReducer, noop } from "@/lib/utils";
 import { useCallback, useMemo } from "react";
 import Icon from "./icon";
+
+const MAX_ADDRESS_LENGTH = 120;
 
 export interface IYardimListItem {
   id?: string;
@@ -29,7 +31,7 @@ export default function YardimListTable({ items = [], onClick = noop, }: IYardim
             <div>{item.phone}</div>
             <div className="col-span-2 flex gap-1">
               <Icon icon="pin" />
-              {item.locationText}
+              {addressReducer(MAX_ADDRESS_LENGTH, item.locationText)}
             </div>
             <div>
               <span className="text-neutral-400">{item.lastUpdateText}</span>
