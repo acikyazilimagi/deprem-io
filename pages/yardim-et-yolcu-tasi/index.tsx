@@ -7,7 +7,7 @@ import FormControl from '@/components/form/form-control'
 import { getConstraintsFromValidation } from '@/lib/utils'
 import RequestHelpMessage from '@/components/request-help-message'
 import cities from '@/lib/cities'
-import validationSchema from '@/lib/validations/schemas/help-passenger-carriage'
+import { helpPassengerCarriageSchema } from '@/lib/validations/schemas'
 
 export default function HelpPassengerCarriage() {
   const defaultValues = {
@@ -40,7 +40,7 @@ export default function HelpPassengerCarriage() {
 
       <p className="mb-5">{t('warningMessages.requiredFieldsAreMandatory')}</p>
       <FormManager
-        validationSchema={validationSchema}
+        validationSchema={helpPassengerCarriageSchema}
         onSubmit={onFormSubmit}
         onError={(err) => {
           console.error('onError - err', err)
@@ -107,7 +107,7 @@ export default function HelpPassengerCarriage() {
                 placeholder: `* ${t('inputFields.helpInfo')}`,
                 rows: 3,
                 maxLength: getConstraintsFromValidation(
-                  validationSchema,
+                  helpPassengerCarriageSchema,
                   'info',
                   'max'
                 ),

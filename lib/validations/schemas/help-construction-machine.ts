@@ -1,9 +1,8 @@
 import * as yup from 'yup'
-import { IYardimIstekGida } from '../../../pages/yardim-et-ismak/types'
+import { IYHelpConstructionMachineValidation } from '@/lib/types/validations'
 
-const validationSchema: yup.ObjectSchema<IYardimIstekGida> = yup
-  .object()
-  .shape({
+export const helpRequestConstructionMachineSchema: yup.ObjectSchema<IYHelpConstructionMachineValidation> =
+  yup.object().shape({
     fullName: yup.string().required(),
     email: yup.string().nullable().email().optional(),
     city: yup.string().notOneOf(['']).required(),
@@ -14,5 +13,3 @@ const validationSchema: yup.ObjectSchema<IYardimIstekGida> = yup
       .matches(/\([0-9]{3}\) [0-9]{3}-[0-9]{4}/g)
       .optional(),
   })
-
-export default validationSchema

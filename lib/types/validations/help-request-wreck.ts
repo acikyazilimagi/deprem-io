@@ -1,8 +1,7 @@
 import { PhysicalState } from '@/lib/enums'
+import { IBaseValidation } from '@/lib/types/validations/base'
 
-export interface IHelpRequestWreck {
-  fullName: string
-  email?: string | null
+export interface IHelpRequestWreckValidation extends IBaseValidation {
   address: string
   addressDetail?: string | null
   humanCount?: number | null

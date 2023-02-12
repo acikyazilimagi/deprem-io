@@ -7,7 +7,7 @@ import FormControl from '@/components/form/form-control'
 import { getConstraintsFromValidation } from '@/lib/utils'
 import RequestHelpMessage from '@/components/request-help-message'
 import { PhysicalState, TransportationState } from '@/lib/enums'
-import validationSchema from '@/lib/validations/schemas/help-request-food'
+import { helpRequestFoodSchema } from '@/lib/validations/schemas'
 
 export default function HelpRequestFood() {
   const defaultValues = {
@@ -38,7 +38,7 @@ export default function HelpRequestFood() {
 
       <p className="mb-5">{t('warningMessages.requiredFieldsAreMandatory')}</p>
       <FormManager
-        validationSchema={validationSchema}
+        validationSchema={helpRequestFoodSchema}
         onSubmit={onFormSubmit}
         onError={(err) => {
           console.error('onError - err', err)
@@ -109,7 +109,7 @@ export default function HelpRequestFood() {
                 placeholder: t('inputFields.addressDetail'),
                 rows: 1,
                 maxLength: getConstraintsFromValidation(
-                  validationSchema,
+                  helpRequestFoodSchema,
                   'addressDetail',
                   'max'
                 ),
