@@ -69,7 +69,11 @@ export default function HelpConstructionMachine() {
               </span>
             }
             className="pl-[73px]"
-            fieldProps={{ placeholder: t('inputFields.phone'), type: 'tel' }}
+            fieldProps={{
+              placeholder: t('inputFields.phone'),
+              type: 'tel',
+              max: 14,
+            }}
           />
           <div className="sm:col-span-3">
             <FormControl
@@ -115,7 +119,7 @@ export default function HelpConstructionMachine() {
               <FormControl
                 fieldName="CheckBox"
                 name="term"
-                label={t('inputFields.termsAcceptedLabel')}
+                fieldProps={{ label: t('inputFields.termsAcceptedLabel') }}
               />
             </div>
           </div>
@@ -123,8 +127,7 @@ export default function HelpConstructionMachine() {
             <FormControl
               fieldName="Button"
               name="enkaz-form-submit"
-              label={t('submit')}
-              fieldProps={{ type: 'submit' }}
+              fieldProps={{ type: 'submit', label: t('submit') }}
             />
           </div>
         </div>

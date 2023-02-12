@@ -78,7 +78,11 @@ export default function HelpPassengerCarriage() {
                 </span>
               }
               className="pl-[73px]"
-              fieldProps={{ placeholder: t('inputFields.phone'), type: 'tel' }}
+              fieldProps={{
+                placeholder: t('inputFields.phone'),
+                type: 'tel',
+                max: 14,
+              }}
             />
           </div>
           <div className="sm:col-span-3">
@@ -133,7 +137,7 @@ export default function HelpPassengerCarriage() {
               <FormControl
                 fieldName="CheckBox"
                 name="term"
-                label={t('inputFields.termsAcceptedLabel')}
+                fieldProps={{ label: t('inputFields.termsAcceptedLabel') }}
               />
             </div>
           </div>
@@ -141,8 +145,7 @@ export default function HelpPassengerCarriage() {
             <FormControl
               fieldName="Button"
               name="enkaz-form-submit"
-              label={t('submit')}
-              fieldProps={{ type: 'submit' }}
+              fieldProps={{ type: 'submit', label: t('submit') }}
             />
           </div>
         </div>
