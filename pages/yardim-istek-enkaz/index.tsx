@@ -7,7 +7,7 @@ import Trans from 'next-translate/Trans'
 import RequestHelpMessage from '@/components/request-help-message'
 import { PhysicalState } from '@/lib/enums'
 import Alert from '@/components/alert'
-import validationSchema from './validation.schema'
+import validationSchema from '@/lib/validations/schemas/help-request-wreck'
 
 export default function HelpRequestWreck() {
   const defaultValues = {

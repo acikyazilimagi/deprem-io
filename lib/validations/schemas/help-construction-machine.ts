@@ -1,5 +1,5 @@
 import * as yup from 'yup'
-import { IYardimIstekGida } from './types'
+import { IYardimIstekGida } from '../../../pages/yardim-et-ismak/types'
 
 const validationSchema: yup.ObjectSchema<IYardimIstekGida> = yup
   .object()

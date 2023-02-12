@@ -7,7 +7,7 @@ import FormControl from '@/components/form/form-control'
 import { getConstraintsFromValidation } from '@/lib/utils'
 import RequestHelpMessage from '@/components/request-help-message'
 import { PhysicalState, TransportationState } from '@/lib/enums'
-import validationSchema from './validation.schema'
+import validationSchema from '@/lib/validations/schemas/help-request-food'
 
 export default function HelpRequestFood() {
   const defaultValues = {

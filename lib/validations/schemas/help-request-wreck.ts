@@ -1,6 +1,6 @@
 import { PhysicalState } from '@/lib/enums'
 import * as yup from 'yup'
-import { IHelpRequestWreck } from './types'
+import { IHelpRequestWreck } from '../../../pages/yardim-istek-enkaz/types'
 
 const validationSchema: yup.ObjectSchema<IHelpRequestWreck> = yup
   .object()

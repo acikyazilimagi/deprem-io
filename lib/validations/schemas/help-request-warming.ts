@@ -1,6 +1,7 @@
 import { PhysicalState, TransportationState } from '@/lib/enums'
 import * as yup from 'yup'
-import { IYardimIstekGida } from './type'
+import { IYardimIstekGida } from '../../../pages/yardim-istek-isinma/types'
+
 const validationSchema: yup.ObjectSchema<IYardimIstekGida> = yup
   .object()
   .shape({

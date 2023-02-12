@@ -7,7 +7,7 @@ import FormControl from '@/components/form/form-control'
 import { getConstraintsFromValidation } from '@/lib/utils'
 import RequestHelpMessage from '@/components/request-help-message'
 import cities from '@/lib/cities'
-import validationSchema from './validation.schema'
+import validationSchema from '@/lib/validations/schemas/help-passenger-carriage'
 
 export default function HelpPassengerCarriage() {
   const defaultValues = {
