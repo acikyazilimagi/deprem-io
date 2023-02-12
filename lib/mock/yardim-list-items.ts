@@ -1,6 +1,6 @@
-import { IYardimListItem } from '@/components/yardim-list-table';
+import { IRows } from '@/components/data-grid';
 
-export const mockYardimListItems: IYardimListItem[] = [
+export const mockYardimListItems: IRows[] = [
   {
     id: '8CEEHYFM1',
     status: 'waiting',

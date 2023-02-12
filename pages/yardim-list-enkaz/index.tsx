@@ -17,7 +17,6 @@ export default function HelpListWreck() {
             console.log('refresh');
           }}
         />
-        <YardimListTable items={mockYardimListItems} />
       </div>
     </div>
   );
