@@ -1,6 +1,6 @@
 import Head from 'next/head'
 
-export default function HukukiKvkk() {
+export default function LegalKvkk() {
   return (
     <>
       <Head>

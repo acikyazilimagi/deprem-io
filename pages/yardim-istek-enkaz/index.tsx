@@ -1,53 +1,15 @@
 import * as yup from 'yup'
-import useTranslation from 'next-translate/useTranslation'
-import Trans from 'next-translate/Trans'
-import Alert from '@/components/alert'
 import CustomLink from '@/components/custom-link'
 import FormManager from '@/components/form/form-manager'
 import FormControl from '@/components/form/form-control'
-import React from 'react'
-import { ObjectSchema } from 'yup'
-import { getConstraintsFromValidation } from '@/lib/utils'
+import useTranslation from 'next-translate/useTranslation'
+import Trans from 'next-translate/Trans'
 import RequestHelpMessage from '@/components/request-help-message'
-import { PhysicalState, TransportationState } from '@/lib/enums'
+import { PhysicalState } from '@/lib/enums'
+import Alert from '@/components/alert'
+import validationSchema from './validation.schema'
 
-interface IYardimIstekGida {
-  fullName: string
-  email?: string | null
-  phone?: string
-  address: string
-  addressDetail?: string | null
-  humanCount?: number | null
-  physicalCondition: PhysicalState
-  physicalConditionDetail: string
-  transportationStatus: TransportationState
-  tweetUrl?: string | null
-  term: boolean
-}
-
-export default function YardimIstekIsinma() {
-  const validationSchema: ObjectSchema<IYardimIstekGida> = yup.object().shape({
-    fullName: yup.string().required(),
-    email: yup.string().nullable().email().optional(),
-    humanCount: yup
-      .number()
-      .transform((value) => (Number.isNaN(value) ? undefined : value))
-      .nullable()
-      .moreThan(0)
-      .optional(),
-    address: yup.string().required(),
-    addressDetail: yup.string().nullable().max(2000).optional(),
-    physicalCondition: yup.string<PhysicalState>().required(),
-    physicalConditionDetail: yup.string().required(),
-    tweetUrl: yup.string().nullable().optional(),
-    transportationStatus: yup.string<TransportationState>().required(),
-    term: yup.bool().oneOf([true]).required(),
-    phone: yup
-      .string()
-      .matches(/\([0-9]{3}\) [0-9]{3}-[0-9]{4}/g)
-      .optional(),
-  })
-
+export default function HelpRequestWreck() {
   const defaultValues = {
     fullName: '',
     email: '',
@@ -57,7 +19,6 @@ export default function YardimIstekIsinma() {
     humanCount: '',
     physicalCondition: PhysicalState.Orta,
     physicalConditionDetail: '',
-    transportationStatus: TransportationState.exists,
     tweetUrl: '',
     term: false,
   }
@@ -70,11 +31,10 @@ export default function YardimIstekIsinma() {
 
   return (
     <div className="mx-auto max-w-screen-sm">
-      <h1>{t('pageHeaders.needToWarmPage')}</h1>
+      <h1>{t('pageHeaders.underDebrisPage')}</h1>
 
       <RequestHelpMessage t={t} />
 
-      <p className="mb-5">{t('warningMessages.requiredFieldsAreMandatory')}</p>
       <FormManager
         validationSchema={validationSchema}
         onSubmit={onFormSubmit}
@@ -89,10 +49,7 @@ export default function YardimIstekIsinma() {
               fieldName="TextInput"
               name="fullName"
               icon="user"
-              fieldProps={{
-                placeholder: `* ${t('inputFields.fullName')}`,
-                type: 'text',
-              }}
+              fieldProps={{ placeholder: 'Ad Soyad', type: 'text' }}
             />
           </div>
           <FormControl
@@ -102,16 +59,10 @@ export default function YardimIstekIsinma() {
             fieldProps={{ placeholder: 'Email', type: 'email' }}
           />
           <FormControl
-            fieldName="PhoneInput"
+            fieldName="TextInput"
             name="phone"
             icon="phone"
-            addon={
-              <span className="pointer-events-none absolute top-0 left-8 flex h-11 w-11 items-center justify-center opacity-60 dark:opacity-40">
-                +90
-              </span>
-            }
-            className="pl-[73px]"
-            fieldProps={{ placeholder: t('inputFields.phone'), type: 'tel' }}
+            fieldProps={{ placeholder: 'Telefon', type: 'tel' }}
           />
           <div className="sm:col-span-2">
             <FormControl
@@ -119,7 +70,7 @@ export default function YardimIstekIsinma() {
               name="humanCount"
               icon="userPlus"
               fieldProps={{
-                placeholder: t('inputFields.peopleCount'),
+                placeholder: 'Kişi Sayısı',
                 type: 'number',
                 min: 1,
               }}
@@ -132,7 +83,7 @@ export default function YardimIstekIsinma() {
               icon="pin"
               className="max-h-32 w-full"
               fieldProps={{
-                placeholder: `* ${t('inputFields.address')}`,
+                placeholder: 'Adres',
                 rows: 2,
               }}
             />
@@ -144,13 +95,8 @@ export default function YardimIstekIsinma() {
               icon="addressExtra"
               className="max-h-32 w-full"
               fieldProps={{
-                placeholder: t('inputFields.addressDetail'),
+                placeholder: 'Adres Tarifi',
                 rows: 1,
-                maxLength: getConstraintsFromValidation(
-                  validationSchema,
-                  'addressDetail',
-                  'max'
-                ),
               }}
             />
           </div>
@@ -189,7 +135,7 @@ export default function YardimIstekIsinma() {
               icon="info"
               className="max-h-32 w-full"
               fieldProps={{
-                placeholder: `* ${t('inputFields.physicalConditionDetail')}`,
+                placeholder: 'Fiziki Durum Hakkında Bilgi',
                 rows: 2,
               }}
             />
@@ -209,26 +155,7 @@ export default function YardimIstekIsinma() {
               fieldName="TextInput"
               name="tweetUrl"
               icon="link"
-              fieldProps={{
-                placeholder: t('inputFields.tweetUrl'),
-                type: 'url',
-              }}
-            />
-          </div>
-          <div className="sm:col-span-2">
-            <FormControl
-              fieldName="Radio"
-              name="transportationStatus"
-              radioGroupData={[
-                {
-                  label: t('inputFields.transportationStatus.exists'),
-                  value: TransportationState.exists,
-                },
-                {
-                  label: t('inputFields.transportationStatus.noneExists'),
-                  value: TransportationState.noneExists,
-                },
-              ]}
+              fieldProps={{ placeholder: 'Tweet Linki', type: 'url' }}
             />
           </div>
           <div className="sm:col-span-2">
@@ -242,7 +169,7 @@ export default function YardimIstekIsinma() {
               <FormControl
                 fieldName="CheckBox"
                 name="term"
-                label={t('inputFields.termsAcceptedLabel')}
+                label="Okudum ve aydınlandım."
               />
             </div>
           </div>

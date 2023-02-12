@@ -1,31 +1,15 @@
-import * as yup from 'yup'
+import useTranslation from 'next-translate/useTranslation'
+import Trans from 'next-translate/Trans'
+import Alert from '@/components/alert'
 import CustomLink from '@/components/custom-link'
 import FormManager from '@/components/form/form-manager'
 import FormControl from '@/components/form/form-control'
-import useTranslation from 'next-translate/useTranslation'
-import Trans from 'next-translate/Trans'
+import { getConstraintsFromValidation } from '@/lib/utils'
 import RequestHelpMessage from '@/components/request-help-message'
-import { PhysicalState } from '@/lib/enums'
-import Alert from '@/components/alert'
-import React from 'react'
+import { PhysicalState, TransportationState } from '@/lib/enums'
+import validationSchema from './validation.schema'
 
-export default function YardimIstekEnkaz() {
-  const validationSchema = yup.object().shape({
-    fullName: yup.string().required(),
-    email: yup.string().nullable().email(),
-    humanCount: yup
-      .number()
-      .transform((value) => (Number.isNaN(value) ? undefined : value))
-      .nullable()
-      .moreThan(0),
-    address: yup.string().required(),
-    addressDetail: yup.string().nullable(),
-    physicalCondition: yup.string().required(),
-    physicalConditionDetail: yup.string().required(),
-    tweetUrl: yup.string().nullable(),
-    term: yup.bool().required(),
-  })
-
+export default function HelpRequestWarming() {
   const defaultValues = {
     fullName: '',
     email: '',
@@ -35,6 +19,7 @@ export default function YardimIstekEnkaz() {
     humanCount: '',
     physicalCondition: PhysicalState.Orta,
     physicalConditionDetail: '',
+    transportationStatus: TransportationState.exists,
     tweetUrl: '',
     term: false,
   }
@@ -47,10 +32,11 @@ export default function YardimIstekEnkaz() {
 
   return (
     <div className="mx-auto max-w-screen-sm">
-      <h1>{t('pageHeaders.underDebrisPage')}</h1>
+      <h1>{t('pageHeaders.needToWarmPage')}</h1>
 
       <RequestHelpMessage t={t} />
 
+      <p className="mb-5">{t('warningMessages.requiredFieldsAreMandatory')}</p>
       <FormManager
         validationSchema={validationSchema}
         onSubmit={onFormSubmit}
@@ -65,7 +51,10 @@ export default function YardimIstekEnkaz() {
               fieldName="TextInput"
               name="fullName"
               icon="user"
-              fieldProps={{ placeholder: 'Ad Soyad', type: 'text' }}
+              fieldProps={{
+                placeholder: `* ${t('inputFields.fullName')}`,
+                type: 'text',
+              }}
             />
           </div>
           <FormControl
@@ -75,10 +64,16 @@ export default function YardimIstekEnkaz() {
             fieldProps={{ placeholder: 'Email', type: 'email' }}
           />
           <FormControl
-            fieldName="TextInput"
+            fieldName="PhoneInput"
             name="phone"
             icon="phone"
-            fieldProps={{ placeholder: 'Telefon', type: 'tel' }}
+            addon={
+              <span className="pointer-events-none absolute top-0 left-8 flex h-11 w-11 items-center justify-center opacity-60 dark:opacity-40">
+                +90
+              </span>
+            }
+            className="pl-[73px]"
+            fieldProps={{ placeholder: t('inputFields.phone'), type: 'tel' }}
           />
           <div className="sm:col-span-2">
             <FormControl
@@ -86,7 +81,7 @@ export default function YardimIstekEnkaz() {
               name="humanCount"
               icon="userPlus"
               fieldProps={{
-                placeholder: 'Kişi Sayısı',
+                placeholder: t('inputFields.peopleCount'),
                 type: 'number',
                 min: 1,
               }}
@@ -99,7 +94,7 @@ export default function YardimIstekEnkaz() {
               icon="pin"
               className="max-h-32 w-full"
               fieldProps={{
-                placeholder: 'Adres',
+                placeholder: `* ${t('inputFields.address')}`,
                 rows: 2,
               }}
             />
@@ -111,8 +106,13 @@ export default function YardimIstekEnkaz() {
               icon="addressExtra"
               className="max-h-32 w-full"
               fieldProps={{
-                placeholder: 'Adres Tarifi',
+                placeholder: t('inputFields.addressDetail'),
                 rows: 1,
+                maxLength: getConstraintsFromValidation(
+                  validationSchema,
+                  'addressDetail',
+                  'max'
+                ),
               }}
             />
           </div>
@@ -151,7 +151,7 @@ export default function YardimIstekEnkaz() {
               icon="info"
               className="max-h-32 w-full"
               fieldProps={{
-                placeholder: 'Fiziki Durum Hakkında Bilgi',
+                placeholder: `* ${t('inputFields.physicalConditionDetail')}`,
                 rows: 2,
               }}
             />
@@ -171,7 +171,26 @@ export default function YardimIstekEnkaz() {
               fieldName="TextInput"
               name="tweetUrl"
               icon="link"
-              fieldProps={{ placeholder: 'Tweet Linki', type: 'url' }}
+              fieldProps={{
+                placeholder: t('inputFields.tweetUrl'),
+                type: 'url',
+              }}
+            />
+          </div>
+          <div className="sm:col-span-2">
+            <FormControl
+              fieldName="Radio"
+              name="transportationStatus"
+              radioGroupData={[
+                {
+                  label: t('inputFields.transportationStatus.exists'),
+                  value: TransportationState.exists,
+                },
+                {
+                  label: t('inputFields.transportationStatus.noneExists'),
+                  value: TransportationState.noneExists,
+                },
+              ]}
             />
           </div>
           <div className="sm:col-span-2">
@@ -185,7 +204,7 @@ export default function YardimIstekEnkaz() {
               <FormControl
                 fieldName="CheckBox"
                 name="term"
-                label="Okudum ve aydınlandım."
+                label={t('inputFields.termsAcceptedLabel')}
               />
             </div>
           </div>
