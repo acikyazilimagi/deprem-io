@@ -1,10 +1,9 @@
 import { PhysicalState, TransportationState } from '@/lib/enums'
 import * as yup from 'yup'
-import { IYardimIstekGida } from './types'
+import { IHelpRequestFoodValidation } from '@/lib/types/validations'
 
-const validationSchema: yup.ObjectSchema<IYardimIstekGida> = yup
-  .object()
-  .shape({
+export const helpRequestFoodSchema: yup.ObjectSchema<IHelpRequestFoodValidation> =
+  yup.object().shape({
     fullName: yup.string().required(),
     email: yup.string().nullable().email().optional(),
     humanCount: yup
@@ -25,5 +24,3 @@ const validationSchema: yup.ObjectSchema<IYardimIstekGida> = yup
       .matches(/\([0-9]{3}\) [0-9]{3}-[0-9]{4}/g)
       .optional(),
   })
-
-export default validationSchema

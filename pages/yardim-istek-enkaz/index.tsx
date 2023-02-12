@@ -7,7 +7,7 @@ import Trans from 'next-translate/Trans'
 import RequestHelpMessage from '@/components/request-help-message'
 import { PhysicalState } from '@/lib/enums'
 import Alert from '@/components/alert'
-import validationSchema from './validation.schema'
+import { helpRequestWreckSchema } from '@/lib/validations/schemas'
 
 export default function HelpRequestWreck() {
   const defaultValues = {
@@ -36,7 +36,7 @@ export default function HelpRequestWreck() {
       <RequestHelpMessage t={t} />
 
       <FormManager
-        validationSchema={validationSchema}
+        validationSchema={helpRequestWreckSchema}
         onSubmit={onFormSubmit}
         onError={(err) => {
           console.error('onError - err', err)

@@ -1,9 +1,7 @@
 import { PhysicalState, TransportationState } from '@/lib/enums'
+import { IBaseValidation } from '@/lib/types/validations/base'
 
-export interface IYardimIstekGida {
-  fullName: string
-  email?: string | null
-  phone?: string
+export interface IHelpRequestWarmingValidation extends IBaseValidation {
   address: string
   addressDetail?: string | null
   humanCount?: number | null
@@ -12,4 +10,5 @@ export interface IYardimIstekGida {
   transportationStatus: TransportationState
   tweetUrl?: string | null
   term: boolean
+  phone?: string
 }

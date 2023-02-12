@@ -7,7 +7,7 @@ import FormControl from '@/components/form/form-control'
 import { getConstraintsFromValidation } from '@/lib/utils'
 import RequestHelpMessage from '@/components/request-help-message'
 import cities from '@/lib/cities'
-import validationSchema from './validation.schema'
+import { helpRequestConstructionMachineSchema } from '@/lib/validations/schemas'
 
 export default function HelpConstructionMachine() {
   const defaultValues = {
@@ -36,7 +36,7 @@ export default function HelpConstructionMachine() {
 
       <p className="mb-5">{t('warningMessages.requiredFieldsAreMandatory')}</p>
       <FormManager
-        validationSchema={validationSchema}
+        validationSchema={helpRequestConstructionMachineSchema}
         onSubmit={onFormSubmit}
         onError={(err) => {
           console.error('onError - err', err)
@@ -89,7 +89,7 @@ export default function HelpConstructionMachine() {
                 placeholder: `* ${t('inputFields.helpInfo')}`,
                 rows: 3,
                 maxLength: getConstraintsFromValidation(
-                  validationSchema,
+                  helpRequestConstructionMachineSchema,
                   'info',
                   'max'
                 ),

@@ -1,10 +1,9 @@
 import { PhysicalState } from '@/lib/enums'
 import * as yup from 'yup'
-import { IHelpRequestWreck } from './types'
+import { IHelpRequestWreckValidation } from '@/lib/types/validations'
 
-const validationSchema: yup.ObjectSchema<IHelpRequestWreck> = yup
-  .object()
-  .shape({
+export const helpRequestWreckSchema: yup.ObjectSchema<IHelpRequestWreckValidation> =
+  yup.object().shape({
     fullName: yup.string().required(),
     email: yup.string().nullable().email(),
     humanCount: yup
@@ -19,4 +18,3 @@ const validationSchema: yup.ObjectSchema<IHelpRequestWreck> = yup
     tweetUrl: yup.string().nullable(),
     term: yup.bool().required(),
   })
-export default validationSchema
