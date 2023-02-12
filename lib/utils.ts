@@ -30,3 +30,20 @@ export const stripEmptyString = (value: any) =>
   value === '' ? undefined : value
 
 export const noop = () => {}
+
+export const addressReducer = (
+  charLimit: number,
+  address?: string
+  ) => {
+    if(address){
+      if(address.length > charLimit){
+        let substringBeforeSlash = address?.substring(0, address.indexOf("/"))
+        return address?.substring(0, Math.min(charLimit, substringBeforeSlash.lastIndexOf(" "))) + "... " + address.substring(substringBeforeSlash.lastIndexOf(" "))
+      }else{
+        return address
+      }
+    }else{
+      return ''
+    }
+    
+}
