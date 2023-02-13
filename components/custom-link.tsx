@@ -8,7 +8,7 @@ export default function CustomLink({
   ...props
 }: CustomLinkProps) {
   return (
-    <Link className={cx('text-blue-500 underline')} {...props}>
+    <Link className={cx('text-blue-500 underline', className)} {...props}>
       {children}
     </Link>
   );

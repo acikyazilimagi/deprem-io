@@ -72,6 +72,7 @@ module.exports = {
   requiredFieldsNotice: 'Fields marked with * are required.',
   submit: 'Submit',
   filter: 'Filter',
+  goDetail: 'Go Detail',
   kvkk: 'Within the scope of KVKK No. 6698, “We collect the name, surname, contact information, log record and location data of the earthquake victim entered into the system and made public by them from the users who registered in our application as earthquake victims or relatives of earthquake victims.” Would you like to visit the <0>Clarification Text</0> to see our data processing legal grounds, purposes and learn about your rights?',
   inputFields: {
     fullName: 'Name Surname',

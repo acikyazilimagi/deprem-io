@@ -22,7 +22,7 @@ export const ICON_NAMES = {
       'moon',
       'dollar',
       'box',
-      'circle',
+      'arrow',
       'chevronLeft',
       'chevronRight',
       'map',
@@ -198,8 +198,12 @@ export const ICON_PATHS_MAP = new Map([
     ></path>,
   ],
   [
-    ICON_NAMES.circle,
-    <circle cx="11.998" cy="11.998" fill-rule="nonzero" r="9.998" />,
+    ICON_NAMES.arrow,
+    <path
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"
+    ></path>,
   ],
   [
     ICON_NAMES.facebook,

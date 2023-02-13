@@ -74,6 +74,7 @@ module.exports = {
   requiredFieldsNotice: '* ile başlayan alanlar zorunludur.',
   submit: 'Gönder',
   filter: 'Filtrele',
+  goDetail: 'Detaya Git',
   kvkk: '6698 sayılı KVKK kapsamında “Uygulamamıza depremzede ya da depremzede yakını olarak kaydolan kullanıcılardan ad, soyadı, iletişim bilgisi, log kaydı ve depremzedenin sisteme girilen ve kendileri tarafından alenileştirilmiş konum verilerini topluyoruz.” Veri işleme hukuki sebeplerimizi, amaçlarımızı görmek ve haklarınızı öğrenmek için <0>Aydınlatma Metnini</0> ziyaret etmek ister misiniz? ',
   inputFields: {
     fullName: 'Ad Soyad',

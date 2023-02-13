@@ -1,22 +1,17 @@
 import useTranslation from 'next-translate/useTranslation'
 import Icon from '@/components/icon'
+import { Status, Urgency } from '@/lib/types/DataGrid.types'
 
 type HelpStatusProps = {
-  status?: 'waiting' | 'completed' | 'insufficient' | 'failed'
-  urgency?: 'critical' | 'moderate' | 'normal'
+  status?: Status
+  urgency?: Urgency
 }
 
 export default function HelpStatus({ status, urgency }: HelpStatusProps) {
   const { t } = useTranslation('common')
   return (
     <div className="flex items-center gap-1">
-      <Icon
-        icon="circle"
-        fill="#ff5762"
-        stroke="transparent"
-        width={15}
-        height={15}
-      />
+      <div className="h-2.5 w-2.5 rounded-full bg-red-400" />
       <div className="text-xs">
         {t(`helpStatuses.${status}`)} - {t(`helpUrgency.${urgency}`)}
       </div>

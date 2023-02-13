@@ -1,6 +1,7 @@
-import { IRows } from '@/components/data-grid';
+import { DataGridRows } from '@/lib/types/DataGrid.types';
+import { IHelpListUnderDebrisRows } from '@/lib/types/list-pages';
 
-export const mockYardimListItems: IRows[] = [
+export const mockYardimListItems: DataGridRows<IHelpListUnderDebrisRows>[] = [
   {
     id: '8CEEHYFM1',
     status: 'waiting',
