@@ -9,7 +9,8 @@
     "serve": "yarn build && yarn start",
     "lint": "next lint",
     "pretty": "prettier --write --config prettier.config.js \"**/*.{ts,js,tsx,jsx,json}\"",
-    "postinstall": "husky install"
+    "postinstall": "husky install",
+    "analyze": "ANALYZE=true next build"
   },
   "dependencies": {
     "@hookform/resolvers": "^2.9.11",
@@ -26,6 +27,7 @@
   "devDependencies": {
     "@commitlint/cli": "^17.4.2",
     "@commitlint/config-conventional": "^17.4.2",
+    "@next/bundle-analyzer": "^13.1.6",
     "@next/eslint-plugin-next": "^13.1.6",
     "@tailwindcss/forms": "^0.5.3",
     "@types/node": "18.13.0",
