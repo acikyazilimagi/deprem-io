@@ -112,20 +112,22 @@ export default function HelpRequestWreck() {
             <FormControl
               fieldName="Radio"
               name="physicalCondition"
-              radioGroupData={[
-                {
-                  label: t('inputFields.physicalConditions.normal'),
-                  value: PhysicalState.Normal,
-                },
-                {
-                  label: t('inputFields.physicalConditions.mid'),
-                  value: PhysicalState.Orta,
-                },
-                {
-                  label: t('inputFields.physicalConditions.critical'),
-                  value: PhysicalState.Kritik,
-                },
-              ]}
+              fieldProps={{
+                radioGroupData: [
+                  {
+                    label: t('inputFields.physicalConditions.normal'),
+                    value: PhysicalState.Normal,
+                  },
+                  {
+                    label: t('inputFields.physicalConditions.mid'),
+                    value: PhysicalState.Orta,
+                  },
+                  {
+                    label: t('inputFields.physicalConditions.critical'),
+                    value: PhysicalState.Kritik,
+                  },
+                ],
+              }}
             />
           </div>
           <div className="sm:col-span-2">
@@ -169,7 +171,7 @@ export default function HelpRequestWreck() {
               <FormControl
                 fieldName="CheckBox"
                 name="term"
-                label="Okudum ve aydınlandım."
+                fieldProps={{ label: 'Okudum ve aydınlandım.' }}
               />
             </div>
           </div>
@@ -177,8 +179,7 @@ export default function HelpRequestWreck() {
             <FormControl
               fieldName="Button"
               name="enkaz-form-submit"
-              label={t('submit')}
-              fieldProps={{ type: 'submit' }}
+              fieldProps={{ label: t('submit') }}
             />
           </div>
         </div>

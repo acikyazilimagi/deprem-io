@@ -1,12 +1,11 @@
-import FormControl from '@/components/form/form-control';
-import FormManager from '@/components/form/form-manager';
-import { ICON_NAMES } from '@/lib/constants/ICONS';
-import Icon from '@/components/icon';
-import useTranslation from 'next-translate/useTranslation';
-import * as yup from 'yup';
-import { InferType } from 'yup';
-import { useCallback } from 'react';
-import { noop, stripEmptyString } from '@/lib/utils';
+import FormControl from '@/components/form/form-control'
+import FormManager from '@/components/form/form-manager'
+import { ICON_NAMES } from '@/lib/constants/ICONS'
+import Icon from '@/components/icon'
+import useTranslation from 'next-translate/useTranslation'
+import * as yup from 'yup'
+import { useCallback } from 'react'
+import { noop, stripEmptyString } from '@/lib/utils'
 
 const statusOptions = [
   { value: '', label: 'Yardım Durumu' },
@@ -14,20 +13,20 @@ const statusOptions = [
   { value: 'completed', label: 'Yardım Edildi' },
   { value: 'insufficient', label: 'Yetersiz Bilgi' },
   { value: 'failed', label: 'Yardım Edilemedi' },
-];
+]
 
 const urgencyOptions = [
   { value: '', label: 'Aciliyet' },
   { value: 'critical', label: 'Kritik' },
   { value: 'moderate', label: 'Orta' },
   { value: 'normal', label: 'Normal' },
-];
+]
 
 const transportationStateOptions = [
   { value: '', label: 'Araç Durumu' },
   { value: true, label: 'Aracı Var' },
   { value: false, label: 'Aracı Yok' },
-];
+]
 
 const formSchema = yup.object().shape({
   search: yup.string().optional(),
@@ -40,13 +39,13 @@ const formSchema = yup.object().shape({
     .oneOf(['', 'critical', 'moderate', 'normal'])
     .optional(),
   transportationState: yup.boolean().optional().transform(stripEmptyString),
-});
+})
 
 interface IYardimListFilterValues {
-  search?: string;
-  status?: '' | 'waiting' | 'completed' | 'insufficient' | 'failed';
-  urgency?: '' | 'critical' | 'moderate' | 'normal';
-  transportationState?: boolean | '';
+  search?: string
+  status?: '' | 'waiting' | 'completed' | 'insufficient' | 'failed'
+  urgency?: '' | 'critical' | 'moderate' | 'normal'
+  transportationState?: boolean | ''
 }
 
 const defaultValues: IYardimListFilterValues = {
@@ -54,12 +53,12 @@ const defaultValues: IYardimListFilterValues = {
   status: '',
   urgency: '',
   transportationState: false,
-};
+}
 
 interface IYardimListFilterProps {
-  onFilter?: (values: IYardimListFilterValues) => void;
-  onRefresh?: () => void;
-  showTransportationStateInput?: boolean;
+  onFilter?: (values: IYardimListFilterValues) => void
+  onRefresh?: () => void
+  showTransportationStateInput?: boolean
 }
 
 export default function YardimListFilter({
@@ -67,14 +66,14 @@ export default function YardimListFilter({
   onRefresh = noop,
   showTransportationStateInput,
 }: IYardimListFilterProps) {
-  const { t } = useTranslation('common');
+  const { t } = useTranslation('common')
 
   const handleSubmit = useCallback(
     async (values: object) => {
-      onFilter(values);
+      onFilter(values)
     },
     [onFilter]
-  );
+  )
 
   return (
     <div className="mt-6">
@@ -99,23 +98,29 @@ export default function YardimListFilter({
             fieldName="Select"
             name="status"
             icon={ICON_NAMES.info}
-            fieldProps={{ placeholder: 'Yardım Durumu', type: 'text' }}
-            selectOptions={statusOptions}
+            fieldProps={{
+              placeholder: 'Yardım Durumu',
+              selectOptions: statusOptions,
+            }}
           />
           <FormControl
             fieldName="Select"
             name="urgency"
             icon={ICON_NAMES.alert}
-            fieldProps={{ placeholder: 'Aciliyet', type: 'text' }}
-            selectOptions={urgencyOptions}
+            fieldProps={{
+              placeholder: 'Aciliyet',
+              selectOptions: urgencyOptions,
+            }}
           />
           {showTransportationStateInput ? (
             <FormControl
               fieldName="Select"
               name="transportationState"
               icon={ICON_NAMES.truck}
-              fieldProps={{ placeholder: 'Araç Durumu', type: 'text' }}
-              selectOptions={transportationStateOptions}
+              fieldProps={{
+                placeholder: 'Araç Durumu',
+                selectOptions: transportationStateOptions,
+              }}
             />
           ) : undefined}
           <button
@@ -128,11 +133,10 @@ export default function YardimListFilter({
           <FormControl
             fieldName="Button"
             name="yardim-list-submit"
-            label={t('filter')}
-            fieldProps={{ type: 'submit' }}
+            fieldProps={{ label: t('filter') }}
           />
         </div>
       </FormManager>
     </div>
-  );
+  )
 }

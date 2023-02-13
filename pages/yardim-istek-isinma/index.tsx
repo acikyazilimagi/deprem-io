@@ -73,7 +73,11 @@ export default function HelpRequestWarming() {
               </span>
             }
             className="pl-[73px]"
-            fieldProps={{ placeholder: t('inputFields.phone'), type: 'tel' }}
+            fieldProps={{
+              placeholder: t('inputFields.phone'),
+              type: 'tel',
+              max: 14,
+            }}
           />
           <div className="sm:col-span-2">
             <FormControl
@@ -128,20 +132,22 @@ export default function HelpRequestWarming() {
             <FormControl
               fieldName="Radio"
               name="physicalCondition"
-              radioGroupData={[
-                {
-                  label: t('inputFields.physicalConditions.normal'),
-                  value: PhysicalState.Normal,
-                },
-                {
-                  label: t('inputFields.physicalConditions.mid'),
-                  value: PhysicalState.Orta,
-                },
-                {
-                  label: t('inputFields.physicalConditions.critical'),
-                  value: PhysicalState.Kritik,
-                },
-              ]}
+              fieldProps={{
+                radioGroupData: [
+                  {
+                    label: t('inputFields.physicalConditions.normal'),
+                    value: PhysicalState.Normal,
+                  },
+                  {
+                    label: t('inputFields.physicalConditions.mid'),
+                    value: PhysicalState.Orta,
+                  },
+                  {
+                    label: t('inputFields.physicalConditions.critical'),
+                    value: PhysicalState.Kritik,
+                  },
+                ],
+              }}
             />
           </div>
           <div className="sm:col-span-2">
@@ -181,16 +187,18 @@ export default function HelpRequestWarming() {
             <FormControl
               fieldName="Radio"
               name="transportationStatus"
-              radioGroupData={[
-                {
-                  label: t('inputFields.transportationStatus.exists'),
-                  value: TransportationState.exists,
-                },
-                {
-                  label: t('inputFields.transportationStatus.noneExists'),
-                  value: TransportationState.noneExists,
-                },
-              ]}
+              fieldProps={{
+                radioGroupData: [
+                  {
+                    label: t('inputFields.transportationStatus.exists'),
+                    value: TransportationState.exists,
+                  },
+                  {
+                    label: t('inputFields.transportationStatus.noneExists'),
+                    value: TransportationState.noneExists,
+                  },
+                ],
+              }}
             />
           </div>
           <div className="sm:col-span-2">
@@ -204,7 +212,7 @@ export default function HelpRequestWarming() {
               <FormControl
                 fieldName="CheckBox"
                 name="term"
-                label={t('inputFields.termsAcceptedLabel')}
+                fieldProps={{ label: t('inputFields.termsAcceptedLabel') }}
               />
             </div>
           </div>
@@ -212,8 +220,7 @@ export default function HelpRequestWarming() {
             <FormControl
               fieldName="Button"
               name="enkaz-form-submit"
-              label={t('submit')}
-              fieldProps={{ type: 'submit' }}
+              fieldProps={{ label: t('submit') }}
             />
           </div>
         </div>
