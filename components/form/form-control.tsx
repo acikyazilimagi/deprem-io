@@ -1,11 +1,10 @@
-import { HTMLInputTypeAttribute, WheelEvent } from 'react'
+import { WheelEvent } from 'react'
 import { Controller, useFormContext } from 'react-hook-form'
 import InputWrapper from '@/components/form/input-wrapper'
 import { phoneNumberAutoFormat } from '@/lib/utils'
 
 import {
   IFormControlProps,
-  ITextInputProps,
   TInputProps,
 } from '@/lib/types/component-props/form.props'
 

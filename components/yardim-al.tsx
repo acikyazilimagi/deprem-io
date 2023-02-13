@@ -1,10 +1,10 @@
-import Icon from '@/components/icon'
-import PrimaryButton from '@/components/primary-button'
-import { Translate } from 'next-translate'
+import Icon from '@/components/icon';
+import PrimaryButton from '@/components/primary-button';
+import { Translate } from 'next-translate';
 
 type YardimAlProps = {
-  t: Translate
-}
+  t: Translate;
+};
 
 export default function YardimAl({ t }: YardimAlProps) {
   return (
@@ -37,5 +37,5 @@ export default function YardimAl({ t }: YardimAlProps) {
         </PrimaryButton>
       </div>
     </section>
-  )
+  );
 }

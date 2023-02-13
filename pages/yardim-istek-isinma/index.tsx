@@ -1,13 +1,13 @@
-import useTranslation from 'next-translate/useTranslation'
-import Trans from 'next-translate/Trans'
-import Alert from '@/components/alert'
-import CustomLink from '@/components/custom-link'
-import FormManager from '@/components/form/form-manager'
-import FormControl from '@/components/form/form-control'
-import { getConstraintsFromValidation } from '@/lib/utils'
-import RequestHelpMessage from '@/components/request-help-message'
-import { PhysicalState, TransportationState } from '@/lib/enums'
-import { helpRequestWarmingSchema } from '@/lib/validations/schemas'
+import useTranslation from 'next-translate/useTranslation';
+import Trans from 'next-translate/Trans';
+import Alert from '@/components/alert';
+import CustomLink from '@/components/custom-link';
+import FormManager from '@/components/form/form-manager';
+import FormControl from '@/components/form/form-control';
+import { getConstraintsFromValidation } from '@/lib/utils';
+import RequestHelpMessage from '@/components/request-help-message';
+import { PhysicalState, TransportationState } from '@/lib/enums';
+import { helpRequestWarmingSchema } from '@/lib/validations/schemas';
 
 export default function HelpRequestWarming() {
   const defaultValues = {
@@ -22,13 +22,13 @@ export default function HelpRequestWarming() {
     transportationStatus: TransportationState.exists,
     tweetUrl: '',
     term: false,
-  }
+  };
 
-  const { t } = useTranslation('common')
+  const { t } = useTranslation('common');
 
   const onFormSubmit = async (values: object) => {
-    console.log(values)
-  }
+    console.log(values);
+  };
 
   return (
     <div className="mx-auto max-w-screen-sm">
@@ -41,7 +41,7 @@ export default function HelpRequestWarming() {
         validationSchema={helpRequestWarmingSchema}
         onSubmit={onFormSubmit}
         onError={(err) => {
-          console.error('onError - err', err)
+          console.error('onError - err', err);
         }}
         defaultValues={defaultValues}
       >
@@ -226,5 +226,5 @@ export default function HelpRequestWarming() {
         </div>
       </FormManager>
     </div>
-  )
+  );
 }

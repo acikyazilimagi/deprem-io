@@ -1,12 +1,12 @@
-import Link, { LinkProps } from 'next/link'
-import { ReactNode } from 'react'
-import { cx } from '@/lib/utils'
+import Link, { LinkProps } from 'next/link';
+import { ReactNode } from 'react';
+import { cx } from '@/lib/utils';
 
 type YardimAlButtonProps = LinkProps & {
-  children: ReactNode
-  className?: string
-  target?: string
-}
+  children: ReactNode;
+  className?: string;
+  target?: string;
+};
 
 export default function PrimaryButton({
   children,
@@ -26,7 +26,7 @@ export default function PrimaryButton({
     >
       {children}
     </Link>
-  )
+  );
 }
 
 export function PrimaryButtonEmpty() {
@@ -35,5 +35,5 @@ export function PrimaryButtonEmpty() {
       className="hidden h-14 grow rounded-xl bg-zinc-50 dark:bg-zinc-800
         sm:inline-flex"
     />
-  )
+  );
 }

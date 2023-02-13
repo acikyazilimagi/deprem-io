@@ -28,4 +28,4 @@ module.exports = {
       ['feat', 'fix', 'docs', 'style', 'refactor', 'test', 'revert', 'chore'],
     ],
   },
-}
+};

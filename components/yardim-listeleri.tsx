@@ -1,7 +1,7 @@
-import PrimaryButton, { PrimaryButtonEmpty } from '@/components/primary-button'
-import Icon from '@/components/icon'
+import PrimaryButton, { PrimaryButtonEmpty } from '@/components/primary-button';
+import Icon from '@/components/icon';
 
-type YardimListeleriProps = {}
+type YardimListeleriProps = {};
 
 export default function YardimListeleri({}: YardimListeleriProps) {
   return (
@@ -55,5 +55,5 @@ export default function YardimListeleri({}: YardimListeleriProps) {
         <PrimaryButtonEmpty />
       </div>
     </section>
-  )
+  );
 }

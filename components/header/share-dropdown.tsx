@@ -1,22 +1,22 @@
-import { useOnClickOutside } from '@/hooks/useOnClickOutSide'
-import { useToggle } from '@/hooks/useToggle'
-import { MutableRefObject, RefObject, useRef, useState } from 'react'
-import Icon from '../icon'
+import { useOnClickOutside } from '@/hooks/useOnClickOutSide';
+import { useToggle } from '@/hooks/useToggle';
+import { MutableRefObject, RefObject, useRef, useState } from 'react';
+import Icon from '../icon';
 
 export default function ShareDropdown() {
-  const [isDropdownOpen, toggleDropdown] = useToggle()
-  const dropdownRef = useRef<HTMLDivElement>(null)
+  const [isDropdownOpen, toggleDropdown] = useToggle();
+  const dropdownRef = useRef<HTMLDivElement>(null);
 
   useOnClickOutside(dropdownRef, () => {
-    if (isDropdownOpen) toggleDropdown()
-  })
+    if (isDropdownOpen) toggleDropdown();
+  });
 
   return (
     <div
       className="flex justify-center rounded-lg px-5 py-2.5 hover:bg-zinc-700"
       ref={dropdownRef}
       onClick={() => {
-        toggleDropdown()
+        toggleDropdown();
       }}
     >
       <div>
@@ -204,5 +204,5 @@ export default function ShareDropdown() {
         </div>
       </div>
     </div>
-  )
+  );
 }

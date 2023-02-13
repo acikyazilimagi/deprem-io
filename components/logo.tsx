@@ -1,4 +1,4 @@
-import Link from 'next/link'
+import Link from 'next/link';
 
 export default function Logo() {
   return (
@@ -8,5 +8,5 @@ export default function Logo() {
       </span>
       <span className="opacity-80 dark:opacity-50">.io</span>
     </Link>
-  )
+  );
 }

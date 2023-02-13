@@ -1,13 +1,13 @@
-import { useTheme } from 'next-themes'
-import { useEffect, useState } from 'react'
-import Icon from '@/components/icon'
+import { useTheme } from 'next-themes';
+import { useEffect, useState } from 'react';
+import Icon from '@/components/icon';
 
 export default function ThemeButton() {
-  const [mounted, setMounted] = useState(false)
-  const { resolvedTheme, setTheme } = useTheme()
+  const [mounted, setMounted] = useState(false);
+  const { resolvedTheme, setTheme } = useTheme();
 
-  useEffect(() => setMounted(true), [])
-  if (!mounted) return <span />
+  useEffect(() => setMounted(true), []);
+  if (!mounted) return <span />;
 
   return (
     <button
@@ -20,5 +20,5 @@ export default function ThemeButton() {
         <Icon icon="moon" size={22} />
       )}
     </button>
-  )
+  );
 }

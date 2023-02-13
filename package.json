@@ -6,7 +6,9 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
+    "serve": "yarn build && yarn start",
     "lint": "next lint",
+    "pretty": "prettier --write --config prettier.config.js \"**/*.{ts,js,tsx,jsx,json}\"",
     "postinstall": "husky install"
   },
   "dependencies": {

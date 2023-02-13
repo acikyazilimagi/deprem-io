@@ -1,4 +1,4 @@
-import Head from 'next/head'
+import Head from 'next/head';
 
 export default function LegalKvkk() {
   return (
@@ -160,5 +160,5 @@ export default function LegalKvkk() {
         </li>
       </ul>
     </>
-  )
+  );
 }

@@ -1,5 +1,5 @@
-import * as yup from 'yup'
-import { IYHelpConstructionMachineValidation } from '@/lib/types/validations'
+import * as yup from 'yup';
+import { IYHelpConstructionMachineValidation } from '@/lib/types/validations';
 
 export const helpRequestConstructionMachineSchema: yup.ObjectSchema<IYHelpConstructionMachineValidation> =
   yup.object().shape({
@@ -12,4 +12,4 @@ export const helpRequestConstructionMachineSchema: yup.ObjectSchema<IYHelpConstr
       .string()
       .matches(/\([0-9]{3}\) [0-9]{3}-[0-9]{4}/g)
       .optional(),
-  })
+  });
