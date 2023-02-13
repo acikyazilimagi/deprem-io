@@ -1,5 +1,7 @@
 /* eslint-disable */
-const { DOMAIN_VALIDATIONS } = require('@/lib/validations/localeValidations.ts')
+const {
+  DOMAIN_VALIDATIONS,
+} = require('@/lib/validations/localeValidations.ts');
 
 module.exports = {
   [DOMAIN_VALIDATIONS]: {
@@ -109,4 +111,4 @@ module.exports = {
     canTransportPassengerPage: 'Yolcu Taşıma Yardımı Sağla',
   },
   lookAtTheRecordsPage: '<0>Mevcut Kayıtlar</0> sayfasına göz atın.',
-}
+};

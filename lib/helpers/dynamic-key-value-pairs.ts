@@ -16,15 +16,15 @@ function dynamicKeyValuePairs<
   keys,
   namespace,
 }: {
-  keys: T[]
-  namespace?: NS
+  keys: T[];
+  namespace?: NS;
 }): { [K in T]: NS extends undefined ? K : `${NS}/${K}` } {
-  const namespacePrefix: string = namespace ? `${namespace}/` : ''
+  const namespacePrefix: string = namespace ? `${namespace}/` : '';
 
   return keys.reduce((acc, key) => {
-    acc[key] = `${namespacePrefix}${key}`
-    return acc
-  }, Object.create(null))
+    acc[key] = `${namespacePrefix}${key}`;
+    return acc;
+  }, Object.create(null));
 }
 
-export default dynamicKeyValuePairs
+export default dynamicKeyValuePairs;

@@ -1,6 +1,6 @@
-import { yupResolver } from '@hookform/resolvers/yup'
-import React from 'react'
-import { FormProvider, useForm } from 'react-hook-form'
+import { yupResolver } from '@hookform/resolvers/yup';
+import React from 'react';
+import { FormProvider, useForm } from 'react-hook-form';
 import type {
   FieldErrors,
   FieldValues,
@@ -8,41 +8,41 @@ import type {
   SubmitHandler,
   UseFormProps,
   UseFormReturn,
-} from 'react-hook-form'
-import * as yup from 'yup'
+} from 'react-hook-form';
+import * as yup from 'yup';
 
 export type TProps = (
   | {
-      formInitializer: UseFormReturn<FieldValues, object>
+      formInitializer: UseFormReturn<FieldValues, object>;
       onSubmit: (
         data: FieldValues,
         event?: React.BaseSyntheticEvent | undefined
-      ) => any | Promise<any>
+      ) => any | Promise<any>;
       onError?: (
         errors: FieldErrors,
         event?: React.BaseSyntheticEvent | undefined
-      ) => any | Promise<any>
-      defaultValues?: undefined
-      validationSchema?: undefined
-      formInitOptions?: undefined
+      ) => any | Promise<any>;
+      defaultValues?: undefined;
+      validationSchema?: undefined;
+      formInitOptions?: undefined;
     }
   | {
-      formInitializer?: undefined
+      formInitializer?: undefined;
       onSubmit: (
         data: FieldValues,
         event?: React.BaseSyntheticEvent | undefined
-      ) => any | Promise<any>
+      ) => any | Promise<any>;
       onError?: (
         errors: FieldErrors,
         event?: React.BaseSyntheticEvent | undefined
-      ) => any | Promise<any>
-      defaultValues?: Record<string, any> | undefined
-      validationSchema?: any
-      formInitOptions?: Omit<UseFormProps, 'defaultValues'>
+      ) => any | Promise<any>;
+      defaultValues?: Record<string, any> | undefined;
+      validationSchema?: any;
+      formInitOptions?: Omit<UseFormProps, 'defaultValues'>;
     }
 ) & {
-  children: React.ReactNode
-}
+  children: React.ReactNode;
+};
 
 const FormManager = ({
   onSubmit,
@@ -54,33 +54,33 @@ const FormManager = ({
 }: TProps) => {
   const defaultFormInitializerProps: Omit<UseFormProps, 'defaultValues'> = {
     shouldFocusError: true,
-  }
+  };
 
   const initOpts = {
     ...defaultFormInitializerProps,
     ...formInitOptions,
     defaultValues,
-  }
+  };
 
   const formInitializer = useForm({
     ...(validationSchema
-      ? { mode: "all", resolver: yupResolver(validationSchema) }
+      ? { mode: 'all', resolver: yupResolver(validationSchema) }
       : undefined),
 
     ...initOpts,
-  })
+  });
 
   const onFormValid: SubmitHandler<FieldValues> = (data, event) => {
-    event?.preventDefault()
-    onSubmit(data, event)
-  }
+    event?.preventDefault();
+    onSubmit(data, event);
+  };
 
   const onFormErrors: SubmitErrorHandler<FieldValues> = (errors, event) => {
-    event?.preventDefault()
+    event?.preventDefault();
     if (onError) {
-      onError(errors, event)
+      onError(errors, event);
     }
-  }
+  };
 
   return (
     <FormProvider {...formInitializer}>
@@ -92,7 +92,7 @@ const FormManager = ({
         {children}
       </form>
     </FormProvider>
-  )
-}
+  );
+};
 
-export default FormManager
+export default FormManager;

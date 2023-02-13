@@ -1,6 +1,6 @@
-import { PhysicalState, TransportationState } from '@/lib/enums'
-import * as yup from 'yup'
-import { IHelpRequestFoodValidation } from '@/lib/types/validations'
+import { PhysicalState, TransportationState } from '@/lib/enums';
+import * as yup from 'yup';
+import { IHelpRequestFoodValidation } from '@/lib/types/validations';
 
 export const helpRequestFoodSchema: yup.ObjectSchema<IHelpRequestFoodValidation> =
   yup.object().shape({
@@ -23,4 +23,4 @@ export const helpRequestFoodSchema: yup.ObjectSchema<IHelpRequestFoodValidation>
       .string()
       .matches(/\([0-9]{3}\) [0-9]{3}-[0-9]{4}/g)
       .optional(),
-  })
+  });

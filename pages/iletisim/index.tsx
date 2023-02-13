@@ -1,3 +1,3 @@
 export default function Contact() {
-  return <div>Iletisim</div>
+  return <div>Iletisim</div>;
 }

@@ -1,13 +1,13 @@
-import useTranslation from 'next-translate/useTranslation'
-import Trans from 'next-translate/Trans'
-import Alert from '@/components/alert'
-import CustomLink from '@/components/custom-link'
-import FormManager from '@/components/form/form-manager'
-import FormControl from '@/components/form/form-control'
-import { getConstraintsFromValidation } from '@/lib/utils'
-import RequestHelpMessage from '@/components/request-help-message'
-import cities from '@/lib/cities'
-import { helpPassengerCarriageSchema } from '@/lib/validations/schemas'
+import useTranslation from 'next-translate/useTranslation';
+import Trans from 'next-translate/Trans';
+import Alert from '@/components/alert';
+import CustomLink from '@/components/custom-link';
+import FormManager from '@/components/form/form-manager';
+import FormControl from '@/components/form/form-control';
+import { getConstraintsFromValidation } from '@/lib/utils';
+import RequestHelpMessage from '@/components/request-help-message';
+import cities from '@/lib/cities';
+import { helpPassengerCarriageSchema } from '@/lib/validations/schemas';
 
 export default function HelpPassengerCarriage() {
   const defaultValues = {
@@ -16,22 +16,22 @@ export default function HelpPassengerCarriage() {
     phone: '',
     info: '',
     term: false,
-  }
+  };
 
-  const { t } = useTranslation('common')
+  const { t } = useTranslation('common');
 
   const onFormSubmit = async (values: object) => {
-    console.log(values)
-  }
+    console.log(values);
+  };
 
   const citiesFromList = [
     { value: '', label: `* ${t('inputFields.helpFromCity')}` },
     ...cities,
-  ]
+  ];
   const citiesToList = [
     { value: '', label: `* ${t('inputFields.helpToCity')}` },
     ...cities,
-  ]
+  ];
   return (
     <div className="mx-auto max-w-screen-sm">
       <h1>{t('pageHeaders.canTransportPassengerPage')}</h1>
@@ -43,7 +43,7 @@ export default function HelpPassengerCarriage() {
         validationSchema={helpPassengerCarriageSchema}
         onSubmit={onFormSubmit}
         onError={(err) => {
-          console.error('onError - err', err)
+          console.error('onError - err', err);
         }}
         defaultValues={defaultValues}
       >
@@ -148,5 +148,5 @@ export default function HelpPassengerCarriage() {
         </div>
       </FormManager>
     </div>
-  )
+  );
 }

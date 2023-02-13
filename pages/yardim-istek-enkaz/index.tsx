@@ -1,13 +1,13 @@
-import * as yup from 'yup'
-import CustomLink from '@/components/custom-link'
-import FormManager from '@/components/form/form-manager'
-import FormControl from '@/components/form/form-control'
-import useTranslation from 'next-translate/useTranslation'
-import Trans from 'next-translate/Trans'
-import RequestHelpMessage from '@/components/request-help-message'
-import { PhysicalState } from '@/lib/enums'
-import Alert from '@/components/alert'
-import { helpRequestWreckSchema } from '@/lib/validations/schemas'
+import * as yup from 'yup';
+import CustomLink from '@/components/custom-link';
+import FormManager from '@/components/form/form-manager';
+import FormControl from '@/components/form/form-control';
+import useTranslation from 'next-translate/useTranslation';
+import Trans from 'next-translate/Trans';
+import RequestHelpMessage from '@/components/request-help-message';
+import { PhysicalState } from '@/lib/enums';
+import Alert from '@/components/alert';
+import { helpRequestWreckSchema } from '@/lib/validations/schemas';
 
 export default function HelpRequestWreck() {
   const defaultValues = {
@@ -21,13 +21,13 @@ export default function HelpRequestWreck() {
     physicalConditionDetail: '',
     tweetUrl: '',
     term: false,
-  }
+  };
 
-  const { t } = useTranslation('common')
+  const { t } = useTranslation('common');
 
   const onFormSubmit = async (values: object) => {
-    console.log(values)
-  }
+    console.log(values);
+  };
 
   return (
     <div className="mx-auto max-w-screen-sm">
@@ -39,7 +39,7 @@ export default function HelpRequestWreck() {
         validationSchema={helpRequestWreckSchema}
         onSubmit={onFormSubmit}
         onError={(err) => {
-          console.error('onError - err', err)
+          console.error('onError - err', err);
         }}
         defaultValues={defaultValues}
       >
@@ -184,5 +184,5 @@ export default function HelpRequestWreck() {
         </div>
       </FormManager>
     </div>
-  )
+  );
 }

@@ -1,7 +1,7 @@
-import Image from 'next/image'
-import YardimHaritalariButton from '@/components/yardim-haritalari-button'
+import Image from 'next/image';
+import YardimHaritalariButton from '@/components/yardim-haritalari-button';
 
-type YardimHaritalariProps = {}
+type YardimHaritalariProps = {};
 
 export default function YardimHaritalari({}: YardimHaritalariProps) {
   return (
@@ -34,5 +34,5 @@ export default function YardimHaritalari({}: YardimHaritalariProps) {
         </YardimHaritalariButton>
       </div>
     </section>
-  )
+  );
 }

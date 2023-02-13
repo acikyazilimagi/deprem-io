@@ -1,7 +1,7 @@
-import type { ValidationError } from 'yup'
+import type { ValidationError } from 'yup';
 
-export const NAMESPACE: string = 'common'
-export const DOMAIN_VALIDATIONS: string = 'validations'
+export const NAMESPACE: string = 'common';
+export const DOMAIN_VALIDATIONS: string = 'validations';
 
 // For more info about yup validation
 //--------------------------------------
@@ -123,4 +123,4 @@ export const LOCALE_VALIDATIONS: any = {
       args,
     }),
   },
-}
+};
