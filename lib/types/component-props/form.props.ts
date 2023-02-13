@@ -2,16 +2,15 @@ import { PhysicalState, TransportationState } from '@/lib/enums'
 import { ReactNode } from 'react'
 import { IconProps } from './Icon.props'
 
-interface ITextInputProps
-  extends Partial<React.InputHTMLAttributes<HTMLInputElement>> {
-  type: string
+export interface ITextInputProps
+  extends Omit<Partial<React.InputHTMLAttributes<HTMLInputElement>>, 'type'> {
+  type: Omit<React.InputHTMLAttributes<HTMLInputElement>['type'], 'tel'>
   min?: number
 }
 
 interface IPhoneInputProps
-  extends Partial<React.InputHTMLAttributes<HTMLInputElement>> {
-  min?: number
-  max?: number
+  extends Omit<Partial<React.InputHTMLAttributes<HTMLInputElement>>, 'max'> {
+  max: number
 }
 
 interface ITextAreaProps
@@ -39,7 +38,7 @@ interface IButtonProps {
 
 interface ISelectProps
   extends Partial<React.SelectHTMLAttributes<HTMLSelectElement>> {
-  selectOptions: { value: string; label: string }[]
+  selectOptions: { value: string | boolean | number; label: string }[]
 }
 
 export type TInput =

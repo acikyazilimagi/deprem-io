@@ -187,7 +187,6 @@ export default function HelpRequestFood() {
             <FormControl
               fieldName="Radio"
               name="transportationStatus"
-              field
               fieldProps={{
                 radioGroupData: [
                   {
@@ -223,7 +222,7 @@ export default function HelpRequestFood() {
             <FormControl
               fieldName="Button"
               name="enkaz-form-submit"
-              fieldProps={{ type: 'submit', label: t('submit') }}
+              fieldProps={{ label: t('submit') }}
             />
           </div>
         </div>

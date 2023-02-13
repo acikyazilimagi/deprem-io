@@ -80,7 +80,7 @@ export default function HelpConstructionMachine() {
               fieldName="Select"
               name="city"
               icon="pin"
-              selectOptions={citiesList}
+              fieldProps={{ selectOptions: citiesList }}
             />
           </div>
           <div className="sm:col-span-3">
@@ -127,7 +127,7 @@ export default function HelpConstructionMachine() {
             <FormControl
               fieldName="Button"
               name="enkaz-form-submit"
-              fieldProps={{ type: 'submit', label: t('submit') }}
+              fieldProps={{ label: t('submit') }}
             />
           </div>
         </div>

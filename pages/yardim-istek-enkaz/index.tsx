@@ -179,7 +179,7 @@ export default function HelpRequestWreck() {
             <FormControl
               fieldName="Button"
               name="enkaz-form-submit"
-              fieldProps={{ type: 'submit', label: t('submit') }}
+              fieldProps={{ label: t('submit') }}
             />
           </div>
         </div>

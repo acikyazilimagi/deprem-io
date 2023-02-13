@@ -1,16 +1,19 @@
-import { WheelEvent } from 'react'
+import { HTMLInputTypeAttribute, WheelEvent } from 'react'
 import { Controller, useFormContext } from 'react-hook-form'
 import InputWrapper from '@/components/form/input-wrapper'
 import { phoneNumberAutoFormat } from '@/lib/utils'
 
 import {
   IFormControlProps,
+  ITextInputProps,
   TInputProps,
 } from '@/lib/types/component-props/form.props'
 
 const onWheelListener = (type?: string) => (event: WheelEvent) => {
   const target = event.target as HTMLElement
-  if (type === 'number') target.blur()
+  if (type === 'number') {
+    target.blur()
+  }
 }
 
 const FormControl = ({
@@ -35,7 +38,7 @@ const FormControl = ({
           <input
             {...fieldProps}
             {...field}
-            onWheel={onWheelListener(fieldProps?.type)}
+            onWheel={onWheelListener(fieldProps?.type as string)}
             className={className}
           />
         )
@@ -60,6 +63,7 @@ const FormControl = ({
           </div>
         )
       case 'CheckBox':
+        console.log(className)
         return (
           <label className="flex items-center gap-2">
             <input
@@ -100,10 +104,10 @@ const FormControl = ({
           <select
             {...field}
             onChange={(e) => field.onChange(e.target.value)}
-            className={fieldProps?.className}
+            className={className}
           >
             {fieldProps.selectOptions.map(({ value, label }, index) => (
-              <option key={index} value={value}>
+              <option key={index} value={value as string}>
                 {label}
               </option>
             ))}
@@ -126,8 +130,8 @@ const FormControl = ({
             <InputWrapper icon={icon} addon={addon}>
               <Input
                 field={field}
-                fieldName={fieldName}
-                fieldProps={fieldProps}
+                fieldName={fieldName as any}
+                fieldProps={fieldProps as any}
                 className={
                   (icon ? `${className} pl-10` : className) +
                   ' invalid:text-rose-600' +

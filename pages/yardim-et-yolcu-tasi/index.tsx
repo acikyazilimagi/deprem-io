@@ -90,7 +90,9 @@ export default function HelpPassengerCarriage() {
               fieldName="Select"
               name="fromCity"
               icon="pin"
-              selectOptions={citiesFromList}
+              fieldProps={{
+                selectOptions: citiesFromList,
+              }}
             />
           </div>
           <div className="sm:col-span-3">
@@ -98,7 +100,9 @@ export default function HelpPassengerCarriage() {
               fieldName="Select"
               name="toCity"
               icon="pin"
-              selectOptions={citiesToList}
+              fieldProps={{
+                selectOptions: citiesToList,
+              }}
             />
           </div>
           <div className="sm:col-span-6">
@@ -145,7 +149,7 @@ export default function HelpPassengerCarriage() {
             <FormControl
               fieldName="Button"
               name="enkaz-form-submit"
-              fieldProps={{ type: 'submit', label: t('submit') }}
+              fieldProps={{ label: t('submit') }}
             />
           </div>
         </div>
