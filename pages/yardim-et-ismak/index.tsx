@@ -1,13 +1,13 @@
-import useTranslation from 'next-translate/useTranslation'
-import Trans from 'next-translate/Trans'
-import Alert from '@/components/alert'
-import CustomLink from '@/components/custom-link'
-import FormManager from '@/components/form/form-manager'
-import FormControl from '@/components/form/form-control'
-import { getConstraintsFromValidation } from '@/lib/utils'
-import RequestHelpMessage from '@/components/request-help-message'
-import cities from '@/lib/cities'
-import { helpRequestConstructionMachineSchema } from '@/lib/validations/schemas'
+import useTranslation from 'next-translate/useTranslation';
+import Trans from 'next-translate/Trans';
+import Alert from '@/components/alert';
+import CustomLink from '@/components/custom-link';
+import FormManager from '@/components/form/form-manager';
+import FormControl from '@/components/form/form-control';
+import { getConstraintsFromValidation } from '@/lib/utils';
+import RequestHelpMessage from '@/components/request-help-message';
+import cities from '@/lib/cities';
+import { helpRequestConstructionMachineSchema } from '@/lib/validations/schemas';
 
 export default function HelpConstructionMachine() {
   const defaultValues = {
@@ -16,18 +16,18 @@ export default function HelpConstructionMachine() {
     phone: '',
     info: '',
     term: false,
-  }
+  };
 
-  const { t } = useTranslation('common')
+  const { t } = useTranslation('common');
 
   const onFormSubmit = async (values: object) => {
-    console.log(values)
-  }
+    console.log(values);
+  };
 
   const citiesList = [
     { value: '', label: `* ${t('inputFields.helpCity')}` },
     ...cities,
-  ]
+  ];
   return (
     <div className="mx-auto max-w-screen-sm">
       <h1>{t('pageHeaders.canUseConstructionMachinePage')}</h1>
@@ -39,7 +39,7 @@ export default function HelpConstructionMachine() {
         validationSchema={helpRequestConstructionMachineSchema}
         onSubmit={onFormSubmit}
         onError={(err) => {
-          console.error('onError - err', err)
+          console.error('onError - err', err);
         }}
         defaultValues={defaultValues}
       >
@@ -130,5 +130,5 @@ export default function HelpConstructionMachine() {
         </div>
       </FormManager>
     </div>
-  )
+  );
 }

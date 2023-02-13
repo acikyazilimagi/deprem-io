@@ -80,6 +80,6 @@ const cities = [
   { value: 79, label: 'Kilis' },
   { value: 80, label: 'Osmaniye' },
   { value: 81, label: 'Düzce' },
-]
+];
 
-export default cities
+export default cities;

@@ -1,4 +1,4 @@
-import { IYardimListItem } from '@/components/yardim-list-table'
+import { IYardimListItem } from '@/components/yardim-list-table';
 
 export const mockYardimListItems: IYardimListItem[] = [
   {
@@ -64,4 +64,4 @@ export const mockYardimListItems: IYardimListItem[] = [
     lastUpdateText: 'Şub 11, 2023 - 23:37:43',
     phone: '+905331112233',
   },
-]
+];

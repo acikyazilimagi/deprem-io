@@ -1,11 +1,11 @@
-import '@/styles/globals.css'
+import '@/styles/globals.css';
 
-import { ThemeProvider } from 'next-themes'
-import type { AppProps } from 'next/app'
-import Head from 'next/head'
-import Header from '@/components/header'
-import Footer from '@/components/footer'
-import Container from '@/components/container'
+import { ThemeProvider } from 'next-themes';
+import type { AppProps } from 'next/app';
+import Head from 'next/head';
+import Header from '@/components/header';
+import Footer from '@/components/footer';
+import Container from '@/components/container';
 
 const Meta = {
   name: 'deprem.io',
@@ -13,7 +13,7 @@ const Meta = {
   image: 'https://deprem-io.vercel.app/meta.jpg',
   description:
     'Depremzedelerin yardım alabileceği ve depremzedelere yardım etmek isteyenlerin kullanabileceği ortak platform.',
-}
+};
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
@@ -46,5 +46,5 @@ export default function App({ Component, pageProps }: AppProps) {
       </main>
       <Footer />
     </ThemeProvider>
-  )
+  );
 }

@@ -1,5 +1,5 @@
-import * as yup from 'yup'
-import { IHelpPassengerCarriageValidation } from '@/lib/types/validations'
+import * as yup from 'yup';
+import { IHelpPassengerCarriageValidation } from '@/lib/types/validations';
 
 export const helpPassengerCarriageSchema: yup.ObjectSchema<IHelpPassengerCarriageValidation> =
   yup.object().shape({
@@ -13,4 +13,4 @@ export const helpPassengerCarriageSchema: yup.ObjectSchema<IHelpPassengerCarriag
       .string()
       .matches(/\([0-9]{3}\) [0-9]{3}-[0-9]{4}/g)
       .optional(),
-  })
+  });

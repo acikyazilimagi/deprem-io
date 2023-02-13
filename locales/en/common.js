@@ -1,5 +1,7 @@
 /* eslint-disable */
-const { DOMAIN_VALIDATIONS } = require('@/lib/validations/localeValidations.ts')
+const {
+  DOMAIN_VALIDATIONS,
+} = require('@/lib/validations/localeValidations.ts');
 
 module.exports = {
   [DOMAIN_VALIDATIONS]: {
@@ -95,7 +97,7 @@ module.exports = {
     helpToCity: 'Yolcuyu Bırakacağın Şehir',
   },
   pageHeaders: {
-    underDebrisPage: 'Ben / Tandığım Enkaz Altında',
+    underDebrisPage: 'Ben / Tanıdığım Enkaz Altında',
     needFoodPage: 'Gıdaya İhtiyacım Var',
     needToWarmPage: 'Isınmaya İhtiyacım Var',
     helpListUnderDebris: 'Those Under Debris',
@@ -107,4 +109,4 @@ module.exports = {
     canTransportPassengerPage: 'Yolcu Taşıma Yardımı Sağla',
   },
   lookAtTheRecordsPage: 'Go to the <0>Current Records</0>',
-}
+};

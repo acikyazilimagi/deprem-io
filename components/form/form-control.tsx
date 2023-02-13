@@ -3,15 +3,15 @@ import React, {
   TextareaHTMLAttributes,
   useMemo,
   WheelEvent,
-} from 'react'
+} from 'react';
 import {
   Controller,
   useFormContext,
   ControllerRenderProps,
-} from 'react-hook-form'
-import InputWrapper from '@/components/form/input-wrapper'
-import { IconProps } from '@/lib/types/component-props/Icon.props'
-import { phoneNumberAutoFormat } from '@/lib/utils'
+} from 'react-hook-form';
+import InputWrapper from '@/components/form/input-wrapper';
+import { IconProps } from '@/lib/types/component-props/Icon.props';
+import { phoneNumberAutoFormat } from '@/lib/utils';
 
 type TProps =
   | {
@@ -19,28 +19,35 @@ type TProps =
       name: string;
       label?: string;
       className?: string;
-      icon?: IconProps["icon"];
-      addon?: ReactNode,
-      showError?: boolean,
-      selectOptions?: { value: any; label: string; }[]
+      icon?: IconProps['icon'];
+      addon?: ReactNode;
+      showError?: boolean;
+      selectOptions?: { value: any; label: string }[];
     } & {
-      fieldName: "TextInput" | "TextArea" | "Radio" | "CheckBox" | "Button" | "PhoneInput" | "Select";
+      fieldName:
+        | 'TextInput'
+        | 'TextArea'
+        | 'Radio'
+        | 'CheckBox'
+        | 'Button'
+        | 'PhoneInput'
+        | 'Select';
       fieldProps?: Omit<
         | React.InputHTMLAttributes<HTMLInputElement>
         | TextareaHTMLAttributes<HTMLTextAreaElement>,
         'name'
-      > & { type?: string; min?: number; rows?: number }
-      radioGroupData?: Array<{ label: string; value: string }>
-    }
+      > & { type?: string; min?: number; rows?: number };
+      radioGroupData?: Array<{ label: string; value: string }>;
+    };
 
 type InputProps = {
-  field: ControllerRenderProps
+  field: ControllerRenderProps;
   fieldProps?: Omit<
     React.InputHTMLAttributes<HTMLInputElement | HTMLTextAreaElement>,
     'name'
-  >
-  radioGroupData?: Array<{ label: string; value: string }>
-}
+  >;
+  radioGroupData?: Array<{ label: string; value: string }>;
+};
 
 const FormControl = ({
   fieldName,
@@ -54,23 +61,23 @@ const FormControl = ({
   showError,
   selectOptions,
 }: TProps) => {
-  const formContext = useFormContext()
+  const formContext = useFormContext();
   if (!formContext) {
-    throw new Error('FormProvider not found')
+    throw new Error('FormProvider not found');
   }
 
   const onWheel = (event: WheelEvent) => {
-    const target = event.target as HTMLElement
-    if (fieldProps?.type === 'number') target.blur()
-  }
+    const target = event.target as HTMLElement;
+    if (fieldProps?.type === 'number') target.blur();
+  };
 
   const Input = ({ fieldProps, field }: InputProps) =>
     useMemo(() => {
       switch (fieldName) {
         case 'TextInput':
-          return <input {...fieldProps} {...field} onWheel={onWheel} />
+          return <input {...fieldProps} {...field} onWheel={onWheel} />;
         case 'TextArea':
-          return <textarea {...fieldProps} {...field} />
+          return <textarea {...fieldProps} {...field} />;
         case 'Radio':
           return (
             <div className="flex items-center gap-4">
@@ -88,7 +95,7 @@ const FormControl = ({
                 </label>
               ))}
             </div>
-          )
+          );
         case 'CheckBox':
           return (
             <label className="flex items-center gap-2">
@@ -100,7 +107,7 @@ const FormControl = ({
               />
               <span>{label}</span>
             </label>
-          )
+          );
         case 'Button':
           return (
             <button
@@ -112,30 +119,38 @@ const FormControl = ({
               {label}
             </button>
           );
-        case "PhoneInput":
-          return <input
-            {...fieldProps}
-            {...field}
-            type="tel"
-            pattern="\([0-9]{3}\) [0-9]{3}-[0-9]{4}"
-            onChange={(e) => field.onChange(phoneNumberAutoFormat(e.target.value))}
-            onWheel={onWheel}
-            maxLength={14}
-          />;
-        case "Select":
+        case 'PhoneInput':
           return (
-            <select {...field} onChange={(e) => field.onChange(e.target.value)} className={fieldProps?.className}>
+            <input
+              {...fieldProps}
+              {...field}
+              type="tel"
+              pattern="\([0-9]{3}\) [0-9]{3}-[0-9]{4}"
+              onChange={(e) =>
+                field.onChange(phoneNumberAutoFormat(e.target.value))
+              }
+              onWheel={onWheel}
+              maxLength={14}
+            />
+          );
+        case 'Select':
+          return (
+            <select
+              {...field}
+              onChange={(e) => field.onChange(e.target.value)}
+              className={fieldProps?.className}
+            >
               {selectOptions?.map(({ value, label }, index) => (
                 <option key={index} value={value}>
                   {label}
                 </option>
               ))}
             </select>
-          )
+          );
         default:
-          return <span>{fieldName} not supported as an input name</span>
+          return <span>{fieldName} not supported as an input name</span>;
       }
-    }, [field, fieldProps])
+    }, [field, fieldProps]);
 
   return (
     <Controller
@@ -150,7 +165,10 @@ const FormControl = ({
                 field={field}
                 fieldProps={{
                   ...fieldProps,
-                  className: (icon ? `${className} pl-10` : className) + " invalid:text-rose-600" + (hasError ? " text-rose-600" : ""),
+                  className:
+                    (icon ? `${className} pl-10` : className) +
+                    ' invalid:text-rose-600' +
+                    (hasError ? ' text-rose-600' : ''),
                 }}
               />
             </InputWrapper>
@@ -164,10 +182,10 @@ const FormControl = ({
               </p>
             )}
           </div>
-        )
+        );
       }}
     />
-  )
-}
+  );
+};
 
-export default FormControl
+export default FormControl;

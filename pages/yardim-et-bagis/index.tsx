@@ -1,3 +1,3 @@
 export default function HelpDonate() {
-  return <div>YardimEtBagis</div>
+  return <div>YardimEtBagis</div>;
 }

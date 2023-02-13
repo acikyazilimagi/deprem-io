@@ -1,12 +1,12 @@
-import React from 'react'
-import Icon from '@/components/icon'
-import { IconProps } from '@/lib/types/component-props/Icon.props'
+import React from 'react';
+import Icon from '@/components/icon';
+import { IconProps } from '@/lib/types/component-props/Icon.props';
 
 type InputProps = React.HTMLProps<HTMLInputElement> & {
-  icon?: IconProps['icon']
-  children: React.ReactNode
-  addon?: React.ReactNode
-}
+  icon?: IconProps['icon'];
+  children: React.ReactNode;
+  addon?: React.ReactNode;
+};
 
 export default function InputWrapper({ children, icon, addon }: InputProps) {
   return (
@@ -19,5 +19,5 @@ export default function InputWrapper({ children, icon, addon }: InputProps) {
       {addon || ''}
       {children}
     </div>
-  )
+  );
 }

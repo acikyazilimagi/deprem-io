@@ -1,11 +1,11 @@
-import CustomLink from '@/components/custom-link'
-import Alert from '@/components/alert'
-import { Translate } from 'next-translate'
-import Trans from 'next-translate/Trans'
+import CustomLink from '@/components/custom-link';
+import Alert from '@/components/alert';
+import { Translate } from 'next-translate';
+import Trans from 'next-translate/Trans';
 
 type RequestHelpMessageProps = {
-  t: Translate
-}
+  t: Translate;
+};
 
 export default function RequestHelpMessage({ t }: RequestHelpMessageProps) {
   return (
@@ -20,5 +20,5 @@ export default function RequestHelpMessage({ t }: RequestHelpMessageProps) {
         </p>
       </Alert>
     </div>
-  )
+  );
 }
