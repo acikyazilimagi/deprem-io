@@ -1,11 +1,15 @@
-import FormControl from '@/components/form/form-control'
-import FormManager from '@/components/form/form-manager'
-import { ICON_NAMES } from '@/lib/constants/ICONS'
-import Icon from '@/components/icon'
-import useTranslation from 'next-translate/useTranslation'
-import * as yup from 'yup'
-import { useCallback } from 'react'
-import { noop, stripEmptyString } from '@/lib/utils'
+import FormControl from '@/components/form/form-control';
+import FormManager from '@/components/form/form-manager';
+import { ICON_NAMES } from '@/lib/constants/ICONS';
+import Icon from '@/components/icon';
+import useTranslation from 'next-translate/useTranslation';
+import { useCallback } from 'react';
+import { noop } from '@/lib/utils';
+import {
+  IDataGridFilterProps,
+  IYardimListFilterValues,
+} from '@/lib/types/component-props/data-grid/filter.props';
+import { filterFormSchema } from '@/lib/validations/schemas/data-grid/filter.schema';
 
 const statusOptions = [
   { value: '', label: 'Yardım Durumu' },
@@ -13,72 +17,46 @@ const statusOptions = [
   { value: 'completed', label: 'Yardım Edildi' },
   { value: 'insufficient', label: 'Yetersiz Bilgi' },
   { value: 'failed', label: 'Yardım Edilemedi' },
-]
+];
 
 const urgencyOptions = [
   { value: '', label: 'Aciliyet' },
   { value: 'critical', label: 'Kritik' },
   { value: 'moderate', label: 'Orta' },
   { value: 'normal', label: 'Normal' },
-]
+];
 
 const transportationStateOptions = [
   { value: '', label: 'Araç Durumu' },
   { value: true, label: 'Aracı Var' },
   { value: false, label: 'Aracı Yok' },
-]
-
-const formSchema = yup.object().shape({
-  search: yup.string().optional(),
-  status: yup
-    .string()
-    .oneOf(['', 'waiting', 'completed', 'insufficient', 'failed'])
-    .optional(),
-  urgency: yup
-    .string()
-    .oneOf(['', 'critical', 'moderate', 'normal'])
-    .optional(),
-  transportationState: yup.boolean().optional().transform(stripEmptyString),
-})
-
-interface IYardimListFilterValues {
-  search?: string
-  status?: '' | 'waiting' | 'completed' | 'insufficient' | 'failed'
-  urgency?: '' | 'critical' | 'moderate' | 'normal'
-  transportationState?: boolean | ''
-}
+];
 
 const defaultValues: IYardimListFilterValues = {
   search: '',
   status: '',
   urgency: '',
   transportationState: false,
-}
+};
 
-interface IYardimListFilterProps {
-  onFilter?: (values: IYardimListFilterValues) => void
-  onRefresh?: () => void
-  showTransportationStateInput?: boolean
-}
-
-export default function YardimListFilter({
+export default function DataGridFilter({
   onFilter = noop,
   onRefresh = noop,
   showTransportationStateInput,
-}: IYardimListFilterProps) {
-  const { t } = useTranslation('common')
+}: IDataGridFilterProps) {
+  const { t } = useTranslation('common');
 
   const handleSubmit = useCallback(
     async (values: object) => {
-      onFilter(values)
+      onFilter(values);
     },
     [onFilter]
-  )
+  );
 
   return (
     <div className="mt-6">
       <FormManager
-        validationSchema={formSchema}
+        validationSchema={filterFormSchema}
         onSubmit={handleSubmit}
         defaultValues={defaultValues}
       >
@@ -138,5 +116,5 @@ export default function YardimListFilter({
         </div>
       </FormManager>
     </div>
-  )
+  );
 }

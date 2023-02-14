@@ -1,10 +1,10 @@
-import Icon from '@/components/icon'
-import { CanCarry } from '@/lib/types/DataGrid.types'
+import Icon from '@/components/icon';
+import { CanCarry } from '@/lib/types/component-props/data-grid/table.types';
 
 type AdressProps = {
-  locationText?: string
-  canCarry?: CanCarry
-}
+  locationText?: string;
+  canCarry?: CanCarry;
+};
 
 export default function Adress({ locationText, canCarry }: AdressProps) {
   return (
@@ -20,5 +20,5 @@ export default function Adress({ locationText, canCarry }: AdressProps) {
         </div>
       )}
     </div>
-  )
+  );
 }

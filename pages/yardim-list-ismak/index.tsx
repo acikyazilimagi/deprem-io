@@ -1,4 +1,4 @@
-import YardimListFilter from '@/components/yardim-list-filter';
+import YardimListFilter from '@/components/data-grid/filter';
 import useTranslation from 'next-translate/useTranslation';
 
 export default function HelpListConstructionMachine() {

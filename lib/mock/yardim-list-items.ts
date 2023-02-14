@@ -1,4 +1,4 @@
-import { DataGridRows } from '@/lib/types/DataGrid.types';
+import { DataGridRows } from '@/lib/types/component-props/data-grid/table.types';
 import { IHelpListUnderDebrisRows } from '@/lib/types/list-pages';
 
 export const mockYardimListItems: DataGridRows<IHelpListUnderDebrisRows>[] = [

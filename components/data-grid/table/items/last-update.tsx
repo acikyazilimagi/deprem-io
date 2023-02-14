@@ -1,7 +1,7 @@
 type LastUpdateProps = {
-  id?: string
-  lastUpdateText?: string
-}
+  id?: string;
+  lastUpdateText?: string;
+};
 
 export default function LastUpdate({ id, lastUpdateText }: LastUpdateProps) {
   return (
@@ -9,5 +9,5 @@ export default function LastUpdate({ id, lastUpdateText }: LastUpdateProps) {
       <span className="text-neutral-400">{lastUpdateText}</span>
       <span className="ml-3">#{id}</span>
     </div>
-  )
+  );
 }
