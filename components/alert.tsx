@@ -1,5 +1,5 @@
 import Icon from '@/components/icon';
-import { AlertProps } from '@/lib/types/component-props/Alert.props';
+import { AlertProps } from '@/lib/types/component-props/alert.props';
 
 export default function Alert({ children }: AlertProps) {
   return (

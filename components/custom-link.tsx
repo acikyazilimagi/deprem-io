@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import { cx } from '@/lib/utils';
-import { CustomLinkProps } from '@/lib/types/component-props/CustomLink.props';
+import { CustomLinkProps } from '@/lib/types/component-props/custom-link.props';
 
 export default function CustomLink({
   children,

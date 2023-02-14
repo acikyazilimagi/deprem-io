@@ -1,9 +1,7 @@
 import PrimaryButton, { PrimaryButtonEmpty } from '@/components/primary-button';
 import Icon from '@/components/icon';
 
-type YardimListeleriProps = {};
-
-export default function YardimListeleri({}: YardimListeleriProps) {
+export function HelpLists() {
   return (
     <section className="mt-20">
       <h3 className="mb-5">Yardım Listeleri</h3>

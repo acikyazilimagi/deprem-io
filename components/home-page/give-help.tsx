@@ -2,11 +2,11 @@ import PrimaryButton from '@/components/primary-button';
 import Icon from '@/components/icon';
 import { Translate } from 'next-translate';
 
-type YardimSaglaProps = {
+type TGiveHelpProps = {
   t: Translate;
 };
 
-export default function YardimSagla({ t }: YardimSaglaProps) {
+export function GiveHelp({ t }: TGiveHelpProps) {
   return (
     <section className="mt-20">
       <h3 className="mb-5">{t('pageHeaders.giveHelpPage')}</h3>

@@ -6,7 +6,7 @@ type YardimAlProps = {
   t: Translate;
 };
 
-export default function YardimAl({ t }: YardimAlProps) {
+export function GetHelp({ t }: YardimAlProps) {
   return (
     <section>
       <h2 className="mb-5">{t('pageHeaders.getHelpPage')}</h2>

@@ -1,6 +1,6 @@
 import React from 'react';
 import Icon from '@/components/icon';
-import { IconProps } from '@/lib/types/component-props/Icon.props';
+import { IconProps } from '@/lib/types/component-props/icon.props';
 
 type InputProps = React.HTMLProps<HTMLInputElement> & {
   icon?: IconProps['icon'];
