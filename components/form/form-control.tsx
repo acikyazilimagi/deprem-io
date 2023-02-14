@@ -1,33 +1,33 @@
-import { WheelEvent } from 'react'
-import { Controller, useFormContext } from 'react-hook-form'
-import InputWrapper from '@/components/form/input-wrapper'
-import { phoneNumberAutoFormat } from '@/lib/utils'
+import { WheelEvent } from 'react';
+import { Controller, useFormContext } from 'react-hook-form';
+import InputWrapper from '@/components/form/input-wrapper';
+import { phoneNumberAutoFormat } from '@/lib/utils';
 
 import {
   IFormControlProps,
   TInputProps,
-} from '@/lib/types/component-props/form.props'
+} from '@/lib/types/component-props/form.props';
 
 const onWheelListener = (type?: string) => (event: WheelEvent) => {
-  const target = event.target as HTMLElement
+  const target = event.target as HTMLElement;
   if (type === 'number') {
-    target.blur()
+    target.blur();
   }
-}
+};
 
 const FormControl = ({
   fieldName,
   fieldProps,
   name,
   icon,
-  className,
+  className = '',
   addon,
   showError,
 }: IFormControlProps) => {
-  const formContext = useFormContext()
+  const formContext = useFormContext();
 
   if (!formContext) {
-    throw new Error('FormProvider not found')
+    throw new Error('FormProvider not found');
   }
 
   const Input = ({ field, className, fieldProps, fieldName }: TInputProps) => {
@@ -40,9 +40,9 @@ const FormControl = ({
             onWheel={onWheelListener(fieldProps?.type as string)}
             className={className}
           />
-        )
+        );
       case 'TextArea':
-        return <textarea {...fieldProps} {...field} className={className} />
+        return <textarea {...fieldProps} {...field} className={className} />;
       case 'Radio':
         return (
           <div className="flex items-center gap-4">
@@ -60,9 +60,8 @@ const FormControl = ({
               </label>
             ))}
           </div>
-        )
+        );
       case 'CheckBox':
-        console.log(className)
         return (
           <label className="flex items-center gap-2">
             <input
@@ -73,7 +72,7 @@ const FormControl = ({
             />
             <span>{fieldProps.label}</span>
           </label>
-        )
+        );
       case 'Button':
         return (
           <button
@@ -84,7 +83,7 @@ const FormControl = ({
           >
             {fieldProps.label}
           </button>
-        )
+        );
       case 'PhoneInput':
         return (
           <input
@@ -97,7 +96,7 @@ const FormControl = ({
             }
             maxLength={fieldProps.max}
           />
-        )
+        );
       case 'Select':
         return (
           <select
@@ -111,18 +110,18 @@ const FormControl = ({
               </option>
             ))}
           </select>
-        )
+        );
       default:
-        return <span>{fieldName} not supported as an input name</span>
+        return <span>{fieldName} not supported as an input name</span>;
     }
-  }
+  };
 
   return (
     <Controller
       name={name}
       control={formContext.control}
       render={({ field, fieldState }) => {
-        const hasError = !!fieldState?.error?.message
+        const hasError = !!fieldState?.error?.message;
 
         return (
           <div className="flex flex-col">
@@ -149,10 +148,10 @@ const FormControl = ({
               </p>
             )}
           </div>
-        )
+        );
       }}
     />
-  )
-}
+  );
+};
 
-export default FormControl
+export default FormControl;

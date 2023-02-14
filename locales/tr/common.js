@@ -74,6 +74,7 @@ module.exports = {
   requiredFieldsNotice: '* ile başlayan alanlar zorunludur.',
   submit: 'Gönder',
   filter: 'Filtrele',
+  goDetail: 'Detaya Git',
   kvkk: '6698 sayılı KVKK kapsamında “Uygulamamıza depremzede ya da depremzede yakını olarak kaydolan kullanıcılardan ad, soyadı, iletişim bilgisi, log kaydı ve depremzedenin sisteme girilen ve kendileri tarafından alenileştirilmiş konum verilerini topluyoruz.” Veri işleme hukuki sebeplerimizi, amaçlarımızı görmek ve haklarınızı öğrenmek için <0>Aydınlatma Metnini</0> ziyaret etmek ister misiniz? ',
   inputFields: {
     fullName: 'Ad Soyad',
@@ -109,6 +110,19 @@ module.exports = {
     helpListNeedFood: 'Gıda İhtiyacı Olanlar',
     helpListNeedToGetWarm: 'Isınma İhtiyacı Olanlar',
     canTransportPassengerPage: 'Yolcu Taşıma Yardımı Sağla',
+  },
+  helpStatuses: {
+    waiting: 'Yardım Bekleniyor',
+    completed: 'Yardım Edildi',
+    insufficient: 'Yetersiz Bilgi',
+    failed: 'Yardım Edilemedi',
+    readyToHelp: 'Yardıma Hazır',
+    helped: 'Yardım Etti',
+  },
+  helpUrgency: {
+    critical: 'Kritik',
+    moderate: 'Orta',
+    normal: 'Normal',
   },
   lookAtTheRecordsPage: '<0>Mevcut Kayıtlar</0> sayfasına göz atın.',
 };

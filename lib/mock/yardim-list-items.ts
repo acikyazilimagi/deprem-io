@@ -1,6 +1,7 @@
-import { IYardimListItem } from '@/components/yardim-list-table';
+import { DataGridRows } from '@/lib/types/component-props/data-grid/table.types';
+import { IHelpListUnderDebrisRows } from '@/lib/types/list-pages';
 
-export const mockYardimListItems: IYardimListItem[] = [
+export const mockYardimListItems: DataGridRows<IHelpListUnderDebrisRows>[] = [
   {
     id: '8CEEHYFM1',
     status: 'waiting',
