@@ -16,8 +16,9 @@ const Meta = {
     'Depremzedelerin yardım alabileceği ve depremzedelere yardım etmek isteyenlerin kullanabileceği ortak platform.',
 };
 
+const Footer = dynamic(() => import('../components/footer'));
+
 export default function App({ Component, pageProps }: AppProps) {
-  const Footer = dynamic(() => import('../components/footer'));
   return (
     <ThemeProvider attribute="class">
       <Head>
