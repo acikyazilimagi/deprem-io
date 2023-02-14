@@ -1,6 +1,6 @@
 import FormControl from '@/components/form/form-control';
 import FormManager from '@/components/form/form-manager';
-import { ICON_NAMES } from '@/lib/constants/ICONS';
+import { ICON_NAMES } from '@/lib/constants/icons';
 import Icon from '@/components/icon';
 import useTranslation from 'next-translate/useTranslation';
 import { useCallback } from 'react';

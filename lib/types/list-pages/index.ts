@@ -1,1 +1,1 @@
-export * from './IHelpListUnderDebrisRows'
+export * from './help-list-under-debris-rows';

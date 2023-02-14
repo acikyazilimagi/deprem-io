@@ -1,6 +1,6 @@
-import { IconProps } from '@/lib/types/component-props/Icon.props';
+import { IconProps } from '@/lib/types/component-props/icon.props';
 import { ReactNode } from 'react';
-import { ICON_PATHS_MAP } from '@/lib/constants/ICONS';
+import { ICON_PATHS_MAP } from '@/lib/constants/icons';
 
 export default function Icon({ size = 24, icon, ...props }: IconProps) {
   const children: ReactNode = ICON_PATHS_MAP.get(icon);
