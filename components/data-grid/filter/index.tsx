@@ -7,7 +7,7 @@ import { useCallback } from 'react';
 import { noop } from '@/lib/utils';
 import {
   IDataGridFilterProps,
-  IYardimListFilterValues,
+  IDataGridFilterValues,
 } from '@/lib/types/component-props/data-grid/filter.props';
 import { filterFormSchema } from '@/lib/validations/schemas/data-grid/filter.schema';
 
@@ -32,7 +32,7 @@ const transportationStateOptions = [
   { value: false, label: 'Aracı Yok' },
 ];
 
-const defaultValues: IYardimListFilterValues = {
+const defaultValues: IDataGridFilterValues = {
   search: '',
   status: '',
   urgency: '',

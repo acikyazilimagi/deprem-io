@@ -6,7 +6,7 @@ import FormManager from '@/components/form/form-manager';
 import FormControl from '@/components/form/form-control';
 import { getConstraintsFromValidation } from '@/lib/utils';
 import RequestHelpMessage from '@/components/request-help-message';
-import { PhysicalState, TransportationState } from '@/lib/enums';
+import { PHYSICALSTATE, TRANSPORTATIONSTATE } from '@/lib/enums';
 import { helpRequestWarmingSchema } from '@/lib/validations/schemas';
 
 export default function HelpRequestWarming() {
@@ -17,9 +17,9 @@ export default function HelpRequestWarming() {
     address: '',
     addressDetail: '',
     humanCount: '',
-    physicalCondition: PhysicalState.Orta,
+    physicalCondition: PHYSICALSTATE.MODERATE,
     physicalConditionDetail: '',
-    transportationStatus: TransportationState.exists,
+    transportationStatus: TRANSPORTATIONSTATE.exists,
     tweetUrl: '',
     term: false,
   };
@@ -136,15 +136,15 @@ export default function HelpRequestWarming() {
                 radioGroupData: [
                   {
                     label: t('inputFields.physicalConditions.normal'),
-                    value: PhysicalState.Normal,
+                    value: PHYSICALSTATE.NORMAL,
                   },
                   {
                     label: t('inputFields.physicalConditions.mid'),
-                    value: PhysicalState.Orta,
+                    value: PHYSICALSTATE.MODERATE,
                   },
                   {
                     label: t('inputFields.physicalConditions.critical'),
-                    value: PhysicalState.Kritik,
+                    value: PHYSICALSTATE.CRITICAL,
                   },
                 ],
               }}
@@ -191,11 +191,11 @@ export default function HelpRequestWarming() {
                 radioGroupData: [
                   {
                     label: t('inputFields.transportationStatus.exists'),
-                    value: TransportationState.exists,
+                    value: TRANSPORTATIONSTATE.exists,
                   },
                   {
                     label: t('inputFields.transportationStatus.noneExists'),
-                    value: TransportationState.noneExists,
+                    value: TRANSPORTATIONSTATE.noneExists,
                   },
                 ],
               }}

@@ -1,10 +1,4 @@
-export enum PhysicalState {
-  Kritik = 'Kritik',
-  Orta = 'Orta',
-  Normal = 'Normal',
-}
-
-export enum TransportationState {
-  exists = 'true',
-  noneExists = 'false',
-}
+export * from './physical-state.enum';
+export * from './transportation-state.enum';
+export * from './urgency.enum';
+export * from './status.enum';

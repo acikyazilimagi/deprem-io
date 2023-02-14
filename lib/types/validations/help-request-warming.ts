@@ -1,13 +1,13 @@
-import { PhysicalState, TransportationState } from '@/lib/enums';
+import { PHYSICALSTATE, TRANSPORTATIONSTATE } from '@/lib/enums';
 import { IBaseValidation } from '@/lib/types/validations/base';
 
 export interface IHelpRequestWarmingValidation extends IBaseValidation {
   address: string;
   addressDetail?: string | null;
   humanCount?: number | null;
-  physicalCondition: PhysicalState;
+  physicalCondition: PHYSICALSTATE;
   physicalConditionDetail: string;
-  transportationStatus: TransportationState;
+  transportationStatus: TRANSPORTATIONSTATE;
   tweetUrl?: string | null;
   term: boolean;
   phone?: string;

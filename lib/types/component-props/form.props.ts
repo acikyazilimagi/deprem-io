@@ -1,4 +1,4 @@
-import { PhysicalState, TransportationState } from '@/lib/enums';
+import { PHYSICALSTATE, TRANSPORTATIONSTATE } from '@/lib/enums';
 import { ReactNode } from 'react';
 import { IconProps } from './icon.props';
 
@@ -23,7 +23,7 @@ interface IRadioProps
   extends Partial<React.InputHTMLAttributes<HTMLInputElement>> {
   radioGroupData: Array<{
     label: string;
-    value: PhysicalState | TransportationState;
+    value: PHYSICALSTATE | TRANSPORTATIONSTATE;
   }>;
 }
 

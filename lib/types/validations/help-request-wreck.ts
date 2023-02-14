@@ -1,11 +1,11 @@
-import { PhysicalState } from '@/lib/enums';
+import { PHYSICALSTATE } from '@/lib/enums';
 import { IBaseValidation } from '@/lib/types/validations/base';
 
 export interface IHelpRequestWreckValidation extends IBaseValidation {
   address: string;
   addressDetail?: string | null;
   humanCount?: number | null;
-  physicalCondition: PhysicalState;
+  physicalCondition: PHYSICALSTATE;
   physicalConditionDetail: string;
   tweetUrl?: string | null;
   term: boolean;

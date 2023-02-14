@@ -6,7 +6,7 @@ import FormManager from '@/components/form/form-manager';
 import FormControl from '@/components/form/form-control';
 import { getConstraintsFromValidation } from '@/lib/utils';
 import RequestHelpMessage from '@/components/request-help-message';
-import cities from '@/lib/cities';
+import cities from '@/lib/constants/cities';
 import { helpPassengerCarriageSchema } from '@/lib/validations/schemas';
 
 export default function HelpPassengerCarriage() {

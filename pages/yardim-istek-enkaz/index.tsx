@@ -5,7 +5,7 @@ import FormControl from '@/components/form/form-control';
 import useTranslation from 'next-translate/useTranslation';
 import Trans from 'next-translate/Trans';
 import RequestHelpMessage from '@/components/request-help-message';
-import { PhysicalState } from '@/lib/enums';
+import { PHYSICALSTATE } from '@/lib/enums';
 import Alert from '@/components/alert';
 import { helpRequestWreckSchema } from '@/lib/validations/schemas';
 
@@ -17,7 +17,7 @@ export default function HelpRequestWreck() {
     address: '',
     addressDetail: '',
     humanCount: '',
-    physicalCondition: PhysicalState.Orta,
+    physicalCondition: PHYSICALSTATE.MODERATE,
     physicalConditionDetail: '',
     tweetUrl: '',
     term: false,
@@ -116,15 +116,15 @@ export default function HelpRequestWreck() {
                 radioGroupData: [
                   {
                     label: t('inputFields.physicalConditions.normal'),
-                    value: PhysicalState.Normal,
+                    value: PHYSICALSTATE.NORMAL,
                   },
                   {
                     label: t('inputFields.physicalConditions.mid'),
-                    value: PhysicalState.Orta,
+                    value: PHYSICALSTATE.MODERATE,
                   },
                   {
                     label: t('inputFields.physicalConditions.critical'),
-                    value: PhysicalState.Kritik,
+                    value: PHYSICALSTATE.CRITICAL,
                   },
                 ],
               }}
