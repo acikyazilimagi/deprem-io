@@ -4,9 +4,9 @@ import { ThemeProvider } from 'next-themes';
 import type { AppProps } from 'next/app';
 import Head from 'next/head';
 import Header from '@/components/header';
-import Footer from '@/components/footer';
 import Container from '@/components/container';
 import KVKKStickyBar from '@/components/kvkk-sticky-bar';
+import dynamic from 'next/dynamic';
 
 const Meta = {
   name: 'deprem.io',
@@ -17,6 +17,7 @@ const Meta = {
 };
 
 export default function App({ Component, pageProps }: AppProps) {
+  const Footer = dynamic(() => import('../components/footer'));
   return (
     <ThemeProvider attribute="class">
       <Head>
