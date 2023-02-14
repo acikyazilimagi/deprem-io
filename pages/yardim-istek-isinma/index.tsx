@@ -8,6 +8,7 @@ import { getConstraintsFromValidation } from '@/lib/utils';
 import RequestHelpMessage from '@/components/request-help-message';
 import { PHYSICALSTATE, TRANSPORTATIONSTATE } from '@/lib/enums';
 import { helpRequestWarmingSchema } from '@/lib/validations/schemas';
+import Button from '@/components/form/elements/submit-button';
 
 export default function HelpRequestWarming() {
   const defaultValues = {
@@ -217,11 +218,7 @@ export default function HelpRequestWarming() {
             </div>
           </div>
           <div>
-            <FormControl
-              fieldName="Button"
-              name="enkaz-form-submit"
-              fieldProps={{ label: t('submit') }}
-            />
+            <Button label={t('submit')} />
           </div>
         </div>
       </FormManager>

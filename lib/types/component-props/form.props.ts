@@ -8,18 +8,18 @@ export interface ITextInputProps
   min?: number;
 }
 
-interface IPhoneInputProps
+export interface IPhoneInputProps
   extends Omit<Partial<React.InputHTMLAttributes<HTMLInputElement>>, 'max'> {
   max: number;
 }
 
-interface ITextAreaProps
+export interface ITextAreaProps
   extends Partial<React.TextareaHTMLAttributes<HTMLTextAreaElement>> {
   min?: number;
   rows?: number;
 }
 
-interface IRadioProps
+export interface IRadioProps
   extends Partial<React.InputHTMLAttributes<HTMLInputElement>> {
   radioGroupData: Array<{
     label: string;
@@ -27,31 +27,31 @@ interface IRadioProps
   }>;
 }
 
-interface ICheckBoxProps
+export interface ICheckBoxProps
   extends Partial<React.InputHTMLAttributes<HTMLInputElement>> {
   label: string;
 }
 
-interface IButtonProps {
+export interface IButtonProps {
   label: string;
+  className?: string;
 }
 
-interface ISelectProps
+export interface ISelectProps
   extends Partial<React.SelectHTMLAttributes<HTMLSelectElement>> {
   selectOptions: { value: string | boolean | number; label: string }[];
 }
 
 export type TInput =
   | {
-      fieldName: 'TextInput';
       fieldProps: ITextInputProps;
     }
-  | { fieldName: 'PhoneInput'; fieldProps: IPhoneInputProps }
-  | { fieldName: 'TextArea'; fieldProps: ITextAreaProps }
-  | { fieldName: 'Radio'; fieldProps: IRadioProps }
-  | { fieldName: 'CheckBox'; fieldProps: ICheckBoxProps }
-  | { fieldName: 'Button'; fieldProps: IButtonProps }
-  | { fieldName: 'Select'; fieldProps: ISelectProps };
+  | { fieldProps: IPhoneInputProps }
+  | { fieldProps: ITextAreaProps }
+  | { fieldProps: IRadioProps }
+  | { fieldProps: ICheckBoxProps }
+  | { fieldProps: IButtonProps }
+  | { fieldProps: ISelectProps };
 
 export type TInputProps = {
   field: any;
@@ -64,4 +64,5 @@ export type IFormControlProps = {
   addon?: ReactNode;
   showError?: boolean;
   name: string;
+  fieldName: string;
 } & TInput;

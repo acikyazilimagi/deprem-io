@@ -10,6 +10,7 @@ import {
   IDataGridFilterValues,
 } from '@/lib/types/component-props/data-grid/filter.props';
 import { filterFormSchema } from '@/lib/validations/schemas/data-grid/filter.schema';
+import Button from '@/components/form/elements/submit-button';
 
 const statusOptions = [
   { value: '', label: 'Yardım Durumu' },
@@ -108,11 +109,7 @@ export default function DataGridFilter({
           >
             <Icon icon="refresh" />
           </button>
-          <FormControl
-            fieldName="Button"
-            name="yardim-list-submit"
-            fieldProps={{ label: t('filter') }}
-          />
+          <Button label={t('filter')} />
         </div>
       </FormManager>
     </div>

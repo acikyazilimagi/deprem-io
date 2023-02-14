@@ -1,6 +1,7 @@
 import { ClassValue, clsx } from 'clsx';
 import { twMerge } from 'tailwind-merge';
 import { ObjectSchema, SchemaDescription } from 'yup';
+import { WheelEvent } from 'react';
 import * as yup from 'yup';
 
 export function cx(...inputs: ClassValue[]) {
@@ -30,3 +31,10 @@ export const stripEmptyString = (value: any) =>
   value === '' ? undefined : value;
 
 export const noop = () => {};
+
+export const onWheelListener = (type?: string) => (event: WheelEvent) => {
+  const target = event.target as HTMLElement;
+  if (type === 'number') {
+    target.blur();
+  }
+};

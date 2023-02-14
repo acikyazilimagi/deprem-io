@@ -16,5 +16,5 @@ export const helpRequestWreckSchema: yup.ObjectSchema<IHelpRequestWreckValidatio
     physicalCondition: yup.string<PHYSICALSTATE>().required(),
     physicalConditionDetail: yup.string().required(),
     tweetUrl: yup.string().nullable(),
-    term: yup.bool().required(),
+    term: yup.bool().required().isTrue(),
   });

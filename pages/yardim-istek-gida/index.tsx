@@ -8,6 +8,7 @@ import { getConstraintsFromValidation } from '@/lib/utils';
 import RequestHelpMessage from '@/components/request-help-message';
 import { PHYSICALSTATE, TRANSPORTATIONSTATE } from '@/lib/enums';
 import { helpRequestFoodSchema } from '@/lib/validations/schemas';
+import Button from '@/components/form/elements/submit-button';
 
 export default function HelpRequestFood() {
   const defaultValues = {
@@ -219,11 +220,7 @@ export default function HelpRequestFood() {
             </div>
           </div>
           <div>
-            <FormControl
-              fieldName="Button"
-              name="enkaz-form-submit"
-              fieldProps={{ label: t('submit') }}
-            />
+            <Button label={t('submit')} />
           </div>
         </div>
       </FormManager>

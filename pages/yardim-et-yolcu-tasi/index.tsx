@@ -8,6 +8,7 @@ import { getConstraintsFromValidation } from '@/lib/utils';
 import RequestHelpMessage from '@/components/request-help-message';
 import cities from '@/lib/constants/cities';
 import { helpPassengerCarriageSchema } from '@/lib/validations/schemas';
+import Button from '@/components/form/elements/submit-button';
 
 export default function HelpPassengerCarriage() {
   const defaultValues = {
@@ -146,11 +147,7 @@ export default function HelpPassengerCarriage() {
             </div>
           </div>
           <div>
-            <FormControl
-              fieldName="Button"
-              name="enkaz-form-submit"
-              fieldProps={{ label: t('submit') }}
-            />
+            <Button label={t('submit')} />
           </div>
         </div>
       </FormManager>

@@ -1,5 +1,5 @@
 import { yupResolver } from '@hookform/resolvers/yup';
-import React from 'react';
+import React, { memo } from 'react';
 import { FormProvider, useForm } from 'react-hook-form';
 import type {
   FieldErrors,
@@ -9,7 +9,6 @@ import type {
   UseFormProps,
   UseFormReturn,
 } from 'react-hook-form';
-import * as yup from 'yup';
 
 export type TProps = (
   | {
@@ -82,6 +81,10 @@ const FormManager = ({
     }
   };
 
+  // useEffect(() => {
+  //   validationCheck(formInitializer.formState.isValid);
+  // }, [formInitializer.formState.isValid, validationCheck]);
+
   return (
     <FormProvider {...formInitializer}>
       <form
@@ -95,4 +98,4 @@ const FormManager = ({
   );
 };
 
-export default FormManager;
+export default memo(FormManager);

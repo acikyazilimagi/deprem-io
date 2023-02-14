@@ -8,6 +8,7 @@ import RequestHelpMessage from '@/components/request-help-message';
 import { PHYSICALSTATE } from '@/lib/enums';
 import Alert from '@/components/alert';
 import { helpRequestWreckSchema } from '@/lib/validations/schemas';
+import Button from '@/components/form/elements/submit-button';
 
 export default function HelpRequestWreck() {
   const defaultValues = {
@@ -176,11 +177,7 @@ export default function HelpRequestWreck() {
             </div>
           </div>
           <div>
-            <FormControl
-              fieldName="Button"
-              name="enkaz-form-submit"
-              fieldProps={{ label: t('submit') }}
-            />
+            <Button label={t('submit')} />
           </div>
         </div>
       </FormManager>

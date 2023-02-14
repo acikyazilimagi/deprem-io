@@ -8,6 +8,7 @@ import { getConstraintsFromValidation } from '@/lib/utils';
 import RequestHelpMessage from '@/components/request-help-message';
 import cities from '@/lib/constants/cities';
 import { helpRequestConstructionMachineSchema } from '@/lib/validations/schemas';
+import Button from '@/components/form/elements/submit-button';
 
 export default function HelpConstructionMachine() {
   const defaultValues = {
@@ -17,7 +18,6 @@ export default function HelpConstructionMachine() {
     info: '',
     term: false,
   };
-
   const { t } = useTranslation('common');
 
   const onFormSubmit = async (values: object) => {
@@ -124,11 +124,7 @@ export default function HelpConstructionMachine() {
             </div>
           </div>
           <div>
-            <FormControl
-              fieldName="Button"
-              name="enkaz-form-submit"
-              fieldProps={{ label: t('submit') }}
-            />
+            <Button label={t('submit')} />
           </div>
         </div>
       </FormManager>
