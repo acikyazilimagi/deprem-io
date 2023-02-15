@@ -1,18 +1,21 @@
-import FormControl from '@/components/form/form-control';
-import FormManager from '@/components/form/form-manager';
-import { ICON_NAMES } from '@/lib/constants/icons';
-import Icon from '@/components/icon';
 import useTranslation from 'next-translate/useTranslation';
 import { useCallback } from 'react';
-import { noop } from '@/lib/utils';
+
 import {
   IDataGridFilterProps,
   IYardimListFilterValues,
 } from '@/lib/types/component-props/data-grid/filter.props';
+import { OptionType } from '@/lib/types/component-props/form-elements/data-inputs.props';
+import { noop } from '@/lib/utils';
 import { filterFormSchema } from '@/lib/validations/schemas/data-grid/filter.schema';
 
+import useFormManager from '@/hooks/useFormManager';
+
+import Button from '@/components/actions/button';
+import FormControl from '@/components/form-elements/form-control';
+import Icon from '@/components/icon';
+
 const statusOptions = [
-  { value: '', label: 'Yardım Durumu' },
   { value: 'waiting', label: 'Yardım Bekleniyor' },
   { value: 'completed', label: 'Yardım Edildi' },
   { value: 'insufficient', label: 'Yetersiz Bilgi' },
@@ -27,7 +30,6 @@ const urgencyOptions = [
 ];
 
 const transportationStateOptions = [
-  { value: '', label: 'Araç Durumu' },
   { value: true, label: 'Aracı Var' },
   { value: false, label: 'Aracı Yok' },
 ];
@@ -53,68 +55,84 @@ export default function DataGridFilter({
     [onFilter]
   );
 
+  const {
+    FormManagerProvider,
+    formInitializer: { formState },
+  } = useFormManager({
+    validationSchema: filterFormSchema,
+    onSubmit: handleSubmit,
+    onError: (err) => {
+      console.error('onError - err', err);
+    },
+    defaultValues,
+  });
+
   return (
     <div className="mt-6">
-      <FormManager
-        validationSchema={filterFormSchema}
-        onSubmit={handleSubmit}
-        defaultValues={defaultValues}
-      >
-        <div className="flex flex-wrap gap-3 rounded-lg p-3 shadow-md">
+      <FormManagerProvider>
+        <div className="flex flex-wrap items-end gap-3 rounded-lg p-3 shadow-md">
           <div className="flex-grow">
             <FormControl
               fieldName="TextInput"
               name="search"
-              icon={ICON_NAMES.search}
               fieldProps={{
                 placeholder: 'Ad, soyad, il, ilçe, tel no...',
                 type: 'text',
+              }}
+              wrapperProps={{
+                icon: 'search',
               }}
             />
           </div>
           <FormControl
             fieldName="Select"
             name="status"
-            icon={ICON_NAMES.info}
             fieldProps={{
               placeholder: 'Yardım Durumu',
-              selectOptions: statusOptions,
+              options: statusOptions,
+            }}
+            wrapperProps={{
+              icon: 'info',
             }}
           />
           <FormControl
             fieldName="Select"
             name="urgency"
-            icon={ICON_NAMES.alert}
             fieldProps={{
               placeholder: 'Aciliyet',
-              selectOptions: urgencyOptions,
+              options: urgencyOptions,
+            }}
+            wrapperProps={{
+              icon: 'alert',
             }}
           />
           {showTransportationStateInput ? (
             <FormControl
               fieldName="Select"
               name="transportationState"
-              icon={ICON_NAMES.truck}
               fieldProps={{
                 placeholder: 'Araç Durumu',
-                selectOptions: transportationStateOptions,
+                options: transportationStateOptions as OptionType[],
+              }}
+              wrapperProps={{
+                icon: 'truck',
               }}
             />
           ) : undefined}
-          <button
-            type="button"
-            onClick={onRefresh}
-            className="flex items-center px-2 pb-2"
-          >
+
+          <Button type="button" onClick={onRefresh}>
             <Icon icon="refresh" />
-          </button>
-          <FormControl
+          </Button>
+          <Button variant="primary" disabled={!formState.isValid}>
+            {t('submit')}
+          </Button>
+          {/* <FormControlOld
             fieldName="Button"
             name="yardim-list-submit"
             fieldProps={{ label: t('filter') }}
-          />
+          /> */}
         </div>
-      </FormManager>
+      </FormManagerProvider>
     </div>
   );
 }

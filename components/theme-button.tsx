@@ -1,5 +1,7 @@
 import { useTheme } from 'next-themes';
 import { useEffect, useState } from 'react';
+
+import Button from '@/components/actions/button';
 import Icon from '@/components/icon';
 
 export default function ThemeButton() {
@@ -10,15 +12,13 @@ export default function ThemeButton() {
   if (!mounted) return <span />;
 
   return (
-    <button
-      className="inline-flex h-10 w-10 items-center justify-center rounded-lg bg-zinc-200 dark:bg-zinc-700"
-      onClick={() => setTheme(resolvedTheme === 'dark' ? 'light' : 'dark')}
-    >
-      {resolvedTheme === 'dark' ? (
-        <Icon icon="sun" size={22} />
-      ) : (
-        <Icon icon="moon" size={22} />
-      )}
-    </button>
+    <>
+      <Button
+        size="sm"
+        onClick={() => setTheme(resolvedTheme === 'dark' ? 'light' : 'dark')}
+      >
+        <Icon icon={resolvedTheme === 'dark' ? 'sun' : 'moon'} size={22} />
+      </Button>
+    </>
   );
 }

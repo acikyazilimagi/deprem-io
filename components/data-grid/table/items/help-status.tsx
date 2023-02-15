@@ -1,9 +1,11 @@
 import useTranslation from 'next-translate/useTranslation';
-import Icon from '@/components/icon';
+
 import {
   Status,
   Urgency,
 } from '@/lib/types/component-props/data-grid/table.types';
+
+import Icon from '@/components/icon';
 
 type HelpStatusProps = {
   status?: Status;

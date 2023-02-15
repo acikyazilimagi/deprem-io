@@ -1,13 +1,15 @@
-import * as yup from 'yup';
-import CustomLink from '@/components/custom-link';
-import FormManager from '@/components/form/form-manager';
-import FormControl from '@/components/form/form-control';
-import useTranslation from 'next-translate/useTranslation';
 import Trans from 'next-translate/Trans';
-import RequestHelpMessage from '@/components/request-help-message';
+import useTranslation from 'next-translate/useTranslation';
+
 import { PhysicalState } from '@/lib/enums';
-import Alert from '@/components/alert';
 import { helpRequestWreckSchema } from '@/lib/validations/schemas';
+
+import useFormManager from '@/hooks/useFormManager';
+
+import Button from '@/components/actions/button';
+import Alert from '@/components/alert';
+import FormControl from '@/components/form-elements/form-control';
+import RequestHelpMessage from '@/components/request-help-message';
 
 export default function HelpRequestWreck() {
   const defaultValues = {
@@ -16,8 +18,8 @@ export default function HelpRequestWreck() {
     phone: '',
     address: '',
     addressDetail: '',
-    humanCount: '',
-    physicalCondition: PhysicalState.Orta,
+    bodyCount: '',
+    physicalCondition: PhysicalState.Kritik,
     physicalConditionDetail: '',
     tweetUrl: '',
     term: false,
@@ -29,74 +31,94 @@ export default function HelpRequestWreck() {
     console.log(values);
   };
 
+  const {
+    FormManagerProvider,
+    formInitializer: { formState },
+  } = useFormManager({
+    validationSchema: helpRequestWreckSchema,
+    onSubmit: onFormSubmit,
+    onError: (err) => {
+      console.error('onError - err', err);
+    },
+    defaultValues,
+  });
+
   return (
     <div className="mx-auto max-w-screen-sm">
       <h1>{t('pageHeaders.underDebrisPage')}</h1>
 
       <RequestHelpMessage t={t} />
 
-      <FormManager
-        validationSchema={helpRequestWreckSchema}
-        onSubmit={onFormSubmit}
-        onError={(err) => {
-          console.error('onError - err', err);
-        }}
-        defaultValues={defaultValues}
-      >
+      <FormManagerProvider>
         <div className="grid gap-4 sm:grid-cols-2">
           <div className="sm:col-span-2">
             <FormControl
-              fieldName="TextInput"
               name="fullName"
-              icon="user"
-              fieldProps={{ placeholder: 'Ad Soyad', type: 'text' }}
+              fieldName="TextInput"
+              fieldProps={{
+                placeholder: 'Ad Soyad',
+                type: 'text',
+              }}
+              wrapperProps={{
+                icon: 'user',
+              }}
             />
           </div>
           <FormControl
-            fieldName="TextInput"
             name="email"
-            icon="email"
-            fieldProps={{ placeholder: 'Email', type: 'email' }}
-          />
-          <FormControl
             fieldName="TextInput"
+            fieldProps={{ placeholder: 'Email', type: 'email' }}
+            wrapperProps={{
+              icon: 'email',
+            }}
+          />
+
+          <FormControl
             name="phone"
-            icon="phone"
+            fieldName="TextInput"
             fieldProps={{ placeholder: 'Telefon', type: 'tel' }}
+            wrapperProps={{
+              icon: 'phone',
+            }}
           />
           <div className="sm:col-span-2">
             <FormControl
-              fieldName="TextInput"
-              name="humanCount"
-              icon="userPlus"
+              name="bodyCount"
+              fieldName="NumberInput"
               fieldProps={{
                 placeholder: 'Kişi Sayısı',
-                type: 'number',
                 min: 1,
+              }}
+              wrapperProps={{
+                icon: 'userPlus',
               }}
             />
           </div>
           <div className="sm:col-span-2">
             <FormControl
-              fieldName="TextArea"
               name="address"
-              icon="pin"
-              className="max-h-32 w-full"
+              fieldName="Textarea"
               fieldProps={{
                 placeholder: 'Adres',
                 rows: 2,
+                autogrow: true,
+              }}
+              wrapperProps={{
+                icon: 'pin',
               }}
             />
           </div>
           <div className="sm:col-span-2">
             <FormControl
-              fieldName="TextArea"
+              fieldName="Textarea"
               name="addressDetail"
-              icon="addressExtra"
-              className="max-h-32 w-full"
               fieldProps={{
                 placeholder: 'Adres Tarifi',
                 rows: 1,
+                autogrow: true,
+              }}
+              wrapperProps={{
+                icon: 'addressExtra',
               }}
             />
           </div>
@@ -110,10 +132,13 @@ export default function HelpRequestWreck() {
           </div>
           <div className="sm:col-span-2">
             <FormControl
-              fieldName="Radio"
+              fieldName="RadioGroup"
               name="physicalCondition"
+              wrapperProps={{
+                label: 'Durum',
+              }}
               fieldProps={{
-                radioGroupData: [
+                options: [
                   {
                     label: t('inputFields.physicalConditions.normal'),
                     value: PhysicalState.Normal,
@@ -132,13 +157,15 @@ export default function HelpRequestWreck() {
           </div>
           <div className="sm:col-span-2">
             <FormControl
-              fieldName="TextArea"
               name="physicalConditionDetail"
-              icon="info"
-              className="max-h-32 w-full"
+              fieldName="Textarea"
               fieldProps={{
                 placeholder: 'Fiziki Durum Hakkında Bilgi',
                 rows: 2,
+                autogrow: true,
+              }}
+              wrapperProps={{
+                icon: 'info',
               }}
             />
           </div>
@@ -154,36 +181,52 @@ export default function HelpRequestWreck() {
           </div>
           <div className="sm:col-span-2">
             <FormControl
-              fieldName="TextInput"
               name="tweetUrl"
-              icon="link"
-              fieldProps={{ placeholder: 'Tweet Linki', type: 'url' }}
+              fieldName="TextInput"
+              fieldProps={{
+                placeholder: 'Tweet Linki',
+                type: 'url',
+              }}
+              wrapperProps={{
+                icon: 'link',
+              }}
             />
           </div>
           <div className="sm:col-span-2">
-            <p className="text-xs">
+            <p className="mb-4 text-xs">
               <Trans
                 i18nKey="common:kvkk"
-                components={[<CustomLink key="kvkk" href="/hukuki-kvkk" />]}
+                components={[
+                  <Button
+                    isNavigationLink
+                    variant="link"
+                    key="kvkk"
+                    link={{
+                      href: '/hukuki-kvkk',
+                      target: '_blank',
+                    }}
+                  />,
+                ]}
               />
             </p>
-            <div className="mt-4">
-              <FormControl
-                fieldName="CheckBox"
-                name="term"
-                fieldProps={{ label: 'Okudum ve aydınlandım.' }}
-              />
-            </div>
+            <FormControl
+              fieldName="Checkbox"
+              name="term"
+              fieldProps={{ label: 'Okudum ve aydınlandım.' }}
+            />
           </div>
           <div>
-            <FormControl
+            <Button variant="primary" disabled={!formState.isValid}>
+              {t('submit')}
+            </Button>
+            {/* <FormControlOld
               fieldName="Button"
               name="enkaz-form-submit"
               fieldProps={{ label: t('submit') }}
-            />
+            /> */}
           </div>
         </div>
-      </FormManager>
+      </FormManagerProvider>
     </div>
   );
 }

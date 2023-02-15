@@ -1,13 +1,13 @@
 import {
-  useState,
+  MutableRefObject,
+  ReactElement,
+  ReactNode,
+  Ref,
+  RefObject,
+  SyntheticEvent,
   useEffect,
   useRef,
-  ReactElement,
-  Ref,
-  ReactNode,
-  RefObject,
-  MutableRefObject,
-  SyntheticEvent,
+  useState,
 } from 'react';
 
 type Handler = (target: HTMLElement) => void;

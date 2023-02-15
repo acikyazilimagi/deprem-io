@@ -1,6 +1,8 @@
+import { MutableRefObject, RefObject, useRef, useState } from 'react';
+
 import { useOnClickOutside } from '@/hooks/useOnClickOutSide';
 import { useToggle } from '@/hooks/useToggle';
-import { MutableRefObject, RefObject, useRef, useState } from 'react';
+
 import Icon from '../icon';
 
 export default function ShareDropdown() {

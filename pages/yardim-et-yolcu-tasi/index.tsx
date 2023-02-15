@@ -1,13 +1,17 @@
-import useTranslation from 'next-translate/useTranslation';
 import Trans from 'next-translate/Trans';
-import Alert from '@/components/alert';
-import CustomLink from '@/components/custom-link';
-import FormManager from '@/components/form/form-manager';
-import FormControl from '@/components/form/form-control';
-import { getConstraintsFromValidation } from '@/lib/utils';
-import RequestHelpMessage from '@/components/request-help-message';
+import useTranslation from 'next-translate/useTranslation';
+
 import cities from '@/lib/cities';
+import { OptionType } from '@/lib/types/component-props/form-elements/data-inputs.props';
+import { getConstraintsFromValidation } from '@/lib/utils';
 import { helpPassengerCarriageSchema } from '@/lib/validations/schemas';
+
+import useFormManager from '@/hooks/useFormManager';
+
+import Button from '@/components/actions/button';
+import Alert from '@/components/alert';
+import FormControl from '@/components/form-elements/form-control';
+import RequestHelpMessage from '@/components/request-help-message';
 
 export default function HelpPassengerCarriage() {
   const defaultValues = {
@@ -16,6 +20,8 @@ export default function HelpPassengerCarriage() {
     phone: '',
     info: '',
     term: false,
+    fromCity: '',
+    toCity: '',
   };
 
   const { t } = useTranslation('common');
@@ -24,14 +30,20 @@ export default function HelpPassengerCarriage() {
     console.log(values);
   };
 
-  const citiesFromList = [
-    { value: '', label: `* ${t('inputFields.helpFromCity')}` },
-    ...cities,
-  ];
-  const citiesToList = [
-    { value: '', label: `* ${t('inputFields.helpToCity')}` },
-    ...cities,
-  ];
+  const {
+    FormManagerProvider,
+    formInitializer: { formState },
+  } = useFormManager({
+    validationSchema: helpPassengerCarriageSchema,
+    onSubmit: onFormSubmit,
+    onError: (err) => {
+      console.error('onError - err', err);
+    },
+    defaultValues,
+  });
+
+  const citiesFromList = [...cities];
+  const citiesToList = [...cities];
   return (
     <div className="mx-auto max-w-screen-sm">
       <h1>{t('pageHeaders.canTransportPassengerPage')}</h1>
@@ -39,23 +51,18 @@ export default function HelpPassengerCarriage() {
       <RequestHelpMessage t={t} />
 
       <p className="mb-5">{t('warningMessages.requiredFieldsAreMandatory')}</p>
-      <FormManager
-        validationSchema={helpPassengerCarriageSchema}
-        onSubmit={onFormSubmit}
-        onError={(err) => {
-          console.error('onError - err', err);
-        }}
-        defaultValues={defaultValues}
-      >
+      <FormManagerProvider>
         <div className="grid gap-4 sm:grid-cols-6">
           <div className="sm:col-span-2">
             <FormControl
               fieldName="TextInput"
               name="fullName"
-              icon="user"
               fieldProps={{
                 placeholder: `* ${t('inputFields.fullName')}`,
                 type: 'text',
+              }}
+              wrapperProps={{
+                icon: 'user',
               }}
             />
           </div>
@@ -63,25 +70,29 @@ export default function HelpPassengerCarriage() {
             <FormControl
               fieldName="TextInput"
               name="email"
-              icon="email"
               fieldProps={{ placeholder: 'Email', type: 'email' }}
+              wrapperProps={{
+                icon: 'email',
+              }}
             />
           </div>
           <div className="sm:col-span-2">
             <FormControl
-              fieldName="PhoneInput"
+              fieldName="TextInput"
               name="phone"
-              icon="phone"
-              addon={
-                <span className="pointer-events-none absolute top-0 left-8 flex h-11 w-11 items-center justify-center opacity-60 dark:opacity-40">
-                  +90
-                </span>
-              }
-              className="pl-[73px]"
               fieldProps={{
                 placeholder: t('inputFields.phone'),
                 type: 'tel',
                 max: 14,
+                className: 'pl-[73px]',
+              }}
+              wrapperProps={{
+                icon: 'phone',
+                prefix: (
+                  <span className="pointer-events-none absolute top-0 left-8 flex h-11 w-11 items-center justify-center opacity-60 dark:opacity-40">
+                    +90
+                  </span>
+                ),
               }}
             />
           </div>
@@ -89,9 +100,12 @@ export default function HelpPassengerCarriage() {
             <FormControl
               fieldName="Select"
               name="fromCity"
-              icon="pin"
               fieldProps={{
-                selectOptions: citiesFromList,
+                options: citiesFromList as OptionType[],
+                placeholder: `* ${t('inputFields.helpFromCity')}`,
+              }}
+              wrapperProps={{
+                icon: 'pin',
               }}
             />
           </div>
@@ -99,18 +113,19 @@ export default function HelpPassengerCarriage() {
             <FormControl
               fieldName="Select"
               name="toCity"
-              icon="pin"
               fieldProps={{
-                selectOptions: citiesToList,
+                options: citiesToList as OptionType[],
+                placeholder: `* ${t('inputFields.helpToCity')}`,
+              }}
+              wrapperProps={{
+                icon: 'pin',
               }}
             />
           </div>
           <div className="sm:col-span-6">
             <FormControl
-              fieldName="TextArea"
+              fieldName="Textarea"
               name="info"
-              icon="info"
-              className="max-h-32 w-full"
               fieldProps={{
                 placeholder: `* ${t('inputFields.helpInfo')}`,
                 rows: 3,
@@ -119,6 +134,9 @@ export default function HelpPassengerCarriage() {
                   'info',
                   'max'
                 ),
+              }}
+              wrapperProps={{
+                icon: 'info',
               }}
             />
           </div>
@@ -134,26 +152,40 @@ export default function HelpPassengerCarriage() {
             <p className="text-xs">
               <Trans
                 i18nKey="common:kvkk"
-                components={[<CustomLink key="kvkk" href="/hukuki-kvkk" />]}
+                components={[
+                  <Button
+                    isNavigationLink
+                    variant="link"
+                    key="kvkk"
+                    link={{
+                      href: '/hukuki-kvkk',
+                      target: '_blank',
+                    }}
+                  />,
+                ]}
               />
             </p>
             <div className="mt-4">
               <FormControl
-                fieldName="CheckBox"
+                fieldName="Checkbox"
                 name="term"
                 fieldProps={{ label: t('inputFields.termsAcceptedLabel') }}
               />
             </div>
           </div>
           <div>
-            <FormControl
+            <Button variant="primary" disabled={!formState.isValid}>
+              {t('submit')}
+            </Button>
+
+            {/* <FormControlOld
               fieldName="Button"
               name="enkaz-form-submit"
               fieldProps={{ label: t('submit') }}
-            />
+            /> */}
           </div>
         </div>
-      </FormManager>
+      </FormManagerProvider>
     </div>
   );
 }

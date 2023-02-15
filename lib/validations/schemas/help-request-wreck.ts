@@ -1,5 +1,6 @@
-import { PhysicalState } from '@/lib/enums';
 import * as yup from 'yup';
+
+import { PhysicalState } from '@/lib/enums';
 import { IHelpRequestWreckValidation } from '@/lib/types/validations';
 
 export const helpRequestWreckSchema: yup.ObjectSchema<IHelpRequestWreckValidation> =
@@ -16,5 +17,5 @@ export const helpRequestWreckSchema: yup.ObjectSchema<IHelpRequestWreckValidatio
     physicalCondition: yup.string<PhysicalState>().required(),
     physicalConditionDetail: yup.string().required(),
     tweetUrl: yup.string().nullable(),
-    term: yup.bool().required(),
+    term: yup.bool().isTrue().required(),
   });

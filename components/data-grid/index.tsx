@@ -1,5 +1,6 @@
 import { IDataGridFilterProps } from '@/lib/types/component-props/data-grid/filter.props';
 import { IDataGridTableProps } from '@/lib/types/component-props/data-grid/table.types';
+
 import DataGridFilter from './filter';
 import DataGridTable from './table';
 

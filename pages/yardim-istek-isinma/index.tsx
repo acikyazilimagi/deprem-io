@@ -1,13 +1,16 @@
-import useTranslation from 'next-translate/useTranslation';
 import Trans from 'next-translate/Trans';
-import Alert from '@/components/alert';
-import CustomLink from '@/components/custom-link';
-import FormManager from '@/components/form/form-manager';
-import FormControl from '@/components/form/form-control';
-import { getConstraintsFromValidation } from '@/lib/utils';
-import RequestHelpMessage from '@/components/request-help-message';
+import useTranslation from 'next-translate/useTranslation';
+
 import { PhysicalState, TransportationState } from '@/lib/enums';
+import { getConstraintsFromValidation } from '@/lib/utils';
 import { helpRequestWarmingSchema } from '@/lib/validations/schemas';
+
+import useFormManager from '@/hooks/useFormManager';
+
+import Button from '@/components/actions/button';
+import Alert from '@/components/alert';
+import FormControl from '@/components/form-elements/form-control';
+import RequestHelpMessage from '@/components/request-help-message';
 
 export default function HelpRequestWarming() {
   const defaultValues = {
@@ -30,6 +33,18 @@ export default function HelpRequestWarming() {
     console.log(values);
   };
 
+  const {
+    FormManagerProvider,
+    formInitializer: { formState },
+  } = useFormManager({
+    validationSchema: helpRequestWarmingSchema,
+    onSubmit: onFormSubmit,
+    onError: (err) => {
+      console.error('onError - err', err);
+    },
+    defaultValues,
+  });
+
   return (
     <div className="mx-auto max-w-screen-sm">
       <h1>{t('pageHeaders.needToWarmPage')}</h1>
@@ -37,78 +52,76 @@ export default function HelpRequestWarming() {
       <RequestHelpMessage t={t} />
 
       <p className="mb-5">{t('warningMessages.requiredFieldsAreMandatory')}</p>
-      <FormManager
-        validationSchema={helpRequestWarmingSchema}
-        onSubmit={onFormSubmit}
-        onError={(err) => {
-          console.error('onError - err', err);
-        }}
-        defaultValues={defaultValues}
-      >
+      <FormManagerProvider>
         <div className="grid gap-4 sm:grid-cols-2">
           <div className="sm:col-span-2">
             <FormControl
               fieldName="TextInput"
               name="fullName"
-              icon="user"
               fieldProps={{
                 placeholder: `* ${t('inputFields.fullName')}`,
                 type: 'text',
+              }}
+              wrapperProps={{
+                icon: 'user',
               }}
             />
           </div>
           <FormControl
             fieldName="TextInput"
             name="email"
-            icon="email"
             fieldProps={{ placeholder: 'Email', type: 'email' }}
+            wrapperProps={{
+              icon: 'email',
+            }}
           />
           <FormControl
-            fieldName="PhoneInput"
+            fieldName="TextInput"
             name="phone"
-            icon="phone"
-            addon={
-              <span className="pointer-events-none absolute top-0 left-8 flex h-11 w-11 items-center justify-center opacity-60 dark:opacity-40">
-                +90
-              </span>
-            }
-            className="pl-[73px]"
             fieldProps={{
+              className: 'pl-[73px]',
               placeholder: t('inputFields.phone'),
               type: 'tel',
               max: 14,
+            }}
+            wrapperProps={{
+              icon: 'phone',
+              prefix: (
+                <span className="pointer-events-none absolute top-0 left-8 flex h-11 w-11 items-center justify-center opacity-60 dark:opacity-40">
+                  +90
+                </span>
+              ),
             }}
           />
           <div className="sm:col-span-2">
             <FormControl
               fieldName="TextInput"
               name="humanCount"
-              icon="userPlus"
               fieldProps={{
                 placeholder: t('inputFields.peopleCount'),
                 type: 'number',
                 min: 1,
               }}
-            />
-          </div>
-          <div className="sm:col-span-2">
-            <FormControl
-              fieldName="TextArea"
-              name="address"
-              icon="pin"
-              className="max-h-32 w-full"
-              fieldProps={{
-                placeholder: `* ${t('inputFields.address')}`,
-                rows: 2,
+              wrapperProps={{
+                icon: 'userPlus',
               }}
             />
           </div>
           <div className="sm:col-span-2">
             <FormControl
-              fieldName="TextArea"
+              fieldName="Textarea"
+              name="address"
+              fieldProps={{
+                placeholder: `* ${t('inputFields.address')}`,
+                rows: 2,
+              }}
+              wrapperProps={{ icon: 'pin' }}
+            />
+          </div>
+          <div className="sm:col-span-2">
+            <FormControl
+              fieldName="Textarea"
               name="addressDetail"
-              icon="addressExtra"
-              className="max-h-32 w-full"
               fieldProps={{
                 placeholder: t('inputFields.addressDetail'),
                 rows: 1,
@@ -117,6 +130,9 @@ export default function HelpRequestWarming() {
                   'addressDetail',
                   'max'
                 ),
+              }}
+              wrapperProps={{
+                icon: 'addressExtra',
               }}
             />
           </div>
@@ -130,10 +146,11 @@ export default function HelpRequestWarming() {
           </div>
           <div className="sm:col-span-2">
             <FormControl
-              fieldName="Radio"
+              fieldName="RadioGroup"
               name="physicalCondition"
+              label="Durum"
               fieldProps={{
-                radioGroupData: [
+                options: [
                   {
                     label: t('inputFields.physicalConditions.normal'),
                     value: PhysicalState.Normal,
@@ -152,13 +169,14 @@ export default function HelpRequestWarming() {
           </div>
           <div className="sm:col-span-2">
             <FormControl
-              fieldName="TextArea"
+              fieldName="Textarea"
               name="physicalConditionDetail"
-              icon="info"
-              className="max-h-32 w-full"
               fieldProps={{
                 placeholder: `* ${t('inputFields.physicalConditionDetail')}`,
                 rows: 2,
+              }}
+              wrapperProps={{
+                icon: 'info',
               }}
             />
           </div>
@@ -176,19 +194,21 @@ export default function HelpRequestWarming() {
             <FormControl
               fieldName="TextInput"
               name="tweetUrl"
-              icon="link"
               fieldProps={{
                 placeholder: t('inputFields.tweetUrl'),
                 type: 'url',
+              }}
+              wrapperProps={{
+                icon: 'link',
               }}
             />
           </div>
           <div className="sm:col-span-2">
             <FormControl
-              fieldName="Radio"
+              fieldName="RadioGroup"
               name="transportationStatus"
               fieldProps={{
-                radioGroupData: [
+                options: [
                   {
                     label: t('inputFields.transportationStatus.exists'),
                     value: TransportationState.exists,
@@ -205,26 +225,39 @@ export default function HelpRequestWarming() {
             <p className="text-xs">
               <Trans
                 i18nKey="common:kvkk"
-                components={[<CustomLink key="kvkk" href="/hukuki-kvkk" />]}
+                components={[
+                  <Button
+                    isNavigationLink
+                    variant="link"
+                    key="kvkk"
+                    link={{
+                      href: '/hukuki-kvkk',
+                      target: '_blank',
+                    }}
+                  />,
+                ]}
               />
             </p>
             <div className="mt-4">
               <FormControl
-                fieldName="CheckBox"
+                fieldName="Checkbox"
                 name="term"
                 fieldProps={{ label: t('inputFields.termsAcceptedLabel') }}
               />
             </div>
           </div>
           <div>
-            <FormControl
+            <Button variant="primary" disabled={!formState.isValid}>
+              {t('submit')}
+            </Button>
+            {/* <FormControlOld
               fieldName="Button"
               name="enkaz-form-submit"
               fieldProps={{ label: t('submit') }}
-            />
+            /> */}
           </div>
         </div>
-      </FormManager>
+      </FormManagerProvider>
     </div>
   );
 }

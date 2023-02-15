@@ -1,15 +1,17 @@
-import { memo } from 'react'
-import Trans from 'next-translate/Trans'
-import useTranslation from 'next-translate/useTranslation'
-import CustomLink from '@/components/custom-link'
-import { useLocalStorage } from '@/hooks/useLocalStorage'
+import Trans from 'next-translate/Trans';
+import useTranslation from 'next-translate/useTranslation';
+import { memo } from 'react';
+
+import { useLocalStorage } from '@/hooks/useLocalStorage';
+
+import Button from './actions/button';
 
 function KVKKStickyBar() {
-  const { t } = useTranslation('common')
+  const { t } = useTranslation('common');
   const [value, setValue] = useLocalStorage<boolean>(
     'KVKKAcceptedStatus',
     false
-  )
+  );
 
   return (
     <>
@@ -20,24 +22,33 @@ function KVKKStickyBar() {
               <Trans
                 i18nKey="common:kvkkStickyBar"
                 components={[
-                  <CustomLink key="kvkk-link" href="/hukuki-kvkk" />,
+                  <Button
+                    isNavigationLink
+                    variant="link"
+                    key="kvkk-link"
+                    link={{
+                      href: '/hukuki-kvkk',
+                    }}
+                  />,
                   <b key="kvkk" />,
                 ]}
               />
             </span>
-            <button
+            <Button
+              isOutline
+              size="xs"
+              variant="primary"
               onClick={() => {
-                setValue(true)
+                setValue(true);
               }}
-              className="rounded-lg border-2 border-indigo-400 bg-indigo-100 px-3 py-1.5 font-medium text-indigo-500 hover:bg-indigo-200 dark:bg-blue-600 dark:text-indigo-100 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
             >
               {t('accept')}
-            </button>
+            </Button>
           </div>
         </div>
       ) : null}
     </>
-  )
+  );
 }
 
-export default memo(KVKKStickyBar)
+export default memo(KVKKStickyBar);
