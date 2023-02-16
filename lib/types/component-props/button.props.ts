@@ -3,6 +3,7 @@ import { PropsWithChildren } from 'react';
 import {
   COMPONENT_SIZES,
   COMPONENT_VARIANTS,
+  SEVERITIES,
 } from '@/lib/constants/COMPONENT_VARIABELS';
 import { NavigationLinkPropsTypes } from '@/lib/types/component-props/navigation-link.props';
 
@@ -11,7 +12,7 @@ export type ButtonClickType = (e: React.MouseEvent<HTMLButtonElement>) => void;
 
 export type ButtonBasePropsType = {
   className?: string;
-  variant?: keyof typeof COMPONENT_VARIANTS | 'link';
+  variant?: keyof typeof COMPONENT_VARIANTS | keyof typeof SEVERITIES | 'link';
   size?: keyof typeof COMPONENT_SIZES;
 };
 
