@@ -84,12 +84,13 @@
   select,
   select[multiple],
   textarea {
-    @apply block w-full rounded-lg border-transparent bg-base
-        focus:border-base-dark focus:bg-base-light focus:ring-0
+    @apply block w-full rounded-lg border-transparent bg-base-200
+        focus:border-base-300 focus:bg-base-100 focus:ring-0
         dark:bg-zinc-800 dark:focus:bg-zinc-900;
   }
 }
 @layer components {
+  /* Button */
   .btn {
     @apply whitespace-nowrap rounded px-5 py-3 font-semibold leading-tight shadow-sm transition duration-300 ease-in-out;
   }
@@ -122,14 +123,86 @@
   }
 
   .btn-default {
-    @apply bg-base text-base-content hover:bg-base-dark;
+    @apply bg-base-200 text-base-content hover:bg-base-300;
   }
 
   .btn-default.btn-outline {
-    @apply border border-base bg-transparent text-base-content hover:bg-base hover:text-base-content;
+    @apply border border-base-200 bg-transparent text-base-content hover:bg-base-200 hover:text-base-content;
   }
 
   .btn-link {
     @apply bg-transparent px-0 py-0 text-current text-primary hover:underline;
+  }
+
+  .btn-info {
+    @apply bg-info text-info-content hover:bg-info-dark;
+  }
+
+  .btn-info.btn-outline {
+    @apply border border-info bg-transparent text-info hover:bg-info hover:text-info-content;
+  }
+
+  .btn-error {
+    @apply bg-error text-error-content hover:bg-error-dark;
+  }
+
+  .btn-error.btn-outline {
+    @apply border border-error bg-transparent text-error hover:bg-error hover:text-error-content;
+  }
+
+  .btn-warning {
+    @apply bg-warning text-warning-content hover:bg-warning-dark;
+  }
+
+  .btn-warning.btn-outline {
+    @apply border border-warning bg-transparent text-warning hover:bg-warning hover:text-warning-content;
+  }
+
+  .btn-success {
+    @apply bg-success text-success-content hover:bg-success-dark;
+  }
+
+  .btn-success.btn-outline {
+    @apply border border-success bg-transparent text-success hover:bg-success hover:text-success-content;
+  }
+
+  /* Alert */
+
+  .alert {
+    @apply flex items-center gap-4 rounded-lg border border-l-2 border-base-200
+    border-l-base-300 p-4 text-sm
+    dark:border-base-200 dark:border-l-base-100;
+  }
+
+  .alert.alert-xs {
+    @apply px-2 py-1 text-xs;
+  }
+  .alert.alert-sm {
+    @apply px-4 py-2 text-sm;
+  }
+
+  .alert.alert-lg {
+    @apply px-6 py-4 text-lg;
+  }
+
+  .alert-info {
+    @apply border-info border-l-info-dark bg-info-light text-info-content
+    dark:border-info-light dark:border-l-info;
+  }
+  .alert-error {
+    @apply border-error border-l-error-dark bg-error-light text-error-content
+    dark:border-error-light dark:border-l-error;
+  }
+  .alert-warning {
+    @apply border-warning border-l-warning-dark bg-warning-light text-warning-content
+    dark:border-warning-light dark:border-l-warning;
+  }
+  .alert-success {
+    @apply border-success border-l-success-dark bg-success-light text-success
+    dark:border-success-light dark:border-l-success;
+  }
+
+  .alert.alert-outline {
+    @apply bg-transparent text-current;
   }
 }

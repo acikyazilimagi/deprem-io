@@ -12,3 +12,9 @@ export const COMPONENT_SIZES = {
     keys: ['xs', 'sm', 'regular', 'lg', 'xl'],
   }),
 } as const;
+
+export const SEVERITIES = {
+  ...dynamicKeyValuePairs({
+    keys: ['info', 'error', 'warning', 'success'],
+  }),
+} as const;
