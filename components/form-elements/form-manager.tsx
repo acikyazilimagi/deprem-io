@@ -9,7 +9,6 @@ import type {
   UseFormProps,
   UseFormReturn,
 } from 'react-hook-form';
-import * as yup from 'yup';
 
 export type TProps = (
   | {
@@ -66,7 +65,6 @@ const FormManager = ({
     ...(validationSchema
       ? { mode: 'all', resolver: yupResolver(validationSchema) }
       : undefined),
-
     ...initOpts,
   });
 

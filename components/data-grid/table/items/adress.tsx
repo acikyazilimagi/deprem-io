@@ -1,5 +1,6 @@
-import Icon from '@/components/icon';
 import { CanCarry } from '@/lib/types/component-props/data-grid/table.types';
+
+import Icon from '@/components/icon';
 
 type AdressProps = {
   locationText?: string;

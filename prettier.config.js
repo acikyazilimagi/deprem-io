@@ -1,4 +1,5 @@
 module.exports = {
+  plugins: [require('prettier-plugin-tailwindcss')],
   semi: true,
   trailingComma: 'es5',
   singleQuote: true,
@@ -15,4 +16,18 @@ module.exports = {
   quoteProps: 'as-needed',
   requirePragma: false,
   printWidth: 80,
+  importOrder: [
+    '<THIRD_PARTY_MODULES>',
+    '^@/libs/(.*)$',
+    '^@/lib/(.*)$',
+    '^@/middlewares/(.*)$',
+    '^@/i18n/(.*)$',
+    '^@/stores/(.*)$',
+    '^@/hooks/(.*)$',
+    '^@/modules/(.*)$',
+    '^@/components/(.*)$',
+    '^[./]',
+  ],
+  importOrderSeparation: true,
+  importOrderSortSpecifiers: true,
 };

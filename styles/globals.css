@@ -1,8 +1,45 @@
 @tailwind base;
-@tailwind components;
-@tailwind utilities;
 
+@tailwind components;
+
+@tailwind utilities;
 @layer base {
+  :root {
+    --color-primary: 75 107 251;
+    --color-primary-content: 255 255 255;
+    --color-secondary: 123 146 178;
+    --color-secondary-content: 255 255 255;
+    --color-accent: 103 203 160;
+    --color-accent-content: 255 255 255;
+    --color-neutral: 24 26 42;
+    --color-neutral-content: 255 255 255;
+    --color-base-100: 255 255 255;
+    --color-base-200: 242 242 242;
+    --color-base-300: 230 229 229;
+    --color-base-content: 0 0 0;
+    --color-info: 37 99 235;
+    --color-info-content: 255 255 255;
+    --color-success: 22 163 74;
+    --color-success-content: 255 255 255;
+    --color-warning: 217 119 6;
+    --color-warning-content: 255 255 255;
+    --color-error: 220 38 38;
+    --color-error-content: 255 255 255;
+  }
+
+  *:before,
+  *:after {
+    box-sizing: inherit;
+  }
+
+  html,
+  body {
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overscroll-behavior-x: none;
+  }
+
   h1,
   h2,
   h3,
@@ -43,33 +80,56 @@
     @apply text-zinc-400 dark:text-zinc-600;
   }
 
-  input[type='text'],
-  input[type='password'],
-  input[type='email'],
-  input[type='number'],
-  input[type='url'],
-  input[type='date'],
-  input[type='datetime-local'],
-  input[type='month'],
-  input[type='week'],
-  input[type='time'],
-  input[type='search'],
-  input[type='tel'],
+  input[type]:not([type='checkbox']):not([type='radio']),
   select,
   select[multiple],
   textarea {
-    @apply block w-full rounded-lg border-transparent bg-zinc-100
-        focus:border-zinc-500 focus:bg-white focus:ring-0
+    @apply block w-full rounded-lg border-transparent bg-base
+        focus:border-base-dark focus:bg-base-light focus:ring-0
         dark:bg-zinc-800 dark:focus:bg-zinc-900;
   }
-
-  button[type='submit'] {
-    @apply h-10 rounded-lg border-transparent bg-blue-500 px-4 text-white
-        focus:bg-blue-600 focus:ring-0;
+}
+@layer components {
+  .btn {
+    @apply whitespace-nowrap rounded px-5 py-3 font-semibold leading-tight shadow-sm transition duration-300 ease-in-out;
   }
 
-  /*input[type="checkbox"],
-    input[type="radio"] {
-        @apply text-blue-500 focus:ring-0;
-    }*/
+  .btn.btn-xs {
+    @apply px-2 py-1 text-xs;
+  }
+  .btn.btn-sm {
+    @apply px-4 py-2 text-sm;
+  }
+
+  .btn.btn-lg {
+    @apply px-6 py-4 text-lg;
+  }
+
+  .btn-primary {
+    @apply bg-primary text-primary-content hover:bg-primary-dark;
+  }
+
+  .btn-primary.btn-outline {
+    @apply border border-primary bg-transparent text-primary hover:bg-primary hover:text-primary-content;
+  }
+
+  .btn-secondary {
+    @apply bg-secondary text-secondary-content hover:bg-secondary-dark;
+  }
+
+  .btn-secondary.btn-outline {
+    @apply border border-secondary bg-transparent text-secondary hover:bg-secondary hover:text-secondary-content;
+  }
+
+  .btn-default {
+    @apply bg-base text-base-content hover:bg-base-dark;
+  }
+
+  .btn-default.btn-outline {
+    @apply border border-base bg-transparent text-base-content hover:bg-base hover:text-base-content;
+  }
+
+  .btn-link {
+    @apply bg-transparent px-0 py-0 text-current text-primary hover:underline;
+  }
 }

@@ -1,5 +1,6 @@
-import { HelpMapsButtonProps } from '@/lib/types/component-props/help-maps-button.props';
 import Link from 'next/link';
+
+import { HelpMapsButtonProps } from '@/lib/types/component-props/help-maps-button.props';
 
 export function HelpMapsButton({
   children,

@@ -1,6 +1,7 @@
+import { Translate } from 'next-translate';
+
 import Icon from '@/components/icon';
 import PrimaryButton from '@/components/primary-button';
-import { Translate } from 'next-translate';
 
 type YardimAlProps = {
   t: Translate;

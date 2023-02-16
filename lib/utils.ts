@@ -1,7 +1,6 @@
 import { ClassValue, clsx } from 'clsx';
 import { twMerge } from 'tailwind-merge';
 import { ObjectSchema, SchemaDescription } from 'yup';
-import * as yup from 'yup';
 
 export function cx(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));

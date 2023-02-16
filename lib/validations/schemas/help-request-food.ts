@@ -1,5 +1,6 @@
-import { PhysicalState, TransportationState } from '@/lib/enums';
 import * as yup from 'yup';
+
+import { PhysicalState, TransportationState } from '@/lib/enums';
 import { IHelpRequestFoodValidation } from '@/lib/types/validations';
 
 export const helpRequestFoodSchema: yup.ObjectSchema<IHelpRequestFoodValidation> =

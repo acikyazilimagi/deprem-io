@@ -1,5 +1,6 @@
-import { stripEmptyString } from '@/lib/utils';
 import * as yup from 'yup';
+
+import { stripEmptyString } from '@/lib/utils';
 
 export const filterFormSchema = yup.object().shape({
   search: yup.string().optional(),

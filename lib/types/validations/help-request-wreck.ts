@@ -8,5 +8,5 @@ export interface IHelpRequestWreckValidation extends IBaseValidation {
   physicalCondition: PhysicalState;
   physicalConditionDetail: string;
   tweetUrl?: string | null;
-  term: boolean;
+  term: boolean | undefined;
 }

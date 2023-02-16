@@ -1,4 +1,5 @@
 import Image from 'next/image';
+
 import { HelpMapsButton } from '@/components/home-page/help-maps/help-maps-button';
 
 export function HelpMaps() {

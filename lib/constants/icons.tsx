@@ -1,5 +1,5 @@
 /* eslint-disable react/jsx-key */
-import dynamicKeyValuePairs from '../helpers/dynamic-key-value-pairs';
+import dynamicKeyValuePairs from '@/lib/helpers/dynamic-key-value-pairs';
 
 export const ICON_NAMES = {
   ...dynamicKeyValuePairs({

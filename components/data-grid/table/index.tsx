@@ -1,6 +1,7 @@
-import { noop } from '@/lib/utils';
-import { useCallback, useMemo, ReactNode, Fragment } from 'react';
+import { Fragment, ReactNode, useCallback, useMemo } from 'react';
+
 import { IDataGridTableProps } from '@/lib/types/component-props/data-grid/table.types';
+import { noop } from '@/lib/utils';
 
 export default function DataGridTable({
   rows,

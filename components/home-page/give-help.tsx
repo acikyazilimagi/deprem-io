@@ -1,6 +1,7 @@
-import PrimaryButton from '@/components/primary-button';
-import Icon from '@/components/icon';
 import { Translate } from 'next-translate';
+
+import Icon from '@/components/icon';
+import PrimaryButton from '@/components/primary-button';
 
 type TGiveHelpProps = {
   t: Translate;

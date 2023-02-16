@@ -1,11 +1,14 @@
 import Link from 'next/link';
-import ThemeButton from '@/components/theme-button';
+
+import Button from '@/components/actions/button';
 import Logo from '@/components/logo';
+import ThemeButton from '@/components/theme-button';
+
 import ShareDropdown from './share-dropdown';
 
 export default function Header() {
   return (
-    <header className="mb-10 flex items-center gap-4 bg-zinc-50 px-6 py-4 dark:bg-zinc-800 sm:mb-20">
+    <header className="sticky top-0 z-10 mb-10 flex items-center gap-4 bg-zinc-50 px-6 py-4 dark:bg-zinc-800 sm:mb-20">
       <Logo />
 
       <ThemeButton />
@@ -19,12 +22,22 @@ export default function Header() {
       </div>
 
       <div className="ml-auto">
-        <Link
+        <Button
+          isNavigationLink
+          variant="primary"
+          isOutline
+          link={{
+            href: '/iletisim',
+          }}
+        >
+          İletişim
+        </Button>
+        {/* <Link
           href="/iletisim"
           className="inline-flex h-10 items-center rounded-lg bg-blue-600 px-4 text-white"
         >
-          İletişim
-        </Link>
+          
+        </Link> */}
       </div>
     </header>
   );
