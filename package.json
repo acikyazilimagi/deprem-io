@@ -13,6 +13,7 @@
     "analyze": "ANALYZE=true next build"
   },
   "dependencies": {
+    "@headlessui/react": "^1.7.10",
     "@hookform/resolvers": "^2.9.11",
     "clsx": "^1.2.1",
     "next": "13.1.6",
